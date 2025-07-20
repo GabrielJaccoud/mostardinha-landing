@@ -11,30 +11,63 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header com trilha sonora -->
-    <header class="header">
+    <!-- Menu Fixo -->
+    <nav class="fixed-nav">
         <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="assets/images/CAPA.png" alt="Mostardinha" class="logo-img">
-                    <span class="logo-text">Mundo do Mostardinha</span>
+            <div class="nav-content">
+                <div class="nav-logo">
+                    <img src="assets/images/CAPA.png" alt="Mostardinha" class="nav-logo-img">
+                    <span class="nav-logo-text">Mostardinha</span>
                 </div>
-                <div class="audio-controls">
-                    <button id="audioToggle" class="audio-btn">
-                        <span class="audio-icon">🎵</span>
-                        <span class="audio-text">Ouça a trilha do Mostardinha</span>
-                    </button>
+                <ul class="nav-menu">
+                    <li><a href="#inicio" class="nav-link">Início</a></li>
+                    <li><a href="#historia" class="nav-link">História</a></li>
+                    <li><a href="#ilustracoes" class="nav-link">Ilustrações</a></li>
+                    <li><a href="#audiobook" class="nav-link">Audiobook</a></li>
+                    <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+                    <li><a href="#newsletter" class="nav-link">Newsletter</a></li>
+                </ul>
+                <div class="nav-cta">
+                    <a href="https://payhip.com/b/IJRCe" class="btn btn-primary btn-small" target="_blank">
+                        Comprar - R$ 19,90
+                    </a>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Player de Áudio Fixo -->
+    <div class="audio-player-fixed" id="audioPlayerFixed">
+        <div class="audio-player-content">
+            <div class="audio-info">
+                <div class="audio-icon-animated">🎵</div>
+                <span class="audio-title">Trilha do Mostardinha</span>
+            </div>
+            <div class="audio-controls">
+                <button id="audioToggleFixed" class="audio-btn-fixed">
+                    <span class="audio-icon-btn">▶️</span>
+                </button>
+                <div class="volume-control">
+                    <input type="range" id="volumeSlider" min="0" max="100" value="30" class="volume-slider">
                 </div>
             </div>
         </div>
-        <audio id="backgroundAudio" loop>
+        <audio id="backgroundAudioFixed" loop>
             <source src="assets/temamostardinha.wav" type="audio/wav">
         </audio>
-    </header>
+    </div>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="inicio" class="hero">
         <div class="hero-background">
+            <div class="parallax-layer parallax-sky"></div>
+            <div class="parallax-layer parallax-clouds"></div>
+            <div class="parallax-layer parallax-mountains"></div>
             <div class="floating-elements">
                 <div class="star star-1">⭐</div>
                 <div class="star star-2">✨</div>
@@ -49,26 +82,26 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1 class="hero-title">
+                    <h1 class="hero-title fade-in-up">
                         Conheça o herói mais doce da literatura infantil:
                         <span class="highlight">O Antipoderoso Mostardinha</span>
                     </h1>
-                    <p class="hero-subtitle">
+                    <p class="hero-subtitle fade-in-up">
                         Uma jornada de sensibilidade em um mundo dominado por imposições e medos. 
                         Mostardinha não impõe nada, apenas ouve, acolhe e transforma com amor.
                     </p>
-                    <div class="hero-cta">
-                        <button class="btn btn-primary btn-large" onclick="scrollToSection('livro')">
+                    <div class="hero-cta fade-in-up">
+                        <a href="https://payhip.com/b/IJRCe" class="btn btn-primary btn-large" target="_blank">
                             <span class="btn-icon">📖</span>
-                            Compre agora o eBook
-                        </button>
+                            Comprar agora - R$ 19,90
+                        </a>
                         <div class="price-tag">
                             <span class="price-label">Oferta especial:</span>
                             <span class="price">R$ 19,90</span>
                         </div>
                     </div>
                 </div>
-                <div class="hero-image">
+                <div class="hero-image fade-in-up">
                     <img src="assets/images/ChatGPTImage26demai.de2025,08_25_22.png" alt="Mostardinha" class="mostardinha-hero">
                 </div>
             </div>
@@ -76,55 +109,63 @@
     </section>
 
     <!-- Seção do Livro -->
-    <section id="livro" class="book-section">
+    <section id="historia" class="book-section">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">📖 Sobre a História</h2>
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">📖 Mostardinha e sua Turma em: Temperópolis</h2>
                 <p class="section-subtitle">
-                    Uma jornada mágica pelos mundos de Nostradia e Iberópolis
+                    Uma jornada mágica de descoberta, amizade e amor
                 </p>
             </div>
             <div class="book-content">
-                <div class="book-info">
+                <div class="book-info fade-in-left">
                     <div class="book-description">
                         <p>
-                            Em um mundo onde o Poderoso Chefão Ibérico domina com imposições e medos, 
-                            surge um pequeno herói diferente de todos os outros. Mostardinha não usa força, 
-                            não grita, não impõe. Sua única arma é a escuta, o afeto e o amor genuíno.
+                            Em uma ilha onde alimentos falam, a natureza canta e o invisível se torna visível, 
+                            um menino perdido descobre muito mais do que um caminho de volta para casa — 
+                            ele encontra amigos, coragem e a força do amor.
                         </p>
                         <p>
-                            Acompanhe esta aventura pelos mundos contrastantes de Nostradia - um planeta 
-                            flutuante, musical e festivo - e Iberópolis - uma cidade cinza e apática. 
-                            Descubra como a sensibilidade pode transformar o mundo.
+                            Temperópolis é um lugar onde os sentimentos se manifestam em sabores, 
+                            os sons são portais mágicos e a imaginação é a bússola que guia as crianças 
+                            de volta a si mesmas.
+                        </p>
+                        <p>
+                            Acompanhado por uma banda divertida com instrumentos feitos de maionese, 
+                            repolho e salsinha — a Orquestra Delicinha — Mostardinha vive uma jornada 
+                            musical, sensível e cheia de valores que aquecem o coração.
                         </p>
                         <div class="book-features">
                             <div class="feature">
-                                <span class="feature-icon">💝</span>
-                                <span>Histórias que inspiram o coração</span>
-                            </div>
-                            <div class="feature">
-                                <span class="feature-icon">🎨</span>
-                                <span>Ilustrações mágicas e coloridas</span>
-                            </div>
-                            <div class="feature">
                                 <span class="feature-icon">📱</span>
-                                <span>Acesso imediato após a compra</span>
+                                <span>QR Codes interativos</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon">🎧</span>
+                                <span>Audiobook com trilha original</span>
                             </div>
                             <div class="feature">
                                 <span class="feature-icon">🎵</span>
-                                <span>Acompanha trilha sonora original</span>
+                                <span>Canções encantadas</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon">💝</span>
+                                <span>Uma história que inspira amor, empatia e conexão</span>
                             </div>
                         </div>
+                        <p class="book-ideal">
+                            <strong>Ideal para crianças, pais, educadores e todos que acreditam que crescer é um movimento do coração.</strong>
+                        </p>
                     </div>
                     <div class="book-cta">
-                        <button class="btn btn-primary btn-large">
+                        <a href="https://payhip.com/b/IJRCe" class="btn btn-primary btn-large" target="_blank">
                             <span class="btn-icon">🛒</span>
-                            Comprar o eBook - R$ 19,90
-                        </button>
+                            Comprar agora - R$ 19,90
+                        </a>
                         <p class="guarantee">✅ Garantia de 7 dias ou seu dinheiro de volta</p>
                     </div>
                 </div>
-                <div class="book-preview">
+                <div class="book-preview fade-in-right">
                     <div class="book-mockup">
                         <img src="assets/images/CAPA.png" alt="Capa do livro Mostardinha" class="book-cover">
                     </div>
@@ -134,37 +175,37 @@
     </section>
 
     <!-- Galeria de Ilustrações -->
-    <section class="gallery-section">
+    <section id="ilustracoes" class="gallery-section">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header fade-in-up">
                 <h2 class="section-title">🎨 Ilustrações e Cenas do Livro</h2>
                 <p class="section-subtitle">
                     Mergulhe no universo mágico do Mostardinha
                 </p>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item">
+                <div class="gallery-item fade-in-up">
                     <img src="assets/images/13-BANDA.png" alt="A banda de Nostradia" class="gallery-image">
                     <div class="gallery-caption">
-                        <h3>A Banda de Nostradia</h3>
-                        <p>Onde a música une todos os corações</p>
+                        <h3>A Orquestra Delicinha</h3>
+                        <p>Instrumentos feitos de maionese, repolho e salsinha</p>
                     </div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item fade-in-up">
                     <img src="assets/images/28-ILHA.png" alt="A Ilha da Empatia" class="gallery-image">
                     <div class="gallery-caption">
-                        <h3>A Ilha da Empatia</h3>
-                        <p>Um lugar mágico de compreensão</p>
+                        <h3>Temperópolis</h3>
+                        <p>Onde os sentimentos se manifestam em sabores</p>
                     </div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item fade-in-up">
                     <img src="assets/images/48-FESTIVAL.png" alt="O Festival Final" class="gallery-image">
                     <div class="gallery-caption">
-                        <h3>O Festival Final</h3>
-                        <p>A celebração da transformação</p>
+                        <h3>O Festival da Amizade</h3>
+                        <p>A celebração da transformação e do amor</p>
                     </div>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item fade-in-up">
                     <img src="assets/images/52-VINHETAFINAL.png" alt="Mostardinha e a pedra" class="gallery-image">
                     <div class="gallery-caption">
                         <h3>A Força do Amor</h3>
@@ -176,10 +217,10 @@
     </section>
 
     <!-- Audiobook Gratuito -->
-    <section class="audiobook-section">
+    <section id="audiobook" class="audiobook-section">
         <div class="container">
             <div class="audiobook-content">
-                <div class="audiobook-info">
+                <div class="audiobook-info fade-in-left">
                     <h2 class="section-title">🎧 Audiobook Gratuito</h2>
                     <p class="section-subtitle">
                         Ouça a história completa com trilha sonora original
@@ -200,7 +241,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="audiobook-visual">
+                <div class="audiobook-visual fade-in-right">
                     <div class="youtube-embed">
                         <iframe 
                             src="https://www.youtube.com/embed/BSzPFZICl5c?start=663" 
@@ -216,16 +257,16 @@
     </section>
 
     <!-- Depoimentos -->
-    <section class="testimonials-section">
+    <section id="depoimentos" class="testimonials-section">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header fade-in-up">
                 <h2 class="section-title">💬 O que as famílias estão dizendo</h2>
                 <p class="section-subtitle">
                     Depoimentos de quem já se encantou com o Mostardinha
                 </p>
             </div>
             <div class="testimonials-carousel">
-                <div class="testimonial-card">
+                <div class="testimonial-card fade-in-up">
                     <div class="testimonial-content">
                         <p>"Uma história linda que ensina sobre empatia e amor. Minha filha pede para ler toda noite!"</p>
                     </div>
@@ -237,7 +278,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
+                <div class="testimonial-card fade-in-up">
                     <div class="testimonial-content">
                         <p>"Como educadora, recomendo este livro. Ele traz valores importantes de forma lúdica e encantadora."</p>
                     </div>
@@ -249,7 +290,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
+                <div class="testimonial-card fade-in-up">
                     <div class="testimonial-content">
                         <p>"O audiobook é maravilhoso! As crianças ficam hipnotizadas com a música e a narração."</p>
                     </div>
@@ -265,14 +306,50 @@
         </div>
     </section>
 
+    <!-- Newsletter / Captura de E-mail -->
+    <section id="newsletter" class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content fade-in-up">
+                <div class="newsletter-visual">
+                    <div class="mailbox-animation">
+                        <div class="mailbox">📮</div>
+                        <div class="letter">💌</div>
+                    </div>
+                </div>
+                <div class="newsletter-info">
+                    <h2 class="newsletter-title">💌 Receba atividades mágicas e novidades do universo do Mostardinha</h2>
+                    <p class="newsletter-description">
+                        Cadastre-se e receba conteúdos especiais, atividades para colorir, 
+                        desenhos exclusivos e surpresinhas direto no seu e-mail!
+                    </p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <div class="form-group">
+                            <input type="text" id="userName" name="name" placeholder="Seu nome" required class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="userEmail" name="email" placeholder="Seu e-mail" required class="form-input">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-large newsletter-btn">
+                            <span class="btn-icon">✨</span>
+                            Quero receber!
+                        </button>
+                    </form>
+                    <p class="newsletter-note">
+                        📬 Fique pertinho do nosso mundo encantado e receba surpresas especiais!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Sobre o Autor -->
     <section class="author-section">
         <div class="container">
             <div class="author-content">
-                <div class="author-image">
+                <div class="author-image fade-in-left">
                     <img src="assets/images/mago2.png" alt="Gabriel Jaccoud" class="author-photo">
                 </div>
-                <div class="author-info">
+                <div class="author-info fade-in-right">
                     <h2 class="section-title">✨ Sobre Gabriel Jaccoud</h2>
                     <p class="author-description">
                         Gabriel Jaccoud é um contador de histórias apaixonado por transformar o mundo 
@@ -301,7 +378,7 @@
     <!-- Chamada Final -->
     <section class="final-cta-section">
         <div class="container">
-            <div class="final-cta-content">
+            <div class="final-cta-content fade-in-up">
                 <div class="cta-text">
                     <h2 class="cta-title">
                         Vamos espalhar esse amor?
@@ -311,10 +388,10 @@
                     </p>
                 </div>
                 <div class="cta-buttons">
-                    <button class="btn btn-primary btn-large">
+                    <a href="https://payhip.com/b/IJRCe" class="btn btn-primary btn-large" target="_blank">
                         <span class="btn-icon">📖</span>
                         Comprar o Livro - R$ 19,90
-                    </button>
+                    </a>
                     <a href="https://www.youtube.com/watch?v=BSzPFZICl5c&t=663s" target="_blank" class="btn btn-secondary btn-large">
                         <span class="btn-icon">🎧</span>
                         Ouvir o Audiobook
@@ -347,6 +424,7 @@
                         <ul>
                             <li><a href="https://www.youtube.com/@mundoninoss" target="_blank">Canal no YouTube</a></li>
                             <li><a href="https://www.youtube.com/watch?v=BSzPFZICl5c&t=663s" target="_blank">Audiobook Gratuito</a></li>
+                            <li><a href="https://payhip.com/b/IJRCe" target="_blank">Comprar o Livro</a></li>
                         </ul>
                     </div>
                     <div class="footer-section">
