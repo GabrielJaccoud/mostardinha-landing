@@ -8,6 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     initNewsletterForm();
     initButtonAnimations();
+    initCharacterCards();
+    initFloatingQuotes();
+    initQuiz();
+    initCouponSystem();
+    initVoucherSystem();
 });
 
 // ===== PLAYER DE ÁUDIO FIXO =====
@@ -216,6 +221,298 @@ function initButtonAnimations() {
     });
 }
 
+// ===== CARDS DE PERSONAGENS =====
+function initCharacterCards() {
+    const characterCards = document.querySelectorAll('.character-card');
+    
+    characterCards.forEach(function(card) {
+        card.addEventListener('mouseenter', function() {
+            // Adiciona efeito de brilho
+            this.style.boxShadow = '0 15px 40px rgba(244, 208, 63, 0.3)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.boxShadow = '';
+        });
+        
+        card.addEventListener('click', function() {
+            const characterName = this.querySelector('h3').textContent;
+            const characterQuote = this.querySelector('.character-quote').textContent;
+            
+            // Cria um modal simples com informações do personagem
+            showCharacterModal(characterName, characterQuote, this.querySelector('img').src);
+        });
+    });
+}
+
+// ===== BALÕES DE FALA FLUTUANTES =====
+function initFloatingQuotes() {
+    const quotes = document.querySelectorAll('.quote-balloon');
+    let currentQuoteIndex = 0;
+    
+    function showNextQuote() {
+        // Esconde todas as citações
+        quotes.forEach(function(quote) {
+            quote.classList.remove('visible');
+        });
+        
+        // Mostra a próxima citação
+        if (quotes[currentQuoteIndex]) {
+            setTimeout(function() {
+                quotes[currentQuoteIndex].classList.add('visible');
+            }, 500);
+            
+            // Esconde após 4 segundos
+            setTimeout(function() {
+                quotes[currentQuoteIndex].classList.remove('visible');
+            }, 4500);
+            
+            currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+        }
+    }
+    
+    // Inicia o ciclo de citações
+    if (quotes.length > 0) {
+        showNextQuote();
+        setInterval(showNextQuote, 6000); // Nova citação a cada 6 segundos
+    }
+}
+
+// ===== QUIZ EMOCIONAL =====
+function initQuiz() {
+    const quizOptions = document.querySelectorAll('.quiz-option');
+    const quizQuestion = document.getElementById('quizQuestion');
+    const quizResult = document.getElementById('quizResult');
+    
+    const characters = {
+        mostardinha: {
+            name: 'Mostardinha',
+            image: 'assets/images/Mostardinha(2).png',
+            description: 'Você é como o Mostardinha! Pequeno em tamanho, mas gigante em amor e sabedoria. Você tem o dom de ouvir com o coração e transformar o mundo ao seu redor com gentileza.'
+        },
+        maionese: {
+            name: 'Maionese',
+            image: 'assets/images/MAIONESE.png',
+            description: 'Você é como a Maionese! Apaixonada pela vida e sempre disposta a aprender. Você acredita no poder do amor e está sempre buscando crescer e se transformar.'
+        },
+        salsinha: {
+            name: 'Salsinha',
+            image: 'assets/images/salsinha(2).png',
+            description: 'Você é como a Salsinha! Cheia de energia e otimismo. Você tem o dom de trazer alegria para qualquer situação e acredita que a vida sempre traz aquilo que precisamos.'
+        },
+        alho: {
+            name: 'Velho Alho',
+            image: 'assets/images/alho(2).png',
+            description: 'Você é como o Velho Alho! Sábio e experiente, você tem sempre um conselho carinhoso para dar. Você acredita que fazer o bem é o segredo da felicidade.'
+        }
+    };
+    
+    quizOptions.forEach(function(option) {
+        option.addEventListener('click', function() {
+            const character = this.getAttribute('data-character');
+            showQuizResult(characters[character]);
+        });
+    });
+    
+    function showQuizResult(character) {
+        quizQuestion.style.display = 'none';
+        quizResult.style.display = 'block';
+        
+        document.getElementById('resultImage').src = character.image;
+        document.getElementById('resultName').textContent = character.name;
+        document.getElementById('resultDescription').textContent = character.description;
+    }
+}
+
+// ===== SISTEMA DE CUPONS =====
+function initCouponSystem() {
+    // Esta função seria integrada com um sistema real de cupons
+    window.applyCoupon = function() {
+        const couponInput = document.getElementById('couponInput');
+        const couponCode = couponInput.value.trim().toUpperCase();
+        
+        // Cupons de exemplo
+        const validCoupons = {
+            'MOSTARDINHA10': { discount: 10, type: 'percentage' },
+            'AMOR15': { discount: 15, type: 'percentage' },
+            'TEMPEROPOLIS': { discount: 5, type: 'fixed' }
+        };
+        
+        if (validCoupons[couponCode]) {
+            const coupon = validCoupons[couponCode];
+            let message = '';
+            
+            if (coupon.type === 'percentage') {
+                message = `Cupom aplicado! Desconto de ${coupon.discount}% 🎉`;
+            } else {
+                message = `Cupom aplicado! Desconto de R$ ${coupon.discount},00 🎉`;
+            }
+            
+            showNotification(message, 'success');
+            couponInput.value = '';
+        } else {
+            showNotification('Cupom inválido. Verifique o código e tente novamente.', 'error');
+        }
+    };
+}
+
+// ===== SISTEMA DE VOUCHER =====
+function initVoucherSystem() {
+    const voucherInput = document.getElementById('voucherInput');
+    
+    if (voucherInput) {
+        voucherInput.addEventListener('blur', function() {
+            const voucherCode = this.value.trim();
+            
+            if (voucherCode) {
+                // Simula validação de voucher
+                setTimeout(function() {
+                    showNotification('Voucher verificado! Desconto será aplicado no checkout.', 'success');
+                }, 1000);
+            }
+        });
+    }
+}
+
+// ===== QUIZ - FUNÇÕES AUXILIARES =====
+window.restartQuiz = function() {
+    const quizQuestion = document.getElementById('quizQuestion');
+    const quizResult = document.getElementById('quizResult');
+    
+    quizQuestion.style.display = 'block';
+    quizResult.style.display = 'none';
+};
+
+window.sendCharacterMessage = function() {
+    const emailInput = document.getElementById('quizEmail');
+    const email = emailInput.value.trim();
+    
+    if (!email) {
+        showNotification('Por favor, insira seu e-mail!', 'error');
+        return;
+    }
+    
+    if (!isValidEmail(email)) {
+        showNotification('Por favor, insira um e-mail válido!', 'error');
+        return;
+    }
+    
+    // Simula envio da mensagem do personagem
+    showNotification('Mensagem especial enviada! Verifique sua caixa de entrada. 💌', 'success');
+    emailInput.value = '';
+};
+
+// ===== MODAL DE PERSONAGEM =====
+function showCharacterModal(name, quote, imageSrc) {
+    // Remove modal existente
+    const existingModal = document.querySelector('.character-modal');
+    if (existingModal) {
+        existingModal.remove();
+    }
+    
+    // Cria novo modal
+    const modal = document.createElement('div');
+    modal.className = 'character-modal';
+    modal.innerHTML = `
+        <div class="modal-overlay">
+            <div class="modal-content">
+                <button class="modal-close">&times;</button>
+                <div class="modal-character">
+                    <img src="${imageSrc}" alt="${name}">
+                    <h3>${name}</h3>
+                    <p class="character-quote">"${quote}"</p>
+                    <button class="btn btn-primary" onclick="closeCharacterModal()">
+                        <span class="btn-icon">❤️</span> Obrigado, ${name}!
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Estilos do modal
+    modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    `;
+    
+    const style = document.createElement('style');
+    style.textContent = `
+        .modal-overlay {
+            background: rgba(0, 0, 0, 0.8);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #6C757D;
+        }
+        .modal-character img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 4px solid #F4D03F;
+        }
+        .modal-character h3 {
+            margin-bottom: 15px;
+            color: #343A40;
+            font-size: 1.5rem;
+        }
+        .modal-character .character-quote {
+            font-style: italic;
+            color: #6C757D;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+    `;
+    
+    document.head.appendChild(style);
+    document.body.appendChild(modal);
+    
+    // Eventos de fechar
+    modal.querySelector('.modal-close').addEventListener('click', closeCharacterModal);
+    modal.querySelector('.modal-overlay').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeCharacterModal();
+        }
+    });
+}
+
+window.closeCharacterModal = function() {
+    const modal = document.querySelector('.character-modal');
+    if (modal) {
+        modal.remove();
+    }
+};
+
 // ===== FUNÇÕES AUXILIARES =====
 
 // Validação de e-mail
@@ -389,6 +686,11 @@ document.addEventListener('keydown', function(e) {
             activeMenu.classList.remove('active');
             document.getElementById('mobileMenuToggle').classList.remove('active');
         }
+        
+        const modal = document.querySelector('.character-modal');
+        if (modal) {
+            closeCharacterModal();
+        }
     }
     
     // Enter/Space para ativar botões
@@ -460,7 +762,7 @@ function activateEasterEgg() {
 }
 
 function createConfetti() {
-    const colors = ['#F4D03F', '#85C1E9', '#F1948A', '#82E0AA', '#D7BDE2'];
+    const colors = ['#F4D03F', '#82E0AA', '#85C1E9', '#F8BBD9', '#D7BDE2'];
     
     for (let i = 0; i < 50; i++) {
         const confetti = document.createElement('div');
@@ -498,4 +800,24 @@ function createConfetti() {
         document.head.appendChild(style);
     }
 }
+
+// ===== INICIALIZAÇÃO ADICIONAL =====
+
+// Inicializa funcionalidades quando a página carrega
+window.addEventListener('load', function() {
+    // Inicia lazy loading
+    initLazyLoading();
+    
+    // Adiciona efeitos especiais após carregamento completo
+    setTimeout(function() {
+        const heroTitle = document.querySelector('.hero-title');
+        if (heroTitle) {
+            heroTitle.style.opacity = '0';
+            setTimeout(function() {
+                heroTitle.style.opacity = '1';
+                heroTitle.style.animation = 'fadeInUp 1s ease';
+            }, 500);
+        }
+    }, 1000);
+});
 
