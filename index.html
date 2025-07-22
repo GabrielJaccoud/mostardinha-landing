@@ -469,6 +469,175 @@
         </div>
     </section>
 
+    <!-- ESTILOS INTERNOS -->
+<style>
+  .voices-section {
+    background: url('assets/images/fundo-parallax-sementes.jpg') repeat fixed center center / cover;
+    padding: 80px 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .voices-section::before {
+    content: "";
+    background: rgba(255, 255, 255, 0.85);
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .section-title {
+    font-family: 'Comic Neue', cursive;
+    font-size: 2.5em;
+    color: #4a3d2a;
+  }
+
+  .section-subtitle {
+    font-size: 1.2em;
+    color: #6c5b3d;
+    margin-top: 10px;
+  }
+
+  .voices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+
+  .voice-card {
+    background: #fffef9;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+
+  .voice-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .voice-photo {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #f1cd8f;
+    background: #fff9ec;
+    margin-bottom: 15px;
+  }
+
+  .voice-info h3 {
+    font-family: 'Comic Neue', cursive;
+    color: #4a3d2a;
+    font-size: 1.3em;
+    margin: 10px 0 5px;
+  }
+
+  .voice-info p {
+    font-size: 1em;
+    color: #5b4931;
+    margin: 3px 0;
+    text-align: center;
+  }
+
+  .voice-quote {
+    font-style: italic;
+    font-size: 0.95em;
+    color: #86765b;
+    margin-top: 5px;
+  }
+
+  .voice-social {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 1em;
+    text-decoration: none;
+    color: #d99a23;
+    transition: color 0.3s;
+  }
+
+  .voice-social:hover {
+    color: #b87c00;
+  }
+
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .behind-scenes {
+    background: linear-gradient(to right, #fffaf3, #fdf7ed);
+    padding: 60px 20px;
+    margin-top: 50px;
+    text-align: center;
+    border-top: 2px dashed #f3dba7;
+  }
+
+  .behind-scenes h3 {
+    font-family: 'Comic Neue', cursive;
+    color: #4a3d2a;
+    font-size: 2em;
+    margin-bottom: 15px;
+  }
+
+  .behind-scenes p {
+    color: #6a5c44;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+  }
+
+  .btn-secondary {
+    background: #e6b842;
+    color: white;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    display: inline-block;
+  }
+
+  .btn-secondary:hover {
+    background: #d29a1d;
+  }
+
+  @media (max-width: 768px) {
+    .voice-photo {
+      width: 100px;
+      height: 100px;
+    }
+
+    .section-title {
+      font-size: 2em;
+    }
+
+    .section-subtitle {
+      font-size: 1em;
+    }
+
+    .btn-secondary {
+      font-size: 0.95em;
+      padding: 10px 20px;
+    }
+  }
+</style>
+
     <!-- Seção Vozes -->
     <section id="vozes" class="voices-section">
   <div class="container">
@@ -478,7 +647,7 @@
     </div>
 
     <div class="voices-grid">
-       <div class="voice-card fade-in-up" style="animation-delay:600ms">
+       <div class="voice-card fade-in-up">
         <img src="assets/images/vozes/gabriel-jaccoud.jpg" alt="Gabriel Jaccoud - Narrador, Grande Inhame, Velho Alho, Cuco" class="voice-photo">
         <div class="voice-info">
           <h3>Gabriel Jaccoud</h3>
@@ -488,7 +657,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up">
         <img src="assets/images/vozes/jaqueline.jpg" alt="Jaqueline - Dona Cigarra" class="voice-photo">
         <div class="voice-info">
           <h3>Jaqueline</h3>
@@ -498,7 +667,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up">
         <img src="assets/images/vozes/carolina-lopes.jpg" alt="Carolina Lopes - Mostardinha, Maionese" class="voice-photo">
         <div class="voice-info">
           <h3>Carolina Lopes</h3>
@@ -507,7 +676,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up">
         <img src="assets/images/vozes/klaudia-lopes.jpg" alt="Klaudia Lopes - Cadu" class="voice-photo">
         <div class="voice-info">
           <h3>Klaudia Lopes</h3>
@@ -516,7 +685,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up">
         <img src="assets/images/vozes/gabriel-morais.jpg" alt="Gabriel Morais - Theo" class="voice-photo">
         <div class="voice-info">
           <h3>Gabriel Morais</h3>
@@ -525,7 +694,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up">
         <img src="assets/images/vozes/daniele-souza.jpg" alt="Daniele Souza - Déborah" class="voice-photo">
         <div class="voice-info">
           <h3>Daniele Souza</h3>
@@ -534,7 +703,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up">
         <img src="assets/images/vozes/andre-carneiro.jpg" alt="André Carneiro - Catchup" class="voice-photo">
         <div class="voice-info">
           <h3>André Carneiro</h3>
@@ -543,7 +712,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up">
         <img src="assets/images/vozes/victor-moreno.jpg" alt="Victor Moreno - Repolho" class="voice-photo">
         <div class="voice-info">
           <h3>Victor Moreno</h3>
@@ -552,7 +721,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up">
         <img src="assets/images/vozes/piter-de-paula.jpg" alt="Piter de Paula - Salsinha" class="voice-photo">
         <div class="voice-info">
           <h3>Piter de Paula</h3>
@@ -561,7 +730,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up">
         <img src="assets/images/vozes/graziela-ferreira.jpg" alt="Graziela Ferreira - Senhora Mostarda" class="voice-photo">
         <div class="voice-info">
           <h3>Graziela Ferreira</h3>
@@ -570,7 +739,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up">
         <img src="assets/images/vozes/helder-canto.jpg" alt="Helder Canto - Tovar" class="voice-photo">
         <div class="voice-info">
           <h3>Helder Canto</h3>
@@ -579,7 +748,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up">
         <img src="assets/images/vozes/nathalia-jaccoud.jpg" alt="Nathália Jaccoud - Macaquinho" class="voice-photo">
         <div class="voice-info">
           <h3>Nathália Jaccoud</h3>
@@ -588,7 +757,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up">
         <img src="assets/images/vozes/andre-nobrega.jpg" alt="André Nóbrega - Macaco" class="voice-photo">
         <div class="voice-info">
           <h3>André Nóbrega</h3>
@@ -597,7 +766,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up">
         <img src="assets/images/vozes/antonio-jaccoud.jpg" alt="Antônio Jaccoud - Comandante" class="voice-photo">
         <div class="voice-info">
           <h3>Antônio Jaccoud</h3>
@@ -609,7 +778,7 @@
 </section>
 
     <!-- Seção bastidores -->
-    <div class="behind-scenes fade-in-up" style="animation-delay:600ms">
+    <div class="behind-scenes fade-in-up">
         <div class="behind-content">
       <h3>🎬 Veja um pedacinho dos bastidores da dublagem!</h3>
       <p>Assista à Jaque dublando a Dona Cigarra com direção de Gabriel Jaccoud.</p>
