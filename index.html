@@ -25,138 +25,8 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
-    .parallax-layer {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  will-change: transform;
-}
-
-.parallax-sky {
-  background-color: #87CEEB;
-  z-index: 1;
-}
-
-.parallax-clouds {
-  background-image: url('assets/images/clouds.png');
-  z-index: 2;
-  animation: cloudMove 60s linear infinite;
-}
-
-.parallax-mountains {
-  background-image: url('assets/images/mountains.png');
-  z-index: 3;
-}
-
-@keyframes cloudMove {
-  from { background-position: 0 0; }
-  to { background-position: -1000px 0; }
-}
-
-.floating-elements div {
-  position: absolute;
-  animation: float 6s ease-in-out infinite;
-  font-size: 1.5rem;
-  opacity: 0.8;
-  z-index: 10;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
-}
-
-.star-1 { top: 10%; left: 5%; animation-delay: 0s; }
-.star-2 { top: 25%; right: 10%; animation-delay: 1s; }
-.star-3 { bottom: 15%; left: 15%; animation-delay: 2s; }
-.balloon-1 { top: 20%; right: 15%; animation-delay: 0.5s; }
-.balloon-2 { bottom: 20%; right: 20%; animation-delay: 1.5s; }
-.note-1 { top: 40%; left: 10%; animation-delay: 0.7s; }
-.note-2 { bottom: 30%; right: 10%; animation-delay: 1.2s; }
-.note-3 { top: 15%; left: 30%; animation-delay: 0.3s; }
-
-/* Animações de entrada melhoradas */
-.fade-in-up {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.fade-in-left {
-  opacity: 0;
-  transform: translateX(-30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.fade-in-right {
-  opacity: 0;
-  transform: translateX(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.fade-in-up.animate, 
-.fade-in-left.animate, 
-.fade-in-right.animate {
-  opacity: 1;
-  transform: translate(0);
-}
-
-@media (max-width: 992px) {
-  .hero-content {
-    flex-direction: column;
-  }
-  
-  .hero-text, .hero-image {
-    width: 100%;
-    text-align: center;
-  }
-  
-  .floating-elements {
-    display: none; /* Esconde elementos flutuantes em mobile */
-  }
-  
-  .character-card, .music-card {
-    width: calc(50% - 20px);
-  }
-}
-
-@media (max-width: 768px) {
-  .sequence-item, .sequence-arrow {
-    width: 100%;
-    text-align: center;
-  }
-  
-  .sequence-arrow {
-    transform: rotate(90deg);
-    margin: 10px 0;
-  }
-  
-  .character-card, .music-card {
-    width: 100%;
-  }
-  
-  .audio-player-fixed {
-    bottom: 60px; /* Ajuste para não cobrir menu mobile */
-  }
-}
-
-.falling-element {
-  position: absolute;
-  font-size: 1.2rem;
-  animation: fall linear forwards;
-  z-index: 5;
-  pointer-events: none;
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(calc(100vh + 30px)) rotate(360deg);
-  }
-}
-</head>
-    <!-- ... outros elementos ... -->
+   
+     <!-- Pré-carregamento -->
   <link rel="preload" href="assets/temamostardinha.wav" as="audio">
   <link rel="preload" href="assets/images/CAPA.png" as="image">
 </head>
@@ -329,7 +199,7 @@
             <div class="characters-grid">
                 <div class="character-card fade-in-up" data-character="mostardinha">
                     <div class="character-image">
-                        <img src="assets/images/Mostardinha(2).png" alt="Mostardinha">
+                        <img src="assets/images/Mostardinha(2).png" alt="Mostardinha" loading="lazy">
                     </div>
                     <div class="character-info">
                         <h3>Mostardinha</h3>
@@ -339,7 +209,7 @@
                 
                 <div class="character-card fade-in-up" data-character="maionese">
                     <div class="character-image">
-                        <img src="assets/images/MAIONESE.png" alt="Maionese">
+                        <img src="assets/images/MAIONESE.png" alt="Maionese" loading="lazy">
                     </div>
                     <div class="character-info">
                         <h3>Maionese</h3>
@@ -349,7 +219,7 @@
                 
                 <div class="character-card fade-in-up" data-character="salsinha">
                     <div class="character-image">
-                        <img src="assets/images/salsinha(2).png" alt="Salsinha">
+                        <img src="assets/images/salsinha(2).png" alt="Salsinha" loading="lazy">
                     </div>
                     <div class="character-info">
                         <h3>Salsinha</h3>
@@ -359,7 +229,7 @@
                 
                 <div class="character-card fade-in-up" data-character="repolho">
                     <div class="character-image">
-                        <img src="assets/images/repolho(2).png" alt="Repolho">
+                        <img src="assets/images/repolho(2).png" alt="Repolho" loading="lazy">
                     </div>
                     <div class="character-info">
                         <h3>Repolho</h3>
@@ -369,7 +239,7 @@
                 
                 <div class="character-card fade-in-up" data-character="catchup">
                     <div class="character-image">
-                        <img src="assets/images/Catchup(2).png" alt="Catchup">
+                        <img src="assets/images/Catchup(2).png" alt="Catchup" loading="lazy">
                     </div>
                     <div class="character-info">
                         <h3>Catchup</h3>
@@ -379,7 +249,7 @@
                 
                 <div class="character-card fade-in-up" data-character="tovar">
                     <div class="character-image">
-                        <img src="assets/images/TOVAR(2).png" alt="Tovar">
+                        <img src="assets/images/TOVAR(2).png" alt="Tovar" loading="lazy">
                     </div>
                     <div class="character-info">
                         <h3>Tovar (elefante)</h3>
@@ -389,7 +259,7 @@
                 
                 <div class="character-card fade-in-up" data-character="formiga">
                     <div class="character-image">
-                        <img src="assets/images/DonaFORMIGA(2).png" alt="Dona Formiga">
+                        <img src="assets/images/DonaFORMIGA(2).png" alt="Dona Formiga" loading="lazy">
                     </div>
                     <div class="character-info">
                         <h3>Dona Formiga</h3>
@@ -399,7 +269,7 @@
                 
                 <div class="character-card fade-in-up" data-character="cigarra">
                     <div class="character-image">
-                        <img src="assets/images/Cigarra(2).png" alt="Dona Cigarra">
+                        <img src="assets/images/Cigarra(2).png" alt="Dona Cigarra" loading="lazy">
                     </div>
                     <div class="character-info">
                         <h3>Dona Cigarra</h3>
@@ -409,7 +279,7 @@
                 
                 <div class="character-card fade-in-up" data-character="cuco">
                     <div class="character-image">
-                        <img src="assets/images/cuco1(2).png" alt="Cuco">
+                        <img src="assets/images/cuco1(2).png" alt="Cuco" loading="lazy">
                     </div>
                     <div class="character-info">
                         <h3>Cuco</h3>
@@ -419,7 +289,7 @@
                 
                 <div class="character-card fade-in-up" data-character="alho">
                     <div class="character-image">
-                        <img src="assets/images/alho(2).png" alt="Velho Alho">
+                        <img src="assets/images/alho(2).png" alt="Velho Alho" loading="lazy">
                     </div>
                     <div class="character-info">
                         <h3>Velho Alho</h3>
@@ -528,7 +398,7 @@
         <div class="container">
             <div class="wisdom-content fade-in-up">
                 <div class="wisdom-image">
-                    <img src="assets/images/SenhoraMostarda(2).png" alt="Senhora Mostarda" class="senhora-mostarda">
+                    <img src="assets/images/SenhoraMostarda(2).png" alt="Senhora Mostarda" class="senhora-mostarda" loading="lazy">
                 </div>
                 <div class="wisdom-text">
                     <blockquote>
@@ -604,239 +474,8 @@
         </div>
     </section>
 
-    <!-- ESTILOS INTERNOS -->
-<style>
-  .voices-section {
-    background: url('assets/images/fundo-parallax--sementes.jpg') no-repeat fixed center center / background-size: cover;
-    padding: 80px 20px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .voices-section::before {
-    content: "";
-    background: rgba(255, 255, 255, 0.85);
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    z-index: -1;
-  }
-
-  .section-header {
-    text-align: center;
-    margin-bottom: 50px;
-  }
-
-  .section-title {
-    font-family: 'Comic Neue', cursive;
-    font-size: 2.5em;
-    color: #4a3d2a;
-  }
-
-  .section-subtitle {
-    font-size: 1.2em;
-    color: #6c5b3d;
-    margin-top: 10px;
-  }
-
-  .voices-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-  }
-
-  .voice-card {
-    background: #fff;
-    border-radius: 16px;
-    padding: 20px;
-    max-width: 300px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .voice-card:hover {
-    transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    background: rgba(255,255,255,0.95);
-  }
-
-  .voice-photo {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    border:3px solid #ffd700;
-    padding: 4px;
-    background: #fffce7;
-    margin-bottom: 15px;
-  }
-
-  .voice-info h3 {
-    font-family: 'Comic Neue', cursive;
-    color: #4a3d2a;
-    font-size: 1.3em;
-    margin-bottom: 10px 0 5px;
-  }
-
-  .voice-info p {
-    font-size: 1em;
-    color: #5b4931;
-    margin: 5px 0;
-    text-align: center;
-  }
-
-  .voice-quote {
-    font-style: italic;
-    font-size: 0.95em;
-    color: #86765b;
-    margin-top: 10px;
-  }
-
-  .voice-social {
-    display: inline-block;
-    margin-top: 10px;
-    font-size: 1em;
-    text-decoration: none;
-    color: #d99a23;
-    transition: color 0.3s;
-    position: relative;
-  }
-
-  .voice-social::after {
-    content: attr(title);
-    position: absolute;
-    background: #222;
-    color: #fff;
-    padding: 4px 8px;
-    font-size: 0.9em;
-    border-radius: 6px;
-    top: -36px;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    white-space: nowrap;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-
-  .voice-social:hover::after {
-    opacity: 1;
-    content: attr(title);
-    display: block;
-    font-size: 0.9em;
-    margin-top: 2px;
-    color: #888;
-  }
- 
-  .voice-social:hover {
-    color: #b87c00;
-  }
-
-  .fade-in-up {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s forwards;
-  }
-
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .behind-scenes {
-    background: linear-gradient(to right, #fffaf3, #fdf7ed);
-    padding: 40px 20px;
-    margin-top: 50px;
-    text-align: center;
-    border-top: 2px dashed #f3dba7;
-  }
-
-  .behind-scenes h3 {
-    font-family: 'Comic Neue', cursive;
-    color: #4a3d2a;
-    font-size: 2em;
-    margin-bottom: 15px;
-  }
-
-  .behind-scenes p {
-    color: #6a5c44;
-    font-size: 1.1em;
-    margin-bottom: 20px;
-  }
-
-  .btn-secondary {
-    background: #e6b842;
-    color: white;
-    font-weight: bold;
-    padding: 12px 24px;
-    border-radius: 30px;
-    text-decoration: none;
-    transition: background 0.3s ease;
-    display: inline-block;
-  }
-
-  .btn-secondary:hover {
-    background: #d29a1d;
-  }
-
-  @media (max-width: 768px) {
-    .voice-photo {
-      width: 100px;
-      height: 100px;
-    }
-
-    .section-title {
-      font-size: 2em;
-    }
-
-    .section-subtitle {
-      font-size: 1em;
-    }
-
-    .btn-secondary {
-      font-size: 0.95em;
-      padding: 10px 20px;
-    }
-
-    .parallax-section {
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
-    z-index: 1;
-  }
-      
-  .parallax-section::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(255,255,255,0.85);
-    z-index: -1;
-  }
-
-  [data-animate] {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 1s ease;
-  }
-      
-  [data-animate].in-view {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  }
-</style>
-
     <!-- Seção Vozes -->
-    <section id="vozes" class="voices-section" style="background: url('assets/images/bg-parallax-vozes.webp') center/cover fixed; padding: 80px 0;">
+    <section id="vozes" class="voices-section">
   <div class="container">
     <div class="section-header fade-in-up">
       <h2 class="section-title">🎤 Vozes que Encantam</h2>
@@ -844,126 +483,126 @@
     </div>
 
     <div class="voices-grid">
-       <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+       <div class="voice-card fade-in-up" style="animation-delay:600ms">
         <img src="assets/images/vozes/gabriel-jaccoud.webp" alt="Gabriel Jaccoud - Narrador, Grande Inhame, Velho Alho, Cuco" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Gabriel Jaccoud</h3>
           <p><strong>Personagens:</strong> Narrador, Grande Inhame, Velho Alho, Cuco</p>
           <p class="voice-quote">"Narrar e dirigir esse projeto me lembrou do meu propósito: tocar corações."</p>
-          <a href="https://www.instagram.com/gabriel_jaccoud" target="_blank" class="voice-social" aria-label="@gabriel_jaccoud">📸 Instagram</a>
+          <a href="https://www.instagram.com/gabriel_jaccoud" target="_blank" class="voice-social">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms">
         <img src="assets/images/vozes/jaqueline.webp" alt="Jaqueline - Dona Cigarra" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Jaqueline</h3>
           <p><strong>Personagem:</strong> Dona Cigarra</p>
           <p class="voice-quote">"Cantar enquanto dublava foi um desfio bom de se viver."</p>
-          <a href="https://www.instagram.com/jaqueline" target="_blank" class="voice-social" aria-label="@jaqueline">📸 Instagram</a>
+          <a href="https://www.instagram.com/jaqueline" target="_blank" class="voice-social">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms">
         <img src="assets/images/vozes/carolina-lopes.webp" alt="Carolina Lopes - Mostardinha, Maionese" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Carolina Lopes</h3>
           <p><strong>Personagens:</strong> Mostardinha, Maionese</p>
-          <a href="https://www.instagram.com/lopescarolnina" target="_blank" class="voice-social" aria-label="@lopescarolnina">📸 Instagram</a>
+          <a href="https://www.instagram.com/lopescarolnina" target="_blank" class="voice-social">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms">
         <img src="assets/images/vozes/klaudia-lopes.webp" alt="Klaudia Lopes - Cadu" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Klaudia Lopes</h3>
           <p><strong>Personagem:</strong> Cadu</p>
-          <a href="https://www.instagram.com/klaudya.lopes" target="_blank" class="voice-social" aria-label="@klaudya.lopes">📸 Instagram</a>
+          <a href="https://www.instagram.com/klaudya.lopes" target="_blank" class="voice-social">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms">
         <img src="assets/images/vozes/gabriel-morais.webp" alt="Gabriel Morais - Theo" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Gabriel Morais</h3>
           <p><strong>Personagem:</strong> Theo</p>
-          <a href="https://www.instagram.com/gabriel.morais1801" target="_blank" class="voice-social" aria-label="@gabriel.morais1801">📸 Instagram</a>
+          <a href="https://www.instagram.com/gabriel.morais1801" target="_blank" class="voice-social">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms">
         <img src="assets/images/vozes/daniele-souza.webp" alt="Daniele Souza - Déborah" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Daniele Souza</h3>
           <p><strong>Personagem:</strong> Débora</p>
-          <a href="https://www.instagram.com/vozdanielesouza" target="_blank" class="voice-social" aria-label="@vozdanielesouza">📸 Instagram</a>
+          <a href="https://www.instagram.com/vozdanielesouza" target="_blank" class="voice-social">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms">
         <img src="assets/images/vozes/andre-carneiro.webp" alt="André Carneiro - Catchup" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>André Carneiro</h3>
           <p><strong>Personagem:</strong> Catchup</p>
-          <a href="https://www.instagram.com/prof_andre_carneiro" target="_blank" class="voice-social" aria-label="@prof_andre_carneiro">📸 Instagram</a>
+          <a href="https://www.instagram.com/prof_andre_carneiro" target="_blank" class="voice-social">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms">
         <img src="assets/images/vozes/victor-moreno.webp" alt="Victor Moreno - Repolho" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Victor Moreno</h3>
           <p><strong>Personagem:</strong> Repolho</p>
-          <a href="https://www.instagram.com/housnel" target="_blank" class="voice-social" aria-label="@housnel">📸 Instagram</a>
+          <a href="https://www.instagram.com/housnel" target="_blank" class="voice-social">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms">
         <img src="assets/images/vozes/piter-de-paula.webp" alt="Piter de Paula - Salsinha" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Piter de Paula</h3>
           <p><strong>Personagem:</strong> Salsinha</p>
-          <a href="https://www.instagram.com/piterdepaulamusico" target="_blank" class="voice-social" aria-label="@piterdepaulamusico">📸 Instagram</a>
+          <a href="https://www.instagram.com/piterdepaulamusico" target="_blank" class="voice-social">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms">
         <img src="assets/images/vozes/graziela-ferreira.webp" alt="Graziela Ferreira - Senhora Mostarda" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Graziela Ferreira</h3>
           <p><strong>Personagem:</strong> Senhora Mostarda</p>
-          <a href="https://www.instagram.com/zifsilva_" target="_blank" class="voice-social" aria-label="@zifsilva_">📸 Instagram</a>
+          <a href="https://www.instagram.com/zifsilva_" target="_blank" class="voice-social">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms">
         <img src="assets/images/vozes/helder-canto.webp" alt="Helder Canto - Tovar" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Helder Canto</h3>
           <p><strong>Personagem:</strong> Tovar</p>
-          <a href="https://www.instagram.com/heldercanto" target="_blank" class="voice-social" aria-label="@heldercanto">📸 Instagram</a>
+          <a href="https://www.instagram.com/heldercanto" target="_blank" class="voice-social">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms">
         <img src="assets/images/vozes/nathalia-jaccoud.webp" alt="Nathália Jaccoud - Macaquinho" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Nathália Jaccoud</h3>
           <p><strong>Personagem:</strong> Macaquinho</p>
-          <a href="https://www.instagram.com/jaccoudnathalia" target="_blank" class="voice-social" aria-label="@jaccoudnathalia">📸 Instagram</a>
+          <a href="https://www.instagram.com/jaccoudnathalia" target="_blank" class="voice-social">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms">
         <img src="assets/images/vozes/andre-nobrega.webp" alt="André Nóbrega - Macaco" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>André Nóbrega</h3>
           <p><strong>Personagem:</strong> Macaco</p>
-          <a href="https://www.instagram.com/talesoftoficial" target="_blank" class="voice-social" aria-label="@talesoftoficial">📸 Instagram</a>
+          <a href="https://www.instagram.com/talesoftoficial" target="_blank" class="voice-social">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms">
         <img src="assets/images/vozes/antonio-jaccoud.webp" alt="Antônio Jaccoud - Comandante" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Antônio Jaccoud</h3>
@@ -975,7 +614,7 @@
 </section>
 
     <!-- Seção bastidores -->
-    <section id="bastidores" class="behind-scenes parallax-section" style="background-image: url('assets/images/bg-parallax-bastidores.webp');" data-speed="0.2" center/cover fixed; padding: 60px 20px;"> 
+    <section id="bastidores" class="behind-scenes"> 
       <div class="behind-content container">
       <h3>🎬 Veja um pedacinho dos bastidores da dublagem!</h3>
       <p>Assista à Jaque dublando a Dona Cigarra com direção de Gabriel Jaccoud.</p>
@@ -1083,7 +722,7 @@
             
             <div class="author-content">
                 <div class="author-image fade-in-left">
-                    <img src="assets/images/mago2.png" alt="Gabriel Jaccoud" class="author-photo">
+                    <img src="assets/images/mago2.png" alt="Gabriel Jaccoud" class="author-photo" loading="lazy">
                 </div>
                 
                 <div class="author-info fade-in-right">
@@ -1116,10 +755,9 @@
     </section>
 
     <!-- Seção Sobre a Editora -->
-    <section id="editora-humanizar" class="publisher-section" style="text-align: center; padding: 40px 20px;">
+    <section id="editora-humanizar" class="publisher-section">
         <div class="container">
-            <img src="assets/images/humanizar-logo.png" alt="Logo da Editora Humanizar" style="max-width: 200px; margin-bottom: 25px;">
-  <p style="font-size: 1.1em; color: #444;">
+            <img src="assets/images/humanizar-logo.png" alt="Logo da Editora Humanizar" class="publisher-logo">
             <div class="publisher-content fade-in-up">
                 <h2 class="publisher-title">📚 Sobre a Editora - HUMANIZAR</h2>
                 <p class="publisher-description">
@@ -1185,8 +823,8 @@
     <!-- Seção Canal Mundo Ninos -->
    <section id="mundoninus" class="mundoninus-section">
   <div class="container">
-    <div class="section-header fade-in-up" style="text-align:center">
-      <img src="assets/images/logo-mundoninus.png" alt="Logo Mundo Ninus" style="width:150px; margin-bottom: 15px;">
+    <div class="section-header fade-in-up">
+      <img src="assets/images/logo-mundoninus.png" alt="Logo Mundo Ninus" class="channel-logo">
       <h2 class="section-title">Conheça o Canal Mundo Ninus</h2>
       <p class="section-subtitle">Nosso canal no YouTube reúne músicas, histórias e conteúdos mágicos que expandem o universo do Mostardinha. Inscreva-se!</p>
       <a href="https://www.youtube.com/@mundoninoss" target="_blank" class="btn btn-secondary btn-small">🌟 Visitar Canal Mundo Ninus</a>
@@ -1262,73 +900,572 @@
         </div>
     </footer>
 
-   <!-- JavaScript -->
+    <!-- Confetti.js -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+
+    <!-- JavaScript -->
     <script src="script.js"></script>
-    // Parallax simples com data-speed
-  document.addEventListener("scroll", function () {
-    const parallaxSections = document.querySelectorAll(".parallax-section");
-    const scrollY = window.scrollY;
 
-    parallaxSections.forEach(section => {
-      const speed = section.getAttribute("data-speed") || 0.5;
-      section.style.backgroundPositionY = `${-scrollY * speed}px`;
+    <!-- Style.css -->
+    <style>
+:root {
+  --primary-color: #e6b842;
+  --secondary-color: #4a3d2a;
+  --accent-color: #ffd700;
+  --text-color: #333;
+  --light-bg: #fffaf3;
+  --dark-bg: #2c3e50;
+  --font-main: 'Fredoka', sans-serif;
+  --font-secondary: 'Comic Neue', cursive;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Seção Hero */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.parallax-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+
+.parallax-sky {
+  background-color: #87CEEB;
+  z-index: 1;
+}
+
+.parallax-clouds {
+  background-image: url('assets/images/clouds.png');
+  z-index: 2;
+  animation: cloudMove 60s linear infinite;
+}
+
+.parallax-mountains {
+  background-image: url('assets/images/mountains.png');
+  z-index: 3;
+}
+
+@keyframes cloudMove {
+  from { background-position: 0 0; }
+  to { background-position: -1000px 0; }
+}
+
+/* Elementos Flutuantes */
+.floating-elements div {
+  position: absolute;
+  animation: float 6s ease-in-out infinite;
+  font-size: 1.5rem;
+  opacity: 0.8;
+  z-index: 10;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.star-1 { top: 10%; left: 5%; animation-delay: 0s; }
+.star-2 { top: 25%; right: 10%; animation-delay: 1s; }
+.star-3 { bottom: 15%; left: 15%; animation-delay: 2s; }
+.balloon-1 { top: 20%; right: 15%; animation-delay: 0.5s; }
+.balloon-2 { bottom: 20%; right: 20%; animation-delay: 1.5s; }
+.note-1 { top: 40%; left: 10%; animation-delay: 0.7s; }
+.note-2 { bottom: 30%; right: 10%; animation-delay: 1.2s; }
+.note-3 { top: 15%; left: 30%; animation-delay: 0.3s; }
+
+/* Animações de Entrada */
+.fade-in-up, .fade-in-left, .fade-in-right {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-up {
+  transform: translateY(30px);
+}
+
+.fade-in-left {
+  transform: translateX(-30px);
+}
+
+.fade-in-right {
+  transform: translateX(30px);
+}
+
+.fade-in-up.animate, 
+.fade-in-left.animate, 
+.fade-in-right.animate {
+  opacity: 1;
+  transform: translate(0);
+}
+
+/* Elementos que Caem */
+.falling-element {
+  position: absolute;
+  font-size: 1.2rem;
+  animation: fall linear forwards;
+  z-index: 5;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(calc(100vh + 30px)) rotate(360deg);
+  }
+}
+
+/* Menu Fixo */
+.fixed-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.nav-logo-img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+}
+
+.nav-link {
+  padding: 10px 15px;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
+
+/* Player de Áudio Fixo */
+.audio-player-fixed {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50px;
+  padding: 10px 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.audio-player-content {
+  display: flex;
+  align-items: center;
+}
+
+.audio-info {
+  margin-right: 15px;
+}
+
+.audio-icon-animated {
+  margin-right: 5px;
+}
+
+.audio-controls {
+  display: flex;
+  align-items: center;
+}
+
+.volume-control {
+  margin-left: 10px;
+}
+
+.volume-slider {
+  width: 80px;
+}
+
+/* Botões */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #d29a1d;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #3a2f1f;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-large {
+  padding: 15px 30px;
+  font-size: 1.1rem;
+}
+
+.btn-small {
+  padding: 8px 15px;
+  font-size: 0.9rem;
+}
+
+.btn-icon {
+  margin-right: 8px;
+}
+
+/* Seções */
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-family: var(--font-secondary);
+  font-size: 2.5rem;
+  color: var(--secondary-color);
+  margin-bottom: 15px;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: #6c5b3d;
+}
+
+/* Cards de Personagens */
+.characters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.character-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.character-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.character-image {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+}
+
+.character-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.character-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.character-info h3 {
+  margin-bottom: 10px;
+  color: var(--secondary-color);
+}
+
+.character-quote {
+  font-style: italic;
+  color: #666;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+  .hero-content {
+    flex-direction: column;
+  }
+  
+  .hero-text, .hero-image {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .floating-elements {
+    display: none;
+  }
+  
+  .character-card, .music-card {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    transition: left 0.3s ease;
+  }
+  
+  .nav-menu.active {
+    left: 0;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .mobile-menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--secondary-color);
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-menu-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  
+  .mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .mobile-menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+  
+  .sequence-item, .sequence-arrow {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .sequence-arrow {
+    transform: rotate(90deg);
+    margin: 10px 0;
+  }
+  
+  .character-card, .music-card {
+    width: 100%;
+  }
+  
+  .audio-player-fixed {
+    bottom: 70px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+  }
+}
+<style>
+
+<!-- Script.js -->
+// Função principal que é executada quando o DOM está carregado
+document.addEventListener('DOMContentLoaded', function() {
+  initMobileMenu();
+  initSmoothScroll();
+  initParallax();
+  initAudioPlayer();
+  initQuiz();
+  initNewsletter();
+  createFallingElements();
+  
+  // Observador para animações de entrada
+  initIntersectionObserver();
+});
+
+// Menu Mobile
+function initMobileMenu() {
+  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+  const navMenu = document.querySelector('.nav-menu');
+  
+  if (mobileMenuToggle && navMenu) {
+    mobileMenuToggle.addEventListener('click', function() {
+      this.classList.toggle('active');
+      navMenu.classList.toggle('active');
     });
-  });
+  }
+}
 
-  // Animação de entrada com IntersectionObserver
-  const animatedEls = document.querySelectorAll('[data-animate]');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
+// Rolagem suave para links internos
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth'
+        });
+        
+        // Fechar menu mobile se estiver aberto
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        if (mobileMenuToggle && mobileMenuToggle.classList.contains('active')) {
+          mobileMenuToggle.classList.remove('active');
+          document.querySelector('.nav-menu').classList.remove('active');
+        }
       }
     });
   });
+}
 
-  document.addEventListener('DOMContentLoaded', function() {
-  // Configuração do parallax avançado
+// Efeito Parallax
+function initParallax() {
   const heroSection = document.querySelector('.hero');
   const layers = document.querySelectorAll('.parallax-layer');
   
-  window.addEventListener('scroll', function() {
-    const scrollPosition = window.pageYOffset;
-    const heroHeight = heroSection.offsetHeight;
-    
-    if (scrollPosition <= heroHeight) {
-      layers.forEach(layer => {
-        const speed = layer.getAttribute('data-speed') || 0.3;
-        const yPos = -(scrollPosition * speed);
-        layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
-      });
-    }
-  });
-  
-  // Intersection Observer para animações
-  const animateOnScroll = function(entries, observer) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate');
-        observer.unobserve(entry.target);
+  if (heroSection && layers.length) {
+    window.addEventListener('scroll', function() {
+      const scrollPosition = window.pageYOffset;
+      const heroHeight = heroSection.offsetHeight;
+      
+      if (scrollPosition <= heroHeight) {
+        layers.forEach(layer => {
+          const speed = layer.getAttribute('data-speed') || 0.3;
+          const yPos = -(scrollPosition * speed);
+          layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
+        });
       }
     });
-  };
-  
-  const observer = new IntersectionObserver(animateOnScroll, {
-    threshold: 0.1
-  });
-  
-  document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right').forEach(el => {
-    observer.observe(el);
-  });
-});
+  }
+}
 
-document.addEventListener('DOMContentLoaded', function() {
+// Player de Áudio
+function initAudioPlayer() {
   const audioPlayer = document.getElementById('backgroundAudioFixed');
   const toggleBtn = document.getElementById('audioToggleFixed');
   const volumeSlider = document.getElementById('volumeSlider');
   
-  // Estado inicial
+  if (!audioPlayer || !toggleBtn || !volumeSlider) return;
+
   let isPlaying = false;
+  
+  // Tentar reproduzir automaticamente (mudo inicialmente para contornar restrições)
+  audioPlayer.muted = true;
+  const playPromise = audioPlayer.play();
+  
+  if (playPromise !== undefined) {
+    playPromise
+      .then(_ => {
+        isPlaying = true;
+        toggleBtn.innerHTML = '<span class="audio-icon-btn">⏸️</span>';
+        audioPlayer.muted = false;
+      })
+      .catch(error => {
+        console.log("Autoplay não permitido:", error);
+        isPlaying = false;
+        toggleBtn.innerHTML = '<span class="audio-icon-btn">▶️</span>';
+      });
+  }
   
   // Botão de play/pause
   toggleBtn.addEventListener('click', function() {
@@ -1336,8 +1473,14 @@ document.addEventListener('DOMContentLoaded', function() {
       audioPlayer.pause();
       toggleBtn.innerHTML = '<span class="audio-icon-btn">▶️</span>';
     } else {
-      audioPlayer.play();
-      toggleBtn.innerHTML = '<span class="audio-icon-btn">⏸️</span>';
+      audioPlayer.play()
+        .then(_ => {
+          toggleBtn.innerHTML = '<span class="audio-icon-btn">⏸️</span>';
+        })
+        .catch(error => {
+          console.log("Reprodução não permitida:", error);
+          // Mostrar mensagem para o usuário interagir primeiro
+        });
     }
     isPlaying = !isPlaying;
   });
@@ -1349,24 +1492,141 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Animação do ícone de música
   const audioIcon = document.querySelector('.audio-icon-animated');
-  setInterval(() => {
-    if (isPlaying) {
-      audioIcon.textContent = audioIcon.textContent === '🎵' ? '🎶' : '🎵';
-    }
-  }, 500);
-});
+  if (audioIcon) {
+    setInterval(() => {
+      if (isPlaying) {
+        audioIcon.textContent = audioIcon.textContent === '🎵' ? '🎶' : '🎵';
+      }
+    }, 500);
+  }
+}
 
+// Quiz Interativo
+function initQuiz() {
+  const quizOptions = document.querySelectorAll('.quiz-option');
+  const quizData = {
+    mostardinha: {
+      image: "assets/images/Mostardinha(2).png",
+      name: "Mostardinha",
+      description: "Você é cheio de amor e sabedoria! Assim como o Mostardinha, você tem um coração grande e acredita no poder das pequenas coisas para fazer a diferença. Sua gentileza e empatia são suas maiores forças."
+    },
+    maionese: {
+      image: "assets/images/MAIONESE.png",
+      name: "Maionese",
+      description: "Você é romântico e dedicado! Como a Maionese, você acredita no poder do amor e está sempre disposto a aprender e crescer com os outros."
+    },
+    salsinha: {
+      image: "assets/images/salsinha(2).png",
+      name: "Salsinha",
+      description: "Você é divertido e animado! Como a Salsinha, você traz alegria para qualquer situação e sabe como fazer os outros rirem, mesmo nos momentos difíceis."
+    },
+    alho: {
+      image: "assets/images/alho(2).png",
+      name: "Velho Alho",
+      description: "Você é sábio e experiente! Como o Velho Alho, você tem conselhos valiosos para compartilhar e acredita no poder de fazer o bem."
+    }
+  };
+
+  if (quizOptions.length) {
+    quizOptions.forEach(option => {
+      option.addEventListener('click', function() {
+        const character = this.getAttribute('data-character');
+        showQuizResult(character);
+      });
+    });
+  }
+}
+
+function showQuizResult(character) {
+  const result = quizData[character];
+  if (!result) return;
+
+  const resultDiv = document.getElementById('quizResult');
+  const questionDiv = document.getElementById('quizQuestion');
+  
+  if (resultDiv && questionDiv) {
+    document.getElementById('resultImage').src = result.image;
+    document.getElementById('resultName').textContent = `Você é ${result.name}!`;
+    document.getElementById('resultDescription').textContent = result.description;
+    
+    questionDiv.style.display = 'none';
+    resultDiv.style.display = 'block';
+    resultDiv.style.animation = 'fadeInUp 0.8s ease-out';
+    
+    // Efeito de confete
+    if (typeof confetti === 'function') {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }
+    
+    // Rolagem suave para o resultado
+    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
+function restartQuiz() {
+  const resultDiv = document.getElementById('quizResult');
+  const questionDiv = document.getElementById('quizQuestion');
+  
+  if (resultDiv && questionDiv) {
+    resultDiv.style.display = 'none';
+    questionDiv.style.display = 'block';
+    questionDiv.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function sendCharacterMessage() {
+  const email = document.getElementById('quizEmail').value;
+  if (email) {
+    alert(`Obrigado! Uma mensagem especial será enviada para ${email}`);
+    document.getElementById('quizEmail').value = '';
+  } else {
+    alert('Por favor, insira seu e-mail');
+  }
+}
+
+// Newsletter
+function initNewsletter() {
+  const newsletterForm = document.getElementById('newsletterForm');
+  
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('userEmail').value;
+      const name = document.getElementById('userName').value;
+      
+      if (email && name) {
+        alert(`Obrigado, ${name}! Você foi inscrito com o e-mail ${email}`);
+        newsletterForm.reset();
+      } else {
+        alert('Por favor, preencha todos os campos');
+      }
+    });
+  }
+}
+
+// Elementos Flutuantes que Caem
 function createFallingElements() {
   const container = document.querySelector('.hero');
+  if (!container) return;
+  
   const elements = ['🌱', '🎵', '✨', '🌿', '🎶', '⭐'];
   
-  setInterval(() => {
+  function createElement() {
+    // Limitar quantidade para performance
+    if (document.querySelectorAll('.falling-element').length > 15) return;
+    
     const element = document.createElement('div');
     element.textContent = elements[Math.floor(Math.random() * elements.length)];
     element.classList.add('falling-element');
     
-    // Posição aleatória no topo
-    element.style.left = `${Math.random() * 100}%`;
+    const containerWidth = container.offsetWidth;
+    const leftPos = Math.random() * (containerWidth - 30);
+    
+    element.style.left = `${leftPos}px`;
     element.style.top = '-30px';
     element.style.opacity = Math.random() * 0.5 + 0.5;
     element.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
@@ -1374,107 +1634,45 @@ function createFallingElements() {
     
     container.appendChild(element);
     
-    // Remove após animação
+    // Remover após animação
     setTimeout(() => {
       element.remove();
     }, 5000);
-  }, 300);
+  }
+  
+  // Iniciar com intervalo aleatório
+  setInterval(createElement, Math.random() * 500 + 300);
 }
 
-// Chame a função após o carregamento
-window.addEventListener('load', createFallingElements);
-
-const quizData = {
-  mostardinha: {
-    image: "assets/images/Mostardinha(2).png",
-    name: "Mostardinha",
-    description: "Você é cheio de amor e sabedoria! Assim como o Mostardinha, você tem um coração grande e acredita no poder das pequenas coisas para fazer a diferença. Sua gentileza e empatia são suas maiores forças."
-  },
-  // ... outros personagens
-};
-
-function showResult(character) {
-  const result = quizData[character];
-  document.getElementById('resultImage').src = result.image;
-  document.getElementById('resultName').textContent = `Você é ${result.name}!`;
-  document.getElementById('resultDescription').textContent = result.description;
+// Observador de Interseção para Animações
+function initIntersectionObserver() {
+  const animatedEls = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right');
   
-  // Animação especial
-  const resultDiv = document.getElementById('quizResult');
-  resultDiv.style.display = 'block';
-  resultDiv.style.animation = 'fadeInUp 0.8s ease-out';
-  
-  // Confetti celebration
-  if (typeof confetti === 'function') {
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 }
+  if (animatedEls.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
     });
+    
+    animatedEls.forEach(el => observer.observe(el));
   }
 }
 
-// script.js
-document.addEventListener('DOMContentLoaded', function() {
-  // Menu mobile
-  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-  const navMenu = document.querySelector('.nav-menu');
-  
-  mobileMenuToggle.addEventListener('click', function() {
-    this.classList.toggle('active');
-    navMenu.classList.toggle('active');
-  });
-  
-  // Suavizar rolagem para links internos
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
-  });
-  
-  // Inicializar componentes
-  initParallax();
-  initAudioPlayer();
-  initQuiz();
-  initNewsletter();
-  createFallingElements();
-});
-
-function initParallax() {
-  // Código parallax mostrado anteriormente
-}
-
-function initAudioPlayer() {
-  // Código do player de áudio mostrado anteriormente
-}
-
-function initQuiz() {
-  // Código do quiz mostrado anteriormente
-}
-
-function initNewsletter() {
-  const newsletterForm = document.getElementById('newsletterForm');
-  
-  newsletterForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const email = document.getElementById('userEmail').value;
-    const name = document.getElementById('userName').value;
-    
-    // Aqui você pode adicionar AJAX para enviar para seu backend
-    alert(`Obrigado, ${name}! Você foi inscrito com o e-mail ${email}`);
-    newsletterForm.reset();
-  });
-}
-
-// Outras funções mencionadas anteriormente
-// Adicione confetti.js no seu head
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
-        
-  animatedEls.forEach(el => observer.observe(el));
-</script>
+// Aplicar Cupom (exemplo)
+function applyCoupon() {
+  const couponCode = document.getElementById('couponInput').value;
+  if (couponCode) {
+    alert(`Cupom ${couponCode} aplicado com sucesso!`);
+  } else {
+    alert('Por favor, insira um código de cupom');
+  }
+}        
 </body>
 </html>
 
