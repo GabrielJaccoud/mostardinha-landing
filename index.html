@@ -504,17 +504,20 @@
   }
 
   .voices-grid {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     margin-top: 40px;
   }
 
   .voice-card {
-    background: rgba(255, 255, 255, 0.88);
+    background: #fff;
     border-radius: 16px;
     padding: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.01);
+    max-width: 300px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -522,8 +525,8 @@
   }
 
   .voice-card:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     background: rgba(255,255,255,0.95);
   }
 
@@ -532,7 +535,7 @@
     height: 150px;
     object-fit: cover;
     border-radius: 50%;
-    border:3px dashed #ffcf62;
+    border:3px solid #ffd700;
     padding: 4px;
     background: #fffce7;
     margin-bottom: 15px;
@@ -542,7 +545,7 @@
     font-family: 'Comic Neue', cursive;
     color: #4a3d2a;
     font-size: 1.3em;
-    margin: 10px 0 5px;
+    margin-bottom: 10px 0 5px;
   }
 
   .voice-info p {
@@ -575,7 +578,7 @@
     background: #222;
     color: #fff;
     padding: 4px 8px;
-    font-size: 0.75em;
+    font-size: 0.9em;
     border-radius: 6px;
     top: -36px;
     left: 50%;
@@ -588,6 +591,11 @@
 
   .voice-social:hover::after {
     opacity: 1;
+    content: attr(title);
+    display: block;
+    font-size: 0.9em;
+    margin-top: 2px;
+    color: #888;
   }
  
   .voice-social:hover {
@@ -609,7 +617,7 @@
 
   .behind-scenes {
     background: linear-gradient(to right, #fffaf3, #fdf7ed);
-    padding: 60px 20px;
+    padding: 40px 20px;
     margin-top: 50px;
     text-align: center;
     border-top: 2px dashed #f3dba7;
