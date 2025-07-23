@@ -52,10 +52,10 @@
                 </ul>
                 
                 <div class="nav-cta">
-                    <a href="https://pay.hotmart.com/H100940670E" class="btn btn-primary btn-small">Comprar - R$ 34,99</a>
+                    <a href="https://pay.hotmart.com/H100940670E" class="btn btn-primary btn-small" aria-label="Comprar o livro Mostardinha por R$ 34,99">Comprar - R$ 34,99</a>
                 </div>
                 
-                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir menu">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -65,18 +65,19 @@
     </nav>
 
     <!-- Player de Áudio Fixo -->
-    <div class="audio-player-fixed">
+    <div class="audio-player-fixed" role="region" aria-label="Player de trilha sonora">
         <div class="audio-player-content">
             <div class="audio-info">
-                <span class="audio-icon-animated">🎵</span>
+                <span class="audio-icon-animated" aria-hidden="true">🎵</span>
                 <span class="audio-title">Trilha do Mostardinha</span>
             </div>
             <div class="audio-controls">
-                <button class="audio-btn-fixed" id="audioToggleFixed">
+                <button class="audio-btn-fixed" id="audioToggleFixed" aria-label="Tocar trilha sonora">
                     <span class="audio-icon-btn">▶️</span>
                 </button>
                 <div class="volume-control">
-                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50">
+                    <label for="volumeSlider" class="sr-only">Volume</label>
+                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50" aria-label="Controle de volume">>
                 </div>
             </div>
         </div>
@@ -126,14 +127,15 @@
                     </div>
                     
                     <div class="hero-cta">
-                        <a href="https://pay.hotmart.com/H100940670E" class="btn btn-primary btn-large">
-                            <span class="btn-icon">📖</span>
+                        <a href="https://pay.hotmart.com/H100940670E" class="btn btn-primary btn-large" aria-label="Comprar o livro Mostardinha por R$ 34,99">
+                            <span class="btn-icon" aria-hidden="true">📖</span>
                             Quero o livro por R$ 34,99
                         </a>
                         
                         <div class="voucher-section">
                             <label for="voucherInput">Você tem um vale-presente ou cupom? Insira aqui!</label>
-                            <input type="text" id="voucherInput" placeholder="Digite seu cupom..." class="voucher-input">
+                            <input type="text" id="voucherInput" placeholder="Digite seu cupom..." class="voucher-input" aria-label="Campo para inserir cupom">
+                            <button type="button" class="btn btn-outline btn-small" onclick="applyVoucher()">Aplicar Cupom</button>
                         </div>
                     </div>
                 </div>
@@ -313,8 +315,8 @@
                     <div class="music-icon">🎶💤</div>
                     <h3>Tesouros</h3>
                     <p>Canção de ninar da mãe do Cadu</p>
-                    <a href="https://www.youtube.com/watch?v=E-uAaX073J0" target="_blank" class="btn btn-outline btn-small">
-                        <span class="btn-icon">🎵</span> Ouvir
+                    <a href="https://www.youtube.com/watch?v=E-uAaX073J0" target="_blank" class="btn btn-outline btn-small" aria-label="Ouvir a música Tesouros">
+                        <span class="btn-icon" aria-hidden="true">🎵</span> Ouvir
                     </a>
                 </div>
                 
@@ -322,8 +324,8 @@
                     <div class="music-icon">🎺👃</div>
                     <h3>Salsinha e Repolho</h3>
                     <p>Entrada dos personagens engraçados</p>
-                    <a href="https://www.youtube.com/watch?v=X7xcPMjw00k" target="_blank" class="btn btn-outline btn-small">
-                        <span class="btn-icon">🎵</span> Ouvir
+                    <a href="https://www.youtube.com/watch?v=X7xcPMjw00k" target="_blank" class="btn btn-outline btn-small" aria-label="Ouvir a música Salsinha e Repolho">
+                        <span class="btn-icon" aria-hidden="true">🎵</span> Ouvir
                     </a>
                 </div>
                 
@@ -331,8 +333,8 @@
                     <div class="music-icon">🐜🎤</div>
                     <h3>A Cigarra e a Formiga</h3>
                     <p>Discussão e reconciliação</p>
-                    <a href="https://www.youtube.com/watch?v=o0sJ-iMjzqg" target="_blank" class="btn btn-outline btn-small">
-                        <span class="btn-icon">🎵</span> Ouvir
+                    <a href="https://www.youtube.com/watch?v=o0sJ-iMjzqg" target="_blank" class="btn btn-outline btn-small" aria-label="Ouvir a música A Cigarra e a Formiga">
+                        <span class="btn-icon" aria-hidden="true">🎵</span> Ouvir
                     </a>
                 </div>
                 
@@ -340,8 +342,8 @@
                     <div class="music-icon">🐘🌿</div>
                     <h3>O Elefante</h3>
                     <p>Chegada de Tovar e família</p>
-                    <a href="https://www.youtube.com/watch?v=DHTz17QC00g" target="_blank" class="btn btn-outline btn-small">
-                        <span class="btn-icon">🎵</span> Ouvir
+                    <a href="https://www.youtube.com/watch?v=DHTz17QC00g" target="_blank" class="btn btn-outline btn-small" aria-label="Ouvir a música O Elefante">
+                        <span class="btn-icon" aria-hidden="true">🎵</span> Ouvir
                     </a>
                 </div>
                 
@@ -349,8 +351,8 @@
                     <div class="music-icon">🚂💭</div>
                     <h3>O Trem</h3>
                     <p>Sonho de Cadu com sua mãe</p>
-                    <a href="https://www.youtube.com/watch?v=CZPrME-Ebyg" target="_blank" class="btn btn-outline btn-small">
-                        <span class="btn-icon">🎵</span> Ouvir
+                    <a href="https://www.youtube.com/watch?v=CZPrME-Ebyg" target="_blank" class="btn btn-outline btn-small" aria-label="Ouvir a música O Trem">
+                        <span class="btn-icon" aria-hidden="true">🎵</span> Ouvir
                     </a>
                 </div>
                 
@@ -358,8 +360,8 @@
                     <div class="music-icon">🤱🌼</div>
                     <h3>Agradecendo</h3>
                     <p>Encontro do Mostardinha com a mãe</p>
-                    <a href="https://www.youtube.com/watch?v=6u8edwJU_Rw" target="_blank" class="btn btn-outline btn-small">
-                        <span class="btn-icon">🎵</span> Ouvir
+                    <a href="https://www.youtube.com/watch?v=6u8edwJU_Rw" target="_blank" class="btn btn-outline btn-small" aria-label="Ouvir a música Agradecendo">
+                        <span class="btn-icon" aria-hidden="true">🎵</span> Ouvir
                     </a>
                 </div>
                 
@@ -367,8 +369,8 @@
                     <div class="music-icon">✨🗺️</div>
                     <h3>Brilhe, Brilhe</h3>
                     <p>Entrega do mapa mágico</p>
-                    <a href="https://www.youtube.com/watch?v=S9veWe3S6-4" target="_blank" class="btn btn-outline btn-small">
-                        <span class="btn-icon">🎵</span> Ouvir
+                    <a href="https://www.youtube.com/watch?v=S9veWe3S6-4" target="_blank" class="btn btn-outline btn-small" aria-label="Ouvir a música Brilhe, Brilhe">
+                        <span class="btn-icon" aria-hidden="true">🎵</span> Ouvir
                     </a>
                 </div>
                 
@@ -376,8 +378,8 @@
                     <div class="music-icon">⏰🕊️</div>
                     <h3>O Cuco</h3>
                     <p>Aviso de mudança, passagem de tempo emocional</p>
-                    <a href="https://www.youtube.com/watch?v=xMl24S2rsPI" target="_blank" class="btn btn-outline btn-small">
-                        <span class="btn-icon">🎵</span> Ouvir
+                    <a href="https://www.youtube.com/watch?v=xMl24S2rsPI" target="_blank" class="btn btn-outline btn-small" aria-label="Ouvir a música O Cuco">
+                        <span class="btn-icon" aria-hidden="true">🎵</span> Ouvir
                     </a>
                 </div>
                 
@@ -385,8 +387,8 @@
                     <div class="music-icon">🌱🎉</div>
                     <h3>Mostardinha</h3>
                     <p>Final e festival na ilha</p>
-                    <a href="https://www.youtube.com/watch?v=1BNxMnE2Crc" target="_blank" class="btn btn-outline btn-small">
-                        <span class="btn-icon">🎵</span> Ouvir
+                    <a href="https://www.youtube.com/watch?v=1BNxMnE2Crc" target="_blank" class="btn btn-outline btn-small" aria-label="Ouvir a música Mostardinha">
+                        <span class="btn-icon" aria-hidden="true">🎵</span> Ouvir
                     </a>
                 </div>
             </div>
@@ -406,8 +408,8 @@
                         Ela só mostra os caminhos que estamos prontos a percorrer."
                     </blockquote>
                     <cite>— Senhora Mostarda</cite>
-                    <a href="https://www.youtube.com/@mundoninoss" target="_blank" class="btn btn-secondary">
-                        <span class="btn-icon">🎵</span> Ouça "Agradecendo"
+                    <a href="https://www.youtube.com/@mundoninoss" target="_blank" class="btn btn-secondary" aria-label="Ouvir a música Agradecendo no canal Mundo Ninus">
+                        <span class="btn-icon" aria-hidden="true">🎵</span> Ouça "Agradecendo"
                     </a>
                 </div>
             </div>
@@ -451,12 +453,12 @@
                     </p>
                     
                     <div class="audiobook-cta">
-                        <a href="https://www.youtube.com/watch?v=BSzPFZICl5c&t=663s" target="_blank" class="btn btn-secondary btn-large">
-                            <span class="btn-icon">🎧</span>
+                        <a href="https://www.youtube.com/watch?v=BSzPFZICl5c&t=663s" target="_blank" class="btn btn-secondary btn-large" aria-label="Ouvir o audiobook gratuito do Mostardinha no YouTube">
+                            <span class="btn-icon" aria-hidden="true">🎧</span>
                             Ouvir Audiobook Gratuito
                         </a>
-                        <a href="https://www.youtube.com/@mundoninoss" target="_blank" class="btn btn-outline">
-                            <span class="btn-icon">📺</span>
+                        <a href="https://www.youtube.com/@mundoninoss" target="_blank" class="btn btn-outline" aria-label="Visitar o canal Mundo Ninus no YouTube">
+                            <span class="btn-icon" aria-hidden="true">📺</span>
                             Visitar Canal
                         </a>
                     </div>
@@ -475,7 +477,7 @@
     </section>
 
     <!-- Seção Vozes -->
-    <section id="vozes" class="voices-section" style="background: url('assets/images/bg-parallax-vozes.webp') center/cover fixed; padding: 80px 0;">
+    <section id="vozes" class="voices-section" parallax-section" data-speed="0.3">
   <div class="container">
     <div class="section-header fade-in-up">
       <h2 class="section-title">🎤 Vozes que Encantam</h2>
@@ -483,126 +485,126 @@
     </div>
 
     <div class="voices-grid">
-       <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+       <div class="voice-card fade-in-up" style="animation-delay:0ms;">
         <img src="assets/images/vozes/gabriel-jaccoud.webp" alt="Gabriel Jaccoud - Narrador, Grande Inhame, Velho Alho, Cuco" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Gabriel Jaccoud</h3>
           <p><strong>Personagens:</strong> Narrador, Grande Inhame, Velho Alho, Cuco</p>
           <p class="voice-quote">"Narrar e dirigir esse projeto me lembrou do meu propósito: tocar corações."</p>
-          <a href="https://www.instagram.com/gabriel_jaccoud" target="_blank" class="voice-social">📸 Instagram</a>
+          <a href="https://www.instagram.com/gabriel_jaccoud" target="_blank" class="voice-social" aria-label="Visitar o Instagram de Gabriel Jaccoud">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:200ms;">
         <img src="assets/images/vozes/jaqueline.webp" alt="Jaqueline - Dona Cigarra" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Jaqueline</h3>
           <p><strong>Personagem:</strong> Dona Cigarra</p>
           <p class="voice-quote">"Cantar enquanto dublava foi um desfio bom de se viver."</p>
-          <a href="https://www.instagram.com/jaqueline" target="_blank" class="voice-social">📸 Instagram</a>
+          <a href="https://www.instagram.com/jaqueline" target="_blank" class="voice-social" aria-label="Visitar o Instagram de Jaqueline">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:400ms;">
         <img src="assets/images/vozes/carolina-lopes.webp" alt="Carolina Lopes - Mostardinha, Maionese" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Carolina Lopes</h3>
           <p><strong>Personagens:</strong> Mostardinha, Maionese</p>
-          <a href="https://www.instagram.com/lopescarolnina" target="_blank" class="voice-social">📸 Instagram</a>
+          <a href="https://www.instagram.com/lopescarolnina" target="_blank" class="voice-social" aria-label="Visitar o Instagram de Carolina Lopes">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms;">
         <img src="assets/images/vozes/klaudia-lopes.webp" alt="Klaudia Lopes - Cadu" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Klaudia Lopes</h3>
           <p><strong>Personagem:</strong> Cadu</p>
-          <a href="https://www.instagram.com/klaudya.lopes" target="_blank" class="voice-social">📸 Instagram</a>
+          <a href="https://www.instagram.com/klaudya.lopes" target="_blank" class="voice-social" aria-label="Visitar o Instagram de Klaudia Lopes">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:800ms;">
         <img src="assets/images/vozes/gabriel-morais.webp" alt="Gabriel Morais - Theo" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Gabriel Morais</h3>
           <p><strong>Personagem:</strong> Theo</p>
-          <a href="https://www.instagram.com/gabriel.morais1801" target="_blank" class="voice-social">📸 Instagram</a>
+          <a href="https://www.instagram.com/gabriel.morais1801" target="_blank" class="voice-social" aria-label="Visitar o Instagram de Gabriel Morais">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:1000ms;">
         <img src="assets/images/vozes/daniele-souza.webp" alt="Daniele Souza - Déborah" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Daniele Souza</h3>
           <p><strong>Personagem:</strong> Débora</p>
-          <a href="https://www.instagram.com/vozdanielesouza" target="_blank" class="voice-social">📸 Instagram</a>
+          <a href="https://www.instagram.com/vozdanielesouza" target="_blank" class="voice-social" aria-label="Visitar o Instagram de Daniele Souza">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:1200ms;">
         <img src="assets/images/vozes/andre-carneiro.webp" alt="André Carneiro - Catchup" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>André Carneiro</h3>
           <p><strong>Personagem:</strong> Catchup</p>
-          <a href="https://www.instagram.com/prof_andre_carneiro" target="_blank" class="voice-social">📸 Instagram</a>
+          <a href="https://www.instagram.com/prof_andre_carneiro" target="_blank" class="voice-social" aria-label="Visitar o Instagram de André Carneiro">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:1400ms;">
         <img src="assets/images/vozes/victor-moreno.webp" alt="Victor Moreno - Repolho" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Victor Moreno</h3>
           <p><strong>Personagem:</strong> Repolho</p>
-          <a href="https://www.instagram.com/housnel" target="_blank" class="voice-social">📸 Instagram</a>
+          <a href="https://www.instagram.com/housnel" target="_blank" class="voice-social" aria-label="Visitar o Instagram de Victor Moreno">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:1600ms;">
         <img src="assets/images/vozes/piter-de-paula.webp" alt="Piter de Paula - Salsinha" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Piter de Paula</h3>
           <p><strong>Personagem:</strong> Salsinha</p>
-          <a href="https://www.instagram.com/piterdepaulamusico" target="_blank" class="voice-social">📸 Instagram</a>
+          <a href="https://www.instagram.com/piterdepaulamusico" target="_blank" class="voice-social" aria-label="Visitar o Instagram de Piter de Paula">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:1800ms;">
         <img src="assets/images/vozes/graziela-ferreira.webp" alt="Graziela Ferreira - Senhora Mostarda" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Graziela Ferreira</h3>
           <p><strong>Personagem:</strong> Senhora Mostarda</p>
-          <a href="https://www.instagram.com/zifsilva_" target="_blank" class="voice-social">📸 Instagram</a>
+          <a href="https://www.instagram.com/zifsilva_" target="_blank" class="voice-social" aria-label="Visitar o Instagram de Graziela Ferreira">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:2000ms;">
         <img src="assets/images/vozes/helder-canto.webp" alt="Helder Canto - Tovar" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Helder Canto</h3>
           <p><strong>Personagem:</strong> Tovar</p>
-          <a href="https://www.instagram.com/heldercanto" target="_blank" class="voice-social">📸 Instagram</a>
+          <a href="https://www.instagram.com/heldercanto" target="_blank" class="voice-social" aria-label="Visitar o Instagram de Helder Canto">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:2200ms;">
         <img src="assets/images/vozes/nathalia-jaccoud.webp" alt="Nathália Jaccoud - Macaquinho" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Nathália Jaccoud</h3>
           <p><strong>Personagem:</strong> Macaquinho</p>
-          <a href="https://www.instagram.com/jaccoudnathalia" target="_blank" class="voice-social">📸 Instagram</a>
+          <a href="https://www.instagram.com/jaccoudnathalia" target="_blank" class="voice-social" aria-label="Visitar o Instagram de Nathália Jaccoud">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:2400ms;">
         <img src="assets/images/vozes/andre-nobrega.webp" alt="André Nóbrega - Macaco" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>André Nóbrega</h3>
           <p><strong>Personagem:</strong> Macaco</p>
-          <a href="https://www.instagram.com/talesoftoficial" target="_blank" class="voice-social">📸 Instagram</a>
+          <a href="https://www.instagram.com/talesoftoficial" target="_blank" class="voice-social" aria-label="Visitar o Instagram de André Nóbrega">📸 Instagram</a>
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
+      <div class="voice-card fade-in-up" style="animation-delay:2600ms;">
         <img src="assets/images/vozes/antonio-jaccoud.webp" alt="Antônio Jaccoud - Comandante" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Antônio Jaccoud</h3>
@@ -618,7 +620,7 @@
       <div class="behind-content container">
       <h3>🎬 Veja um pedacinho dos bastidores da dublagem!</h3>
       <p>Assista à Jaque dublando a Dona Cigarra com direção de Gabriel Jaccoud.</p>
-      <a href="https://www.instagram.com/reel/CtkRU_DAi_o/?igsh=MW1tejR1ejdqaThldw==" target="_blank" class="btn btn-secondary btn-large" aria-label=>🎥 Ver bastidores da gravação</a>
+      <a href="https://www.instagram.com/reel/CtkRU_DAi_o/?igsh=MW1tejR1ejdqaThldw==" target="_blank" class="btn btn-secondary btn-large" aria-label="Ver bastidores da gravação no Instagram">🎥 Ver bastidores da gravação</a>
     </div>
   </div>
 </section>
@@ -635,16 +637,16 @@
                 <div class="quiz-question" id="quizQuestion">
                     <h3>Como você reage quando encontra um amigo triste?</h3>
                     <div class="quiz-options">
-                        <button class="quiz-option" data-character="mostardinha">
+                        <button class="quiz-option" data-character="mostardinha" aria-label="Escolher opção: Ofereço um abraço e escuto com carinho">
                             🤗 Ofereço um abraço e escuto com carinho
                         </button>
-                        <button class="quiz-option" data-character="maionese">
+                        <button class="quiz-option" data-character="maionese" aria-label="Escolher opção: Tento fazer algo especial para alegrar">
                             💝 Tento fazer algo especial para alegrar
                         </button>
-                        <button class="quiz-option" data-character="salsinha">
+                        <button class="quiz-option" data-character="salsinha" aria-label="Escolher opção: Conto uma piada para fazer rir">
                             🎉 Conto uma piada para fazer rir
                         </button>
-                        <button class="quiz-option" data-character="alho">
+                        <button class="quiz-option" data-character="alho" aria-label="Escolher opção: Dou um conselho sábio e carinhoso">
                             🧠 Dou um conselho sábio e carinhoso
                         </button>
                     </div>
@@ -657,15 +659,16 @@
                         <p id="resultDescription"></p>
                     </div>
                     <div class="result-actions">
-                        <button class="btn btn-primary" onclick="restartQuiz()">
-                            <span class="btn-icon">🔄</span> Fazer Novamente
+                        <button class="btn btn-primary" onclick="restartQuiz()" aria-label="Refazer o quiz">
+                            <span class="btn-icon" aria-hidden="true">🔄</span> Fazer Novamente
                         </button>
                         <div class="email-capture">
                             <p>Receba uma mensagem especial do seu personagem por e-mail!</p>
                             <div class="email-form">
-                                <input type="email" placeholder="Seu e-mail" id="quizEmail">
-                                <button class="btn btn-secondary" onclick="sendCharacterMessage()">
-                                    <span class="btn-icon">✨</span> Receber
+                                <label for="quizEmail" class="sr-only">Seu e-mail</label>
+                                <input type="email" placeholder="Seu e-mail" id="quizEmail" aria-label="Campo para digitar seu e-mail">
+                                <button class="btn btn-secondary" onclick="sendCharacterMessage()" aria-label="Receber mensagem por e-mail">
+                                    <span class="btn-icon" aria-hidden="true">✨</span> Receber
                                 </button>
                             </div>
                         </div>
@@ -695,12 +698,14 @@
                     
                     <form class="newsletter-form" id="newsletterForm">
                         <div class="form-group">
-                            <input type="text" class="form-input" id="userName" placeholder="Seu nome" required>
+                            <label for="userName" class="sr-only">Seu nome</label>
+                            <input type="text" class="form-input" id="userName" placeholder="Seu nome" required aria-label="Digite seu nome">
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-input" id="userEmail" placeholder="Seu e-mail" required>
+                            <label for="userEmail" class="sr-only">Seu e-mail</label>
+                            <input type="email" class="form-input" id="userEmail" placeholder="Seu e-mail" required aria-label="Digite seu e-mail">
                         </div>
-                        <button type="submit" class="btn btn-primary newsletter-btn">
+                        <button type="submit" class="btn btn-primary newsletter-btn" aria-label="Cadastrar-se na newsletter">
                             <span class="btn-icon">✨</span> Quero receber!
                         </button>
                     </form>
@@ -755,10 +760,9 @@
     </section>
 
     <!-- Seção Sobre a Editora -->
-    <section id="editora-humanizar" class="publisher-section" style="text-align: center; padding: 40px 20px;">
+    <section id="editora-humanizar" class="publisher-section">
         <div class="container">
-            <img src="assets/images/humanizar-logo.png" alt="Logo da Editora Humanizar" class="publisher-logo" style="max-width: 200px; margin-bottom: 25px;">
-            <p style="font-size: 1.1em; color: #444;">
+            <img src="assets/images/humanizar-logo.png" alt="Logo da Editora Humanizar" class="publisher-logo">
             <div class="publisher-content fade-in-up">
                 <h2 class="publisher-title">📚 Sobre a Editora - HUMANIZAR</h2>
                 <p class="publisher-description">
@@ -801,7 +805,7 @@
                     </div>
                     
                     <div class="purchase-actions">
-                        <a href="https://pay.hotmart.com/H100940670E" target="_blank" class="btn btn-primary btn-large purchase-btn">
+                        <a href="https://pay.hotmart.com/H100940670E" target="_blank" class="btn btn-primary btn-large purchase-btn" aria-label="Comprar o livro Mostardinha por R$ 34,99">
                             <span class="btn-icon">🛒</span>
                             Quero o meu agora!
                         </a>
@@ -809,8 +813,9 @@
                         <div class="coupon-section">
                             <label for="couponInput">Insira seu cupom de desconto, se tiver:</label>
                             <div class="coupon-input-group">
-                                <input type="text" id="couponInput" placeholder="Código do cupom" class="coupon-input">
-                                <button class="btn btn-outline btn-small" onclick="applyCoupon()">Aplicar</button>
+                                <label for="couponInput" class="sr-only">Código do cupom</label>
+                                <input type="text" id="couponInput" placeholder="Código do cupom" class="coupon-input" aria-label="Campo para inserir cupom de desconto">
+                                <button class="btn btn-outline btn-small" onclick="applyCoupon()" aria-label="Aplicar cupom de desconto">Aplicar</button>
                             </div>
                         </div>
                         
@@ -822,13 +827,13 @@
     </section>
 
     <!-- Seção Canal Mundo Ninos -->
-   <section id="mundoninus" class="mundoninus-section" style="text-align: center; padding: 40px 20px;">
+   <section id="mundoninus" class="mundoninus-section">
   <div class="container">
     <div class="section-header fade-in-up">
-      <img src="assets/images/logo-mundoninus.png" alt="Logo Mundo Ninus" class="channel-logo" style="max-width: 200px; margin-bottom: 25px;">
+      <img src="assets/images/logo-mundoninus.png" alt="Logo Mundo Ninus" class="channel-logo">
       <h2 class="section-title">Conheça o Canal Mundo Ninus</h2>
       <p class="section-subtitle">Nosso canal no YouTube reúne músicas, histórias e conteúdos mágicos que expandem o universo do Mostardinha. Inscreva-se!</p>
-      <a href="https://www.youtube.com/@mundoninoss" target="_blank" class="btn btn-secondary btn-small">🌟 Visitar Canal Mundo Ninus</a>
+      <a href="https://www.youtube.com/@mundoninoss" target="_blank" class="btn btn-secondary btn-small" aria-label="Visitar o canal Mundo Ninus no YouTube">🌟 Visitar Canal Mundo Ninus</a>
     </div>
   </div>
 </section>
@@ -841,12 +846,12 @@
                 <p class="cta-subtitle">Compre, leia, ouça e compartilhe o Mostardinha com quem você ama</p>
                 
                 <div class="cta-buttons">
-                    <a href="https://pay.hotmart.com/H100940670E" target="_blank" class="btn btn-primary btn-large">
+                    <a href="https://pay.hotmart.com/H100940670E" target="_blank" class="btn btn-primary btn-large" aria-label="Comprar o livro Mostardinha por R$ 34,99">
                         <span class="btn-icon">🛒</span>
                         Comprar o livro - R$ 34,99
                     </a>
-                    <a href="https://www.youtube.com/watch?v=BSzPFZICl5c&t=663s" target="_blank" class="btn btn-secondary btn-large">
-                        <span class="btn-icon">🎧</span>
+                    <a href="https://www.youtube.com/watch?v=BSzPFZICl5c&t=663s" target="_blank" class="btn btn-secondary btn-large" aria-label="Ouvir o audiobook gratuito do Mostardinha no YouTube">
+                        <span class="btn-icon" aria-hidden="true">🎧</span>
                         Ouvir o audiobook
                     </a>
                 </div>
@@ -887,8 +892,8 @@
                 <div class="footer-section">
                     <h4>Contato</h4>
                     <ul>
-                        <li><a href="https://www.youtube.com/@mundoninoss" target="_blank">YouTube</a></li>
-                        <li><a href="mailto:contato@mostardinha.com">E-mail</a></li>
+                        <li><a href="https://www.youtube.com/@mundoninoss" target="_blank" aria-label="Visitar o canal Mundo Ninus no YouTube">YouTube</a></li>
+                        <li><a href="mailto:contato@mostardinha.com" aria-label="Enviar e-mail para contato@mostardinha.com">E-mail</a></li>
                         <li><a href="#newsletter">Newsletter</a></li>
                     </ul>
                 </div>
