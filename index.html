@@ -25,8 +25,143 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+    .parallax-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+
+.parallax-sky {
+  background-color: #87CEEB;
+  z-index: 1;
+}
+
+.parallax-clouds {
+  background-image: url('assets/images/clouds.png');
+  z-index: 2;
+  animation: cloudMove 60s linear infinite;
+}
+
+.parallax-mountains {
+  background-image: url('assets/images/mountains.png');
+  z-index: 3;
+}
+
+@keyframes cloudMove {
+  from { background-position: 0 0; }
+  to { background-position: -1000px 0; }
+}
+
+.floating-elements div {
+  position: absolute;
+  animation: float 6s ease-in-out infinite;
+  font-size: 1.5rem;
+  opacity: 0.8;
+  z-index: 10;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.star-1 { top: 10%; left: 5%; animation-delay: 0s; }
+.star-2 { top: 25%; right: 10%; animation-delay: 1s; }
+.star-3 { bottom: 15%; left: 15%; animation-delay: 2s; }
+.balloon-1 { top: 20%; right: 15%; animation-delay: 0.5s; }
+.balloon-2 { bottom: 20%; right: 20%; animation-delay: 1.5s; }
+.note-1 { top: 40%; left: 10%; animation-delay: 0.7s; }
+.note-2 { bottom: 30%; right: 10%; animation-delay: 1.2s; }
+.note-3 { top: 15%; left: 30%; animation-delay: 0.3s; }
+
+/* Animações de entrada melhoradas */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-up.animate, 
+.fade-in-left.animate, 
+.fade-in-right.animate {
+  opacity: 1;
+  transform: translate(0);
+}
+
+@media (max-width: 992px) {
+  .hero-content {
+    flex-direction: column;
+  }
+  
+  .hero-text, .hero-image {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .floating-elements {
+    display: none; /* Esconde elementos flutuantes em mobile */
+  }
+  
+  .character-card, .music-card {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .sequence-item, .sequence-arrow {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .sequence-arrow {
+    transform: rotate(90deg);
+    margin: 10px 0;
+  }
+  
+  .character-card, .music-card {
+    width: 100%;
+  }
+  
+  .audio-player-fixed {
+    bottom: 60px; /* Ajuste para não cobrir menu mobile */
+  }
+}
+
+.falling-element {
+  position: absolute;
+  font-size: 1.2rem;
+  animation: fall linear forwards;
+  z-index: 5;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(calc(100vh + 30px)) rotate(360deg);
+  }
+}
+</head>
+    <!-- ... outros elementos ... -->
+  <link rel="preload" href="assets/temamostardinha.wav" as="audio">
+  <link rel="preload" href="assets/images/CAPA.png" as="image">
 </head>
 <body>
+    
     <!-- Menu Fixo -->
     <nav class="fixed-nav">
         <div class="container">
@@ -134,7 +269,7 @@
                 </div>
                 
                 <div class="hero-image fade-in-right">
-                    <img src="assets/images/CAPA.png" alt="Capa do livro Mostardinha" class="mostardinha-hero">
+                    <img src="assets/images/CAPA.png" alt="Capa do livro Mostardinha" class="mostardinha-hero" loading="lazy">
                 </div>
             </div>
         </div>
@@ -1150,6 +1285,194 @@
     });
   });
 
+  document.addEventListener('DOMContentLoaded', function() {
+  // Configuração do parallax avançado
+  const heroSection = document.querySelector('.hero');
+  const layers = document.querySelectorAll('.parallax-layer');
+  
+  window.addEventListener('scroll', function() {
+    const scrollPosition = window.pageYOffset;
+    const heroHeight = heroSection.offsetHeight;
+    
+    if (scrollPosition <= heroHeight) {
+      layers.forEach(layer => {
+        const speed = layer.getAttribute('data-speed') || 0.3;
+        const yPos = -(scrollPosition * speed);
+        layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
+      });
+    }
+  });
+  
+  // Intersection Observer para animações
+  const animateOnScroll = function(entries, observer) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        observer.unobserve(entry.target);
+      }
+    });
+  };
+  
+  const observer = new IntersectionObserver(animateOnScroll, {
+    threshold: 0.1
+  });
+  
+  document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right').forEach(el => {
+    observer.observe(el);
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const audioPlayer = document.getElementById('backgroundAudioFixed');
+  const toggleBtn = document.getElementById('audioToggleFixed');
+  const volumeSlider = document.getElementById('volumeSlider');
+  
+  // Estado inicial
+  let isPlaying = false;
+  
+  // Botão de play/pause
+  toggleBtn.addEventListener('click', function() {
+    if (isPlaying) {
+      audioPlayer.pause();
+      toggleBtn.innerHTML = '<span class="audio-icon-btn">▶️</span>';
+    } else {
+      audioPlayer.play();
+      toggleBtn.innerHTML = '<span class="audio-icon-btn">⏸️</span>';
+    }
+    isPlaying = !isPlaying;
+  });
+  
+  // Controle de volume
+  volumeSlider.addEventListener('input', function() {
+    audioPlayer.volume = this.value / 100;
+  });
+  
+  // Animação do ícone de música
+  const audioIcon = document.querySelector('.audio-icon-animated');
+  setInterval(() => {
+    if (isPlaying) {
+      audioIcon.textContent = audioIcon.textContent === '🎵' ? '🎶' : '🎵';
+    }
+  }, 500);
+});
+
+function createFallingElements() {
+  const container = document.querySelector('.hero');
+  const elements = ['🌱', '🎵', '✨', '🌿', '🎶', '⭐'];
+  
+  setInterval(() => {
+    const element = document.createElement('div');
+    element.textContent = elements[Math.floor(Math.random() * elements.length)];
+    element.classList.add('falling-element');
+    
+    // Posição aleatória no topo
+    element.style.left = `${Math.random() * 100}%`;
+    element.style.top = '-30px';
+    element.style.opacity = Math.random() * 0.5 + 0.5;
+    element.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
+    element.style.animationDuration = `${Math.random() * 3 + 2}s`;
+    
+    container.appendChild(element);
+    
+    // Remove após animação
+    setTimeout(() => {
+      element.remove();
+    }, 5000);
+  }, 300);
+}
+
+// Chame a função após o carregamento
+window.addEventListener('load', createFallingElements);
+
+const quizData = {
+  mostardinha: {
+    image: "assets/images/Mostardinha(2).png",
+    name: "Mostardinha",
+    description: "Você é cheio de amor e sabedoria! Assim como o Mostardinha, você tem um coração grande e acredita no poder das pequenas coisas para fazer a diferença. Sua gentileza e empatia são suas maiores forças."
+  },
+  // ... outros personagens
+};
+
+function showResult(character) {
+  const result = quizData[character];
+  document.getElementById('resultImage').src = result.image;
+  document.getElementById('resultName').textContent = `Você é ${result.name}!`;
+  document.getElementById('resultDescription').textContent = result.description;
+  
+  // Animação especial
+  const resultDiv = document.getElementById('quizResult');
+  resultDiv.style.display = 'block';
+  resultDiv.style.animation = 'fadeInUp 0.8s ease-out';
+  
+  // Confetti celebration
+  if (typeof confetti === 'function') {
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+  }
+}
+
+// script.js
+document.addEventListener('DOMContentLoaded', function() {
+  // Menu mobile
+  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+  const navMenu = document.querySelector('.nav-menu');
+  
+  mobileMenuToggle.addEventListener('click', function() {
+    this.classList.toggle('active');
+    navMenu.classList.toggle('active');
+  });
+  
+  // Suavizar rolagem para links internos
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+  
+  // Inicializar componentes
+  initParallax();
+  initAudioPlayer();
+  initQuiz();
+  initNewsletter();
+  createFallingElements();
+});
+
+function initParallax() {
+  // Código parallax mostrado anteriormente
+}
+
+function initAudioPlayer() {
+  // Código do player de áudio mostrado anteriormente
+}
+
+function initQuiz() {
+  // Código do quiz mostrado anteriormente
+}
+
+function initNewsletter() {
+  const newsletterForm = document.getElementById('newsletterForm');
+  
+  newsletterForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('userEmail').value;
+    const name = document.getElementById('userName').value;
+    
+    // Aqui você pode adicionar AJAX para enviar para seu backend
+    alert(`Obrigado, ${name}! Você foi inscrito com o e-mail ${email}`);
+    newsletterForm.reset();
+  });
+}
+
+// Outras funções mencionadas anteriormente
+// Adicione confetti.js no seu head
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+        
   animatedEls.forEach(el => observer.observe(el));
 </script>
 </body>
