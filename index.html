@@ -661,6 +661,34 @@
       font-size: 0.95em;
       padding: 10px 20px;
     }
+
+    .parallax-section {
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+  }
+      
+  .parallax-section::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255,255,255,0.85);
+    z-index: -1;
+  }
+
+  [data-animate] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease;
+  }
+      
+  [data-animate].in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
   }
 </style>
 
@@ -673,7 +701,7 @@
     </div>
 
     <div class="voices-grid">
-       <div class="voice-card fade-in-up" style="animation-delay:600ms">
+       <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
         <img src="assets/images/vozes/gabriel-jaccoud.webp" alt="Gabriel Jaccoud - Narrador, Grande Inhame, Velho Alho, Cuco" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Gabriel Jaccoud</h3>
@@ -683,7 +711,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
         <img src="assets/images/vozes/jaqueline.webp" alt="Jaqueline - Dona Cigarra" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Jaqueline</h3>
@@ -693,7 +721,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
         <img src="assets/images/vozes/carolina-lopes.webp" alt="Carolina Lopes - Mostardinha, Maionese" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Carolina Lopes</h3>
@@ -702,7 +730,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
         <img src="assets/images/vozes/klaudia-lopes.webp" alt="Klaudia Lopes - Cadu" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Klaudia Lopes</h3>
@@ -711,7 +739,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
         <img src="assets/images/vozes/gabriel-morais.webp" alt="Gabriel Morais - Theo" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Gabriel Morais</h3>
@@ -720,7 +748,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
         <img src="assets/images/vozes/daniele-souza.webp" alt="Daniele Souza - Déborah" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Daniele Souza</h3>
@@ -729,7 +757,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
         <img src="assets/images/vozes/andre-carneiro.webp" alt="André Carneiro - Catchup" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>André Carneiro</h3>
@@ -738,7 +766,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
         <img src="assets/images/vozes/victor-moreno.webp" alt="Victor Moreno - Repolho" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Victor Moreno</h3>
@@ -747,7 +775,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
         <img src="assets/images/vozes/piter-de-paula.webp" alt="Piter de Paula - Salsinha" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Piter de Paula</h3>
@@ -756,7 +784,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
         <img src="assets/images/vozes/graziela-ferreira.webp" alt="Graziela Ferreira - Senhora Mostarda" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Graziela Ferreira</h3>
@@ -765,7 +793,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
         <img src="assets/images/vozes/helder-canto.webp" alt="Helder Canto - Tovar" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Helder Canto</h3>
@@ -774,7 +802,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
         <img src="assets/images/vozes/nathalia-jaccoud.webp" alt="Nathália Jaccoud - Macaquinho" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Nathália Jaccoud</h3>
@@ -783,7 +811,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
         <img src="assets/images/vozes/andre-nobrega.webp" alt="André Nóbrega - Macaco" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>André Nóbrega</h3>
@@ -792,7 +820,7 @@
         </div>
       </div>
         
-      <div class="voice-card fade-in-up" style="animation-delay:600ms">
+      <div class="voice-card fade-in-up" style="animation-delay:600ms" parallax-section" style="background-image: url('assets/images/bg-parallax-vozes.webp');" data-speed="0.3">
         <img src="assets/images/vozes/antonio-jaccoud.webp" alt="Antônio Jaccoud - Comandante" class="voice-photo" loading="lazy">
         <div class="voice-info">
           <h3>Antônio Jaccoud</h3>
@@ -804,7 +832,7 @@
 </section>
 
     <!-- Seção bastidores -->
-    <section id="bastidores" class="behind-scenes fade-in-up" style="background: url('assets/images/bg-parallax-bastidores.webp') center/cover fixed; padding: 60px 20px;"> 
+    <section id="bastidores" class="behind-scenes parallax-section" style="background-image: url('assets/images/bg-parallax-bastidores.webp');" data-speed="0.2" center/cover fixed; padding: 60px 20px;"> 
       <div class="behind-content container">
       <h3>🎬 Veja um pedacinho dos bastidores da dublagem!</h3>
       <p>Assista à Jaque dublando a Dona Cigarra com direção de Gabriel Jaccoud.</p>
@@ -1091,8 +1119,31 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
+   <!-- JavaScript -->
     <script src="script.js"></script>
+    // Parallax simples com data-speed
+  document.addEventListener("scroll", function () {
+    const parallaxSections = document.querySelectorAll(".parallax-section");
+    const scrollY = window.scrollY;
+
+    parallaxSections.forEach(section => {
+      const speed = section.getAttribute("data-speed") || 0.5;
+      section.style.backgroundPositionY = `${-scrollY * speed}px`;
+    });
+  });
+
+  // Animação de entrada com IntersectionObserver
+  const animatedEls = document.querySelectorAll('[data-animate]');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+      }
+    });
+  });
+
+  animatedEls.forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
 
