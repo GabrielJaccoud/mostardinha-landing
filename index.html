@@ -949,8 +949,9 @@ body {
 /* Seção Hero */
 .hero {
   position: relative;
-  height: 100vh;
-  min-height: 600px;
+  height: auto;
+  min-height: 80vh;
+  padding: 100px 0 60px 0;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -981,12 +982,16 @@ body {
 .parallax-clouds {
   background-image: url('assets/images/clouds.png');
   z-index: 2;
-  animation: cloudMove 60s linear infinite;
+  animation: cloudMove 80s linear infinite;
+  opacity: 0.8;
+  background-size: 120% auto;
 }
 
 .parallax-mountains {
   background-image: url('assets/images/mountains.png');
   z-index: 3;
+  opacity: 0.9;
+  background-size: 110% auto;
 }
 
 @keyframes cloudMove {
@@ -1076,6 +1081,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 15px 0;
+  min-height: 70px;
 }
 
 .nav-logo {
@@ -1095,17 +1101,30 @@ body {
 .nav-menu {
   display: flex;
   list-style: none;
+  align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-link {
-  padding: 10px 15px;
+  padding: 8px 12px;
   text-decoration: none;
+  font-size: 0.95rem;
   color: var(--text-color);
   transition: color 0.3s;
 }
 
 .nav-link:hover {
   color: var(--primary-color);
+}
+
+.nav-cta {
+  margin-left: 15px; 
+}
+
+.nav-cta .btn-primary.btn-small {
+  padding: 8px 16px; 
+  font-size: 0.9rem; 
 }
 
 /* Player de Áudio Fixo */
@@ -1283,6 +1302,19 @@ body {
   padding: 80px 0;
 }
 
+.voices-section::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: rgba(255, 255, 255, 0.85); 
+  z-index: 1;
+}
+        
+.voices-section > .container {
+  position: relative;
+  z-index: 2;
+}
+
 .voices-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -1298,6 +1330,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   animation: fadeInUp 0.6s ease-out forwards;
   opacity: 0;
@@ -1355,6 +1388,46 @@ body {
   color: #b87c00;
 }
 
+/* Estilos para a Seção Bastidores */
+.behind-scenes {
+  background-color: var(--light-bg); /* Fundo claro */
+  padding: 60px 20px; /* Padding superior/inferior e lateral */
+  text-align: center; /* Centraliza o conteúdo */
+}
+
+.behind-content {
+  max-width: 800px; /* Limita a largura do conteúdo */
+  margin: 0 auto; /* Centraliza o container */
+}
+
+.behind-content h3 {
+  font-size: 1.8rem; /* Tamanho da fonte do título */
+  color: var(--secondary-color); /* Cor marrom */
+  margin-bottom: 15px; /* Espaço abaixo do título */
+}
+
+.behind-content p {
+  font-size: 1.1rem; /* Tamanho da fonte do texto */
+  margin-bottom: 25px; /* Espaço abaixo do texto */
+}
+
+.behind-content .btn-secondary {
+  /* Estilos do botão secundário já devem estar definidos */
+  font-size: 1.1rem; /* Ajusta o tamanho da fonte do botão se necessário */
+  padding: 12px 24px; /* Ajusta o padding do botão */
+
+/* Redução de tamanho das logos */
+.publisher-logo,
+.channel-logo {
+  max-width: 150px; /* Define um tamanho máximo menor */
+  height: auto; /* Mantém a proporção da imagem */
+  margin-bottom: 20px; /* Adiciona espaço abaixo da logo */
+  /* Se quiser centralizar dentro de seus containers */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Classes utilitárias para acessibilidade */
 .sr-only {
   position: absolute;
@@ -1366,6 +1439,39 @@ body {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* Estilos para a Seção Canal Mundo Ninus */
+.mundoninus-section {
+  background-color: #f0f8ff; /* Fundo azul claro */
+  padding: 60px 20px; /* Padding superior/inferior e lateral */
+  text-align: center; /* Centraliza o conteúdo */
+}
+
+.mundoninus-section .section-header {
+  /* Reutiliza estilos da section-header, mas pode ajustar */
+  margin-bottom: 30px; /* Menor margem inferior */
+}
+
+.channel-logo {
+  max-width: 150px; /* Reduz o tamanho máximo da logo */
+  height: auto; /* Mantém a proporção */
+  margin-bottom: 20px; /* Espaço abaixo da logo */
+}
+
+.mundoninus-section .section-title {
+  font-size: 2rem; /* Tamanho da fonte do título */
+  margin-bottom: 10px; /* Menor margem abaixo do título */
+}
+
+.mundoninus-section .section-subtitle {
+  font-size: 1.1rem; /* Tamanho da fonte do subtítulo */
+  margin-bottom: 25px; /* Espaço abaixo do subtítulo */
+}
+
+.mundoninus-section .btn-secondary.btn-small {
+  font-size: 1rem; /* Tamanho da fonte do botão */
+  padding: 10px 20px; /* Padding do botão */
 }
 
 /* Responsividade */
