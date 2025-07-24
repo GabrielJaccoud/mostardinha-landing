@@ -91,7 +91,7 @@
     <section id="inicio" class="hero">
         <div class="hero-background">
             <div class="parallax-layer parallax-sky"></div>
-            <div class="parallax-layer parallax-clouds"></div>
+            <div class="parallax-layer parallax-clouds2"></div>
             <div class="parallax-layer parallax-mountains"></div>
         </div>
         
@@ -104,6 +104,12 @@
             <div class="note note-1">🎵</div>
             <div class="note note-2">🎶</div>
             <div class="note note-3">🎵</div>
+        </div>
+
+        <div class="secao-hero" id="herois">
+        </div>
+
+        <div class="secao-jornada" id="jornada">
         </div>
         
         <div class="container">
@@ -967,6 +973,18 @@ body {
   height: 100%;
 }
 
+.secao-hero {
+  background-color: #fefaf4;
+  padding: 60px 20px;
+  transition: background-color 0.4s ease;
+}
+
+.secao-jornada {
+  background-color: #fff;
+  padding: 60px 20px;
+  transition: background-color 0.4s ease;
+}
+
 .parallax-layer {
   position: absolute;
   width: 100%;
@@ -981,12 +999,17 @@ body {
   z-index: 1;
 }
 
-.parallax-clouds {
-  background-image: url('assets/images/clouds.png');
+.parallax-clouds2 {
+  background-image: url('assets/images/clouds2.png');
   z-index: 2;
   animation: cloudMove 80s linear infinite;
   opacity: 0.8;
   background-size: 80% auto;
+  width: 80%;
+  max-width: 300px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
 }
 
 .parallax-mountains {
