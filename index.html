@@ -1277,6 +1277,97 @@ body {
   color: #666;
 }
 
+/* Seção Vozes */
+.voices-section {
+  background: url('assets/images/bg-parallax-vozes.webp') center/cover fixed;
+  padding: 80px 0;
+}
+
+.voices-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.voice-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.voice-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  background: rgba(255,255,255,1);
+}
+
+.voice-photo {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--accent-color);
+  padding: 4px;
+  background: #fffce7;
+  margin-bottom: 15px;
+}
+
+.voice-info h3 {
+  font-family: var(--font-secondary);
+  color: var(--secondary-color);
+  font-size: 1.3em;
+  margin-bottom: 10px 0 5px;
+}
+
+.voice-info p {
+  font-size: 1em;
+  color: #5b4931;
+  margin: 5px 0;
+  text-align: center;
+}
+
+.voice-quote {
+  font-style: italic;
+  font-size: 0.95em;
+  color: #86765b;
+  margin-top: 10px;
+}
+
+.voice-social {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 1em;
+  text-decoration: none;
+  color: #d99a23;
+  transition: color 0.3s;
+}
+
+.voice-social:hover {
+  color: #b87c00;
+}
+
+/* Classes utilitárias para acessibilidade */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Responsividade */
 @media (max-width: 992px) {
   .hero-content {
@@ -1372,9 +1463,8 @@ body {
     font-size: 1rem;
   }
 
-  /* Responsividade */
   .voices-section {
-    background: url('assets/images/fundo-parallax--sementes.jpg') no-repeat fixed center center / background-size: cover;
+    background: url('assets/images/fundo-parallax--sementes.jpg') no-repeat fixed center center / cover;
     padding: 80px 20px;
     position: relative;
     z-index: 1;
@@ -1389,120 +1479,13 @@ body {
   }
 
   .voices-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-  }
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+ }
 
   .voice-card {
-    background: #fff;
-    border-radius: 16px;
-    padding: 20px;
-    max-width: 300px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .voice-card:hover {
-    transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    background: rgba(255,255,255,0.95);
-  }
-
-  .voice-photo {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    border:3px solid #ffd700;
-    padding: 4px;
-    background: #fffce7;
-    margin-bottom: 15px;
-  }
-
-  .voice-info h3 {
-    font-family: 'Comic Neue', cursive;
-    color: #4a3d2a;
-    font-size: 1.3em;
-    margin-bottom: 10px 0 5px;
-  }
-
-  .voice-info p {
-    font-size: 1em;
-    color: #5b4931;
-    margin: 5px 0;
-    text-align: center;
-  }
-
-  .voice-quote {
-    font-style: italic;
-    font-size: 0.95em;
-    color: #86765b;
-    margin-top: 10px;
-  }
-
-  .voice-social {
-    display: inline-block;
-    margin-top: 10px;
-    font-size: 1em;
-    text-decoration: none;
-    color: #d99a23;
-    transition: color 0.3s;
-    position: relative;
-  }
-
-  .voice-social::after {
-    content: attr(title);
-    position: absolute;
-    background: #222;
-    color: #fff;
-    padding: 4px 8px;
-    font-size: 0.9em;
-    border-radius: 6px;
-    top: -36px;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    white-space: nowrap;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-
-  .voice-social:hover::after {
-    opacity: 1;
-    content: attr(title);
-    display: block;
-    font-size: 0.9em;
-    margin-top: 2px;
-    color: #888;
-  }
- 
-  .voice-social:hover {
-    color: #b87c00;
-  }
-
-  .parallax-section {
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
-    z-index: 1;
-  }
-      
-  .parallax-section::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(255,255,255,0.85);
-    z-index: -1;
-  }
+    max-width: 100%;
+ }  
 
   [data-animate] {
     opacity: 0;
@@ -1517,7 +1500,8 @@ body {
 }
 <style>
 
-<!-- Script.js -->
+// script.js
+        
 // Função principal que é executada quando o DOM está carregado
 document.addEventListener('DOMContentLoaded', function() {
   initMobileMenu();
@@ -1573,6 +1557,7 @@ function initSmoothScroll() {
 function initParallax() {
   const heroSection = document.querySelector('.hero');
   const layers = document.querySelectorAll('.parallax-layer');
+  const parallaxSections = document.querySelectorAll(".parallax-section");
   
   if (heroSection && layers.length) {
     window.addEventListener('scroll', function() {
@@ -1588,6 +1573,16 @@ function initParallax() {
       }
     });
   }
+}
+
+// Parallax simples com data-speed para outras seções
+  window.addEventListener("scroll", function () {
+    const scrollY = window.scrollY;
+    parallaxSections.forEach(section => {
+      const speed = section.getAttribute("data-speed") || 0.5;
+      section.style.backgroundPositionY = `${-scrollY * speed}px`;
+    });
+  });
 }
 
 // Player de Áudio
@@ -1608,13 +1603,13 @@ function initAudioPlayer() {
     playPromise
       .then(_ => {
         isPlaying = true;
-        toggleBtn.innerHTML = '<span class="audio-icon-btn">⏸️</span>';
+        toggleBtn.innerHTML = '<span class="audio-icon-btn" aria-hidden="true">⏸️</span>';
         audioPlayer.muted = false;
       })
       .catch(error => {
         console.log("Autoplay não permitido:", error);
         isPlaying = false;
-        toggleBtn.innerHTML = '<span class="audio-icon-btn">▶️</span>';
+        toggleBtn.innerHTML = '<span class="audio-icon-btn" aria-hidden="true">▶️</span>';
       });
   }
   
@@ -1622,11 +1617,11 @@ function initAudioPlayer() {
   toggleBtn.addEventListener('click', function() {
     if (isPlaying) {
       audioPlayer.pause();
-      toggleBtn.innerHTML = '<span class="audio-icon-btn">▶️</span>';
+      toggleBtn.innerHTML = '<span class="audio-icon-btn" aria-hidden="true">▶️</span>';
     } else {
       audioPlayer.play()
         .then(_ => {
-          toggleBtn.innerHTML = '<span class="audio-icon-btn">⏸️</span>';
+          toggleBtn.innerHTML = '<span class="audio-icon-btn" aria-hidden="true">⏸️</span>';
         })
         .catch(error => {
           console.log("Reprodução não permitida:", error);
@@ -1651,23 +1646,9 @@ function initAudioPlayer() {
     }, 500);
   }
 }
-
-// Voices - Vozes que encantam
-// Parallax simples com data-speed
-  document.addEventListener("scroll", function () {
-    const parallaxSections = document.querySelectorAll(".parallax-section");
-    const scrollY = window.scrollY;
-
-    parallaxSections.forEach(section => {
-      const speed = section.getAttribute("data-speed") || 0.5;
-      section.style.backgroundPositionY = `${-scrollY * speed}px`;
-    });
-  });
-        
+   
 // Quiz Interativo
-function initQuiz() {
-  const quizOptions = document.querySelectorAll('.quiz-option');
-  const quizData = {
+const quizData = {
     mostardinha: {
       image: "assets/images/Mostardinha(2).png",
       name: "Mostardinha",
@@ -1690,6 +1671,8 @@ function initQuiz() {
     }
   };
 
+  function initQuiz() {
+  const quizOptions = document.querySelectorAll('.quiz-option');
   if (quizOptions.length) {
     quizOptions.forEach(option => {
       option.addEventListener('click', function() {
@@ -1709,6 +1692,7 @@ function showQuizResult(character) {
   
   if (resultDiv && questionDiv) {
     document.getElementById('resultImage').src = result.image;
+    document.getElementById('resultImage').alt = result.name;
     document.getElementById('resultName').textContent = `Você é ${result.name}!`;
     document.getElementById('resultDescription').textContent = result.description;
     
@@ -1743,7 +1727,8 @@ function restartQuiz() {
 
 function sendCharacterMessage() {
   const email = document.getElementById('quizEmail').value;
-  if (email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (email && emailRegex.test(email)) {
     alert(`Obrigado! Uma mensagem especial será enviada para ${email}`);
     document.getElementById('quizEmail').value = '';
   } else {
@@ -1758,14 +1743,21 @@ function initNewsletter() {
   if (newsletterForm) {
     newsletterForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      const email = document.getElementById('userEmail').value;
-      const name = document.getElementById('userName').value;
+      const email = document.getElementById('userEmail').value.trim();
+      const name = document.getElementById('userName').value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       
-      if (email && name) {
+      if (email && name && emailRegex.test(email)) {
         alert(`Obrigado, ${name}! Você foi inscrito com o e-mail ${email}`);
         newsletterForm.reset();
+      // Exemplo de feedback visual (opcional)
+        // const feedback = document.createElement('p');
+        // feedback.textContent = `Obrigado, ${name}!`;
+        // feedback.style.color = 'green';
+        // newsletterForm.appendChild(feedback);
+        // setTimeout(() => feedback.remove(), 3000);
       } else {
-        alert('Por favor, preencha todos os campos');
+        alert('Por favor, preencha todos os campos com dados válidos');
       }
     });
   }
@@ -1809,7 +1801,7 @@ function createFallingElements() {
 
 // Observador de Interseção para Animações
 function initIntersectionObserver() {
-  const animatedEls = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right');
+  const animatedEls = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .voice-card');
   
   if (animatedEls.length) {
     const observer = new IntersectionObserver((entries) => {
@@ -1829,13 +1821,25 @@ function initIntersectionObserver() {
 
 // Aplicar Cupom (exemplo)
 function applyCoupon() {
-  const couponCode = document.getElementById('couponInput').value;
+  const couponCode = document.getElementById('couponInput').value.trim();
   if (couponCode) {
     alert(`Cupom ${couponCode} aplicado com sucesso!`);
+    document.getElementById('couponInput').value = '';
   } else {
     alert('Por favor, insira um código de cupom');
   }
-}        
+}
+
+// Aplicar Voucher (exemplo)
+function applyVoucher() {
+    const voucherCode = document.getElementById('voucherInput').value.trim();
+    if (voucherCode) {
+        alert(`Voucher ${voucherCode} aplicado com sucesso!`);
+        document.getElementById('voucherInput').value = '';
+    } else {
+        alert('Por favor, insira um código de voucher');
+    }
+}
 </body>
 </html>
 
