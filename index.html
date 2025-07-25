@@ -920,6 +920,14 @@
     <!-- JavaScript -->
     <script src="script.js"></script>
 
+    <!-- Botão Scroll-to-Top (Voltar ao Topo) -->
+<button id="scrollTopBtn" class="scroll-top-btn" aria-label="Voltar ao topo da página">
+  <span class="scroll-top-icon" aria-hidden="true">↑</span>
+</button>
+}
+</body>
+</html>
+
     <!-- Style.css -->
     <style>
 :root {
@@ -980,8 +988,10 @@ body {
 }
 
 .secao-jornada {
-  background-color: #fff;
+  background-color: #fefcf8;
   padding: 60px 20px;
+  padding-top: 60px;
+  padding-bottom: 60px;
   transition: background-color 0.4s ease;
 }
 
@@ -1272,6 +1282,12 @@ body {
 }
 
 /* Cards de Personagens */
+.characters-section {
+  background-color: #fdfbf5;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+    
 .characters-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -1321,6 +1337,13 @@ body {
 .character-quote {
   font-style: italic;
   color: #666;
+}
+
+/* Seção Músicas */
+.music-section {
+  background-color: #f9fcfd;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 /* Seção Vozes */
@@ -1413,6 +1436,48 @@ body {
 
 .voice-social:hover {
   color: #b87c00;
+}
+
+/* Seção Temática (A ILHA SÓ MOSTRA OS CAMINHOS) */
+.wisdom-section {
+  background-color: #faf8f0; 
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Seção Quiz */
+.quiz-section {
+  background-color: #fbfdfa; /* Verde muito, muito claro */
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Seção Newsletter */
+.newsletter-section {
+  background-color: #fffaf7; /* Laranja muito, muito claro */
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Seção Sobre o Autor */
+.author-section {
+  background-color: #f8f7f4; /* Um cinza/bege bem claro */
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Seção Sobre a Editora */
+.publisher-section {
+  background-color: #f5f7f8; /* Azul/cinza muito claro */
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Seção Comprar Final */
+.final-purchase-section {
+  background-color: #fefbf6; /* Um bege claro, talvez igual ao light-bg mas com leve variação */
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 /* Estilos para a Seção Bastidores */
@@ -1630,6 +1695,51 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* --- Botão Scroll-to-Top --- */
+
+/* Estilo base do botão */
+.scroll-top-btn {
+  position: fixed; /* Fica fixo na tela */
+  bottom: 20px; /* Distância da parte inferior */
+  right: 20px; /* Distância da lateral direita */
+  width: 50px; /* Largura do botão */
+  height: 50px; /* Altura do botão */
+  background-color: var(--secondary-color); /* Cor de fundo (marrom) */
+  color: white; /* Cor do ícone */
+  border: none; /* Sem borda */
+  border-radius: 50%; /* Formato circular */
+  cursor: pointer; /* Muda o cursor para indicar que é clicável */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
+  font-size: 1.5rem; /* Tamanho do ícone */
+  display: flex; /* Usa flexbox para centralizar o ícone */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  opacity: 0; /* Inicialmente invisível */
+  visibility: hidden; /* Inicialmente escondido */
+  transform: translateY(20px); /* Começa um pouco abaixo */
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.3s ease; /* Transições suaves */
+  z-index: 999; /* Fica acima de outros elementos */
+}
+
+/* Estilo do botão quando está visível */
+.scroll-top-btn.show {
+  opacity: 1; /* Torna visível */
+  visibility: visible; /* Torna visível */
+  transform: translateY(0); /* Volta à posição normal */
+}
+
+/* Efeito hover do botão */
+.scroll-top-btn:hover {
+  background-color: #3a2f1f; /* Cor de fundo mais escura no hover */
+  transform: translateY(-3px); /* Sobe levemente ao passar o mouse */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Sombra mais forte no hover */
+}
+
+/* Estilo do ícone dentro do botão */
+.scroll-top-icon {
+  display: block;
+  line-height: 1; /* Ajusta o alinhamento da linha */
 }
 <style>
 
@@ -1647,6 +1757,12 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Observador para animações de entrada
   initIntersectionObserver();
+
+ // Observador para animações de entrada
+  initIntersectionObserver();
+
+// --- ACRESCENTAR esta linha para inicializar o botão scroll-to-top ---
+  initScrollTopButton(); 
 });
 
 // Menu Mobile
@@ -1973,6 +2089,40 @@ function applyVoucher() {
         alert('Por favor, insira um código de voucher');
     }
 }
-</body>
-</html>
+
+// --- Função para o Botão Scroll-to-Top ---
+
+/* Inicializa o botão de "Voltar ao Topo" */
+function initScrollTopButton() {
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+  // Verifica se o botão existe no HTML
+  if (!scrollTopBtn) {
+    console.warn("Botão de scroll-to-top não encontrado no HTML.");
+    return;
+  }
+
+  // Função para verificar a posição da página e mostrar/esconder o botão
+  function toggleScrollButton() {
+    // Se a página for rolada mais de 300px para baixo
+    if (window.scrollY > 300) {
+      scrollTopBtn.classList.add("show"); // Adiciona a classe 'show' -> botão aparece
+    } else {
+      scrollTopBtn.classList.remove("show"); // Remove a classe 'show' -> botão desaparece
+    }
+  }
+
+  // Adiciona um "ouvinte de evento" para quando a página for rolada
+  window.addEventListener("scroll", toggleScrollButton);
+
+  // Adiciona um "ouvinte de evento" para quando o botão for clicado
+  scrollTopBtn.addEventListener("click", function () {
+    // Rola suavemente até o topo da página (body ou html)
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth" // Comportamento suave
+    });
+  });
+}
+
 
