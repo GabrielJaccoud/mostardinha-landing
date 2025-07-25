@@ -1,0 +1,380 @@
+// script.js
+        
+// Função principal que é executada quando o DOM está carregado
+document.addEventListener('DOMContentLoaded', function() {
+  initMobileMenu();
+  initSmoothScroll();
+  initParallax();
+  initAudioPlayer();
+  initQuiz();
+  initNewsletter();
+  createFallingElements();
+  
+  // Observador para animações de entrada
+  initIntersectionObserver();
+
+ // Observador para animações de entrada
+  initIntersectionObserver();
+
+// --- ACRESCENTAR esta linha para inicializar o botão scroll-to-top ---
+  initScrollTopButton(); 
+});
+
+// Menu Mobile
+function initMobileMenu() {
+  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+  const navMenu = document.querySelector('.nav-menu');
+  
+  if (mobileMenuToggle && navMenu) {
+    mobileMenuToggle.addEventListener('click', function() {
+      this.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+  }
+}
+
+// Rolagem suave para links internos
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth'
+        });
+        
+        // Fechar menu mobile se estiver aberto
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        if (mobileMenuToggle && mobileMenuToggle.classList.contains('active')) {
+          mobileMenuToggle.classList.remove('active');
+          document.querySelector('.nav-menu').classList.remove('active');
+        }
+      }
+    });
+  });
+}
+
+// Efeito Parallax
+function initParallax() {
+  const heroSection = document.querySelector('.hero');
+  const layers = document.querySelectorAll('.parallax-layer');
+  const parallaxSections = document.querySelectorAll(".parallax-section");
+  
+  if (heroSection && layers.length) {
+    window.addEventListener('scroll', function() {
+      const scrollPosition = window.pageYOffset;
+      const heroHeight = heroSection.offsetHeight;
+      
+      if (scrollPosition <= heroHeight) {
+        layers.forEach(layer => {
+          const speed = layer.getAttribute('data-speed') || 0.3;
+          const yPos = -(scrollPosition * speed);
+          layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
+        });
+      }
+    });
+  }
+}
+
+// Parallax simples com data-speed para outras seções
+  window.addEventListener("scroll", function () {
+    const scrollY = window.scrollY;
+    parallaxSections.forEach(section => {
+      const speed = section.getAttribute("data-speed") || 0.5;
+      section.style.backgroundPositionY = `${-scrollY * speed}px`;
+    });
+  });
+}
+
+// Player de Áudio
+function initAudioPlayer() {
+  const audioPlayer = document.getElementById('backgroundAudioFixed');
+  const toggleBtn = document.getElementById('audioToggleFixed');
+  const volumeSlider = document.getElementById('volumeSlider');
+  
+  if (!audioPlayer || !toggleBtn || !volumeSlider) return;
+
+  let isPlaying = false;
+  
+  // Tentar reproduzir automaticamente (mudo inicialmente para contornar restrições)
+  audioPlayer.muted = true;
+  const playPromise = audioPlayer.play();
+  
+  if (playPromise !== undefined) {
+    playPromise
+      .then(_ => {
+        isPlaying = true;
+        toggleBtn.innerHTML = '<span class="audio-icon-btn" aria-hidden="true">⏸️</span>';
+        audioPlayer.muted = false;
+      })
+      .catch(error => {
+        console.log("Autoplay não permitido:", error);
+        isPlaying = false;
+        toggleBtn.innerHTML = '<span class="audio-icon-btn" aria-hidden="true">▶️</span>';
+      });
+  }
+  
+  // Botão de play/pause
+  toggleBtn.addEventListener('click', function() {
+    if (isPlaying) {
+      audioPlayer.pause();
+      toggleBtn.innerHTML = '<span class="audio-icon-btn" aria-hidden="true">▶️</span>';
+    } else {
+      audioPlayer.play()
+        .then(_ => {
+          toggleBtn.innerHTML = '<span class="audio-icon-btn" aria-hidden="true">⏸️</span>';
+        })
+        .catch(error => {
+          console.log("Reprodução não permitida:", error);
+          // Mostrar mensagem para o usuário interagir primeiro
+        });
+    }
+    isPlaying = !isPlaying;
+  });
+  
+  // Controle de volume
+  volumeSlider.addEventListener('input', function() {
+    audioPlayer.volume = this.value / 100;
+  });
+  
+  // Animação do ícone de música
+  const audioIcon = document.querySelector('.audio-icon-animated');
+  if (audioIcon) {
+    setInterval(() => {
+      if (isPlaying) {
+        audioIcon.textContent = audioIcon.textContent === '🎵' ? '🎶' : '🎵';
+      }
+    }, 500);
+  }
+}
+   
+// Quiz Interativo
+const quizData = {
+    mostardinha: {
+      image: "assets/images/Mostardinha(2).png",
+      name: "Mostardinha",
+      description: "Você é cheio de amor e sabedoria! Assim como o Mostardinha, você tem um coração grande e acredita no poder das pequenas coisas para fazer a diferença. Sua gentileza e empatia são suas maiores forças."
+    },
+    maionese: {
+      image: "assets/images/MAIONESE.png",
+      name: "Maionese",
+      description: "Você é romântico e dedicado! Como a Maionese, você acredita no poder do amor e está sempre disposto a aprender e crescer com os outros."
+    },
+    salsinha: {
+      image: "assets/images/salsinha(2).png",
+      name: "Salsinha",
+      description: "Você é divertido e animado! Como a Salsinha, você traz alegria para qualquer situação e sabe como fazer os outros rirem, mesmo nos momentos difíceis."
+    },
+    alho: {
+      image: "assets/images/alho(2).png",
+      name: "Velho Alho",
+      description: "Você é sábio e experiente! Como o Velho Alho, você tem conselhos valiosos para compartilhar e acredita no poder de fazer o bem."
+    }
+  };
+
+  function initQuiz() {
+  const quizOptions = document.querySelectorAll('.quiz-option');
+  if (quizOptions.length) {
+    quizOptions.forEach(option => {
+      option.addEventListener('click', function() {
+        const character = this.getAttribute('data-character');
+        showQuizResult(character);
+      });
+    });
+  }
+}
+
+function showQuizResult(character) {
+  const result = quizData[character];
+  if (!result) return;
+
+  const resultDiv = document.getElementById('quizResult');
+  const questionDiv = document.getElementById('quizQuestion');
+  
+  if (resultDiv && questionDiv) {
+    document.getElementById('resultImage').src = result.image;
+    document.getElementById('resultImage').alt = result.name;
+    document.getElementById('resultName').textContent = `Você é ${result.name}!`;
+    document.getElementById('resultDescription').textContent = result.description;
+    
+    questionDiv.style.display = 'none';
+    resultDiv.style.display = 'block';
+    resultDiv.style.animation = 'fadeInUp 0.8s ease-out';
+    
+    // Efeito de confete
+    if (typeof confetti === 'function') {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }
+    
+    // Rolagem suave para o resultado
+    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
+function restartQuiz() {
+  const resultDiv = document.getElementById('quizResult');
+  const questionDiv = document.getElementById('quizQuestion');
+  
+  if (resultDiv && questionDiv) {
+    resultDiv.style.display = 'none';
+    questionDiv.style.display = 'block';
+    questionDiv.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function sendCharacterMessage() {
+  const email = document.getElementById('quizEmail').value;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (email && emailRegex.test(email)) {
+    alert(`Obrigado! Uma mensagem especial será enviada para ${email}`);
+    document.getElementById('quizEmail').value = '';
+  } else {
+    alert('Por favor, insira seu e-mail');
+  }
+}
+
+// Newsletter
+function initNewsletter() {
+  const newsletterForm = document.getElementById('newsletterForm');
+  
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('userEmail').value.trim();
+      const name = document.getElementById('userName').value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+      if (email && name && emailRegex.test(email)) {
+        alert(`Obrigado, ${name}! Você foi inscrito com o e-mail ${email}`);
+        newsletterForm.reset();
+      // Exemplo de feedback visual (opcional)
+        // const feedback = document.createElement('p');
+        // feedback.textContent = `Obrigado, ${name}!`;
+        // feedback.style.color = 'green';
+        // newsletterForm.appendChild(feedback);
+        // setTimeout(() => feedback.remove(), 3000);
+      } else {
+        alert('Por favor, preencha todos os campos com dados válidos');
+      }
+    });
+  }
+}
+
+// Elementos Flutuantes que Caem
+function createFallingElements() {
+  const container = document.querySelector('.hero');
+  if (!container) return;
+  
+  const elements = ['🌱', '🎵', '✨', '🌿', '🎶', '⭐'];
+  
+  function createElement() {
+    // Limitar quantidade para performance
+    if (document.querySelectorAll('.falling-element').length > 15) return;
+    
+    const element = document.createElement('div');
+    element.textContent = elements[Math.floor(Math.random() * elements.length)];
+    element.classList.add('falling-element');
+    
+    const containerWidth = container.offsetWidth;
+    const leftPos = Math.random() * (containerWidth - 30);
+    
+    element.style.left = `${leftPos}px`;
+    element.style.top = '-30px';
+    element.style.opacity = Math.random() * 0.5 + 0.5;
+    element.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
+    element.style.animationDuration = `${Math.random() * 3 + 2}s`;
+    
+    container.appendChild(element);
+    
+    // Remover após animação
+    setTimeout(() => {
+      element.remove();
+    }, 5000);
+  }
+  
+  // Iniciar com intervalo aleatório
+  setInterval(createElement, Math.random() * 500 + 300);
+}
+
+// Observador de Interseção para Animações
+function initIntersectionObserver() {
+  const animatedEls = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .voice-card');
+  
+  if (animatedEls.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    
+    animatedEls.forEach(el => observer.observe(el));
+  }
+}
+
+// Aplicar Cupom (exemplo)
+function applyCoupon() {
+  const couponCode = document.getElementById('couponInput').value.trim();
+  if (couponCode) {
+    alert(`Cupom ${couponCode} aplicado com sucesso!`);
+    document.getElementById('couponInput').value = '';
+  } else {
+    alert('Por favor, insira um código de cupom');
+  }
+}
+
+// Aplicar Voucher (exemplo)
+function applyVoucher() {
+    const voucherCode = document.getElementById('voucherInput').value.trim();
+    if (voucherCode) {
+        alert(`Voucher ${voucherCode} aplicado com sucesso!`);
+        document.getElementById('voucherInput').value = '';
+    } else {
+        alert('Por favor, insira um código de voucher');
+    }
+}
+
+// --- Função para o Botão Scroll-to-Top ---
+
+/* Inicializa o botão de "Voltar ao Topo" */
+function initScrollTopButton() {
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+  // Verifica se o botão existe no HTML
+  if (!scrollTopBtn) {
+    console.warn("Botão de scroll-to-top não encontrado no HTML.");
+    return;
+  }
+
+  // Função para verificar a posição da página e mostrar/esconder o botão
+  function toggleScrollButton() {
+    // Se a página for rolada mais de 300px para baixo
+    if (window.scrollY > 300) {
+      scrollTopBtn.classList.add("show"); // Adiciona a classe 'show' -> botão aparece
+    } else {
+      scrollTopBtn.classList.remove("show"); // Remove a classe 'show' -> botão desaparece
+    }
+  }
+
+  // Adiciona um "ouvinte de evento" para quando a página for rolada
+  window.addEventListener("scroll", toggleScrollButton);
+
+  // Adiciona um "ouvinte de evento" para quando o botão for clicado
+  scrollTopBtn.addEventListener("click", function () {
+    // Rola suavemente até o topo da página (body ou html)
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth" // Comportamento suave
+    });
+  });
