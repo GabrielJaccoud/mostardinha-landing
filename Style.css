@@ -424,7 +424,9 @@ body {
 .character-quote {
   font-style: italic;
   color: #666;
-  p { 
+  .sequence-item p, /* Parágrafos da jornada */
+p:not(.hero-title):not(.hero-subtitle):not(.section-title):not(.section-subtitle) /* Um seletor mais genérico, mas cuidado com a especificidade */
+{ 
   font-weight: var(--font-weight-regular);
 }
 
