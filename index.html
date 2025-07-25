@@ -766,7 +766,7 @@
     </section>
 
     <!-- Seção Sobre a Editora -->
-    <section id="editora-humanizar" class="publisher-section" style="text-align: center; padding: 40px 20px;">
+    <section id="editora-humanizar" class="publisher-section parallax-section" data-speed="0.3" style="text-align: center; padding: 40px 20px;">
         <div class="container">
             <img src="assets/images/humanizar-logo.png" alt="Logo da Editora Humanizar" class="publisher-logo" style="max-width: 200px; margin-bottom: 15px;">
             <p style="font-size: 1.1em; color: #444;">
@@ -1517,13 +1517,15 @@ body {
 /* Redução de tamanho das logos */
 .publisher-logo,
 .channel-logo {
-  max-width: 150px; /* Define um tamanho máximo menor */
+  max-width: 200px; /* Define um tamanho máximo menor */
   height: auto; /* Mantém a proporção da imagem */
   margin-bottom: 20px; /* Adiciona espaço abaixo da logo */
   /* Se quiser centralizar dentro de seus containers */
   display: block;
   margin-left: auto;
   margin-right: auto;
+  position: relative; /* Garante posicionamento correto */
+  z-index: 1;
 }
 
 /* Classes utilitárias para acessibilidade */
