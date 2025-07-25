@@ -24,7 +24,7 @@
     <link rel="icon" type="image/png" href="assets/images/Mostardinha(2).png">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="style.css">
    
      <!-- Pré-carregamento -->
   <link rel="preload" href="assets/temamostardinha.wav" as="audio">
@@ -918,7 +918,7 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 
     <!-- JavaScript -->
-    <script src="Script.js"></script>
+    <script src="script.js"></script>
 
     <!-- Botão Scroll-to-Top (Voltar ao Topo) -->
     <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Voltar ao topo da página">
@@ -926,6 +926,1229 @@
     </button>
 }
 </head>
+
+<!-- Style.css -->
+<style>
+:root {
+  --primary-color: #fdfbf5;
+  --secondary-color: #f5f7f0;
+  --accent-color: #fffaf3;
+  --text-color: #333;
+  --light-bg: #fffaf3;
+  --dark-bg: #2c3e50;
+  --font-main: 'Fredoka', sans-serif;
+  --font-secondary: 'Comic Neue', cursive;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --img-ratio: 3/4;  
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Seção Hero */
+.hero {
+  position: relative;
+  height: auto;
+  min-height: 80vh;
+  padding: 100px 0 60px 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(74, 61, 42, 0.05);
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.secao-hero {
+  background-color: #fefaf4;
+  padding: 60px 20px;
+  transition: background-color 0.4s ease;
+}
+
+.secao-jornada {
+  background-color: #fff;
+  padding: 60px 20px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  transition: background-color 0.4s ease;
+}
+
+.story-section {
+  background-color: #fefcf8; /* Um bege bem claro */
+  padding-top: 60px;
+  padding-bottom: 60px;
+  transition: background-color 0.4s ease;
+  border-bottom: 1px solid rgba(74, 61, 42, 0.05);
+}
+
+.parallax-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+
+.parallax-sky {
+  background-color: #87CEEB;
+  z-index: 1;
+}
+
+.parallax-clouds2 {
+  background-image: url('assets/images/clouds2.png');
+  z-index: 2;
+  animation: cloudMove 80s linear infinite;
+  opacity: 0.8;
+  background-size:cover;
+  background-position: center top;
+  background-repeat: no-repeat;  
+  width: 80%;
+  max-width: 300px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+.parallax-mountains {
+  background-image: url('assets/images/mountains.png');
+  z-index: 3;
+  opacity: 0.9;
+  background-size: 110% auto;
+}
+
+@keyframes cloudMove {
+  from { background-position: 0 0; }
+  to { background-position: -1000px 0; }
+}
+
+/* Elementos Flutuantes */
+.floating-elements div {
+  position: absolute;
+  animation: float 6s ease-in-out infinite;
+  font-size: 1.5rem;
+  opacity: 0.8;
+  z-index: 10;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.star-1 { top: 10%; left: 5%; animation-delay: 0s; }
+.star-2 { top: 25%; right: 10%; animation-delay: 1s; }
+.star-3 { bottom: 15%; left: 15%; animation-delay: 2s; }
+.balloon-1 { top: 20%; right: 15%; animation-delay: 0.5s; }
+.balloon-2 { bottom: 20%; right: 20%; animation-delay: 1.5s; }
+.note-1 { top: 40%; left: 10%; animation-delay: 0.7s; }
+.note-2 { bottom: 30%; right: 10%; animation-delay: 1.2s; }
+.note-3 { top: 15%; left: 30%; animation-delay: 0.3s; }
+
+/* Animações de Entrada */
+.fade-in-up, .fade-in-left, .fade-in-right {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-up {
+  transform: translateY(30px);
+}
+
+.fade-in-left {
+  transform: translateX(-30px);
+}
+
+.fade-in-right {
+  transform: translateX(30px);
+}
+
+.fade-in-up.animate, 
+.fade-in-left.animate, 
+.fade-in-right.animate {
+  opacity: 1;
+  transform: translate(0);
+}
+
+/* Elementos que Caem */
+.falling-element {
+  position: absolute;
+  font-size: 1.2rem;
+  animation: fall linear forwards;
+  z-index: 5;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(calc(100vh + 30px)) rotate(360deg);
+  }
+}
+
+/* Menu Fixo */
+.fixed-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  min-height: 70px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.nav-logo-img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  padding: 8px 12px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
+
+.nav-cta {
+  margin-left: 15px; 
+}
+
+.nav-cta .btn-primary.btn-small {
+  padding: 8px 16px; 
+  font-size: 0.9rem; 
+}
+
+/* Player de Áudio Fixo */
+.audio-player-fixed {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50px;
+  padding: 10px 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.audio-player-content {
+  display: flex;
+  align-items: center;
+}
+
+.audio-info {
+  margin-right: 15px;
+}
+
+.audio-icon-animated {
+  margin-right: 5px;
+}
+
+.audio-controls {
+  display: flex;
+  align-items: center;
+}
+
+.volume-control {
+  margin-left: 10px;
+}
+
+.volume-slider {
+  width: 80px;
+}
+
+/* Botões */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #d29a1d;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #3a2f1f;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-large {
+  padding: 15px 30px;
+  font-size: 1.1rem;
+}
+
+.btn-small {
+  padding: 8px 15px;
+  font-size: 0.9rem;
+}
+
+.btn-icon {
+  margin-right: 8px;
+}
+
+/* Seções */
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-family: var(--font-secondary);
+  font-size: 2.5rem;
+  color: var(--secondary-color);
+  margin-bottom: 15px;
+  font-weight: var(--font-weight-bold);
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: #6c5b3d;
+  font-weight: var(--font-weight-regular);
+}
+
+/* Cards de Personagens */
+.characters-section {
+  background-color: var(--primary-color);
+  padding-top: 80px;
+  padding-bottom: 80px;
+  border-bottom: 1px solid rgba(74, 61, 42, 0.05);
+}
+    
+.characters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.character-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.character-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.character-image {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+}
+
+.character-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: var(--img-ratio);
+  object-fit: contain;
+}
+
+.character-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.character-info h3 {
+  margin-bottom: 10px;
+  color: var(--secondary-color);
+  font-weight: var(--font-weight-semibold);
+}
+
+.character-quote {
+  font-style: italic;
+  color: #666;
+  .sequence-item p, /* Parágrafos da jornada */
+p:not(.hero-title):not(.hero-subtitle):not(.section-title):not(.section-subtitle) /* Um seletor mais genérico, mas cuidado com a especificidade */
+{ 
+  font-weight: var(--font-weight-regular);
+}
+
+/* Seção Músicas */
+.music-section {
+  background-color: var(--secondary-color);
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.music-card h3 {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Seção Vozes */
+.voices-section {
+  background: url('assets/images/bg-parallax-vozes.webp') center/cover fixed;
+  padding: 80px 0;
+}
+
+.voices-section::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: rgba(255, 255, 255, 0.85); 
+  z-index: 1;
+}
+        
+.voices-section > .container {
+  position: relative;
+  z-index: 2;
+}
+
+.voices-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.voice-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.voice-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  background: rgba(255,255,255,1);
+}
+
+.voice-photo {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--accent-color);
+  padding: 4px;
+  background: #fffce7;
+  margin-bottom: 15px;
+}
+
+.voice-info h3 {
+  font-family: var(--font-secondary);
+  color: var(--secondary-color);
+  font-size: 1.3em;
+  margin-bottom: 10px 0 5px;
+  font-weight: var(--font-weight-semibold);
+}
+
+.voice-info p {
+  font-size: 1em;
+  color: #5b4931;
+  margin: 5px 0;
+  text-align: center;
+}
+
+.voice-quote {
+  font-style: italic;
+  font-size: 0.95em;
+  color: #86765b;
+  margin-top: 10px;
+}
+
+.voice-social {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 1em;
+  text-decoration: none;
+  color: #d99a23;
+  transition: color 0.3s;
+}
+
+.voice-social:hover {
+  color: #b87c00;
+}
+
+/* Seção Temática (A ILHA SÓ MOSTRA OS CAMINHOS) */
+.wisdom-section {
+  background-color: var(--accent-color); 
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Seção Quiz */
+.quiz-section {
+  background-color: #fbfdfa; /* Verde muito, muito claro */
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Seção Newsletter */
+.newsletter-section {
+  background-color: #fffaf7; /* Laranja muito, muito claro */
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Seção Sobre o Autor */
+.author-section {
+  background-color: #f8f7f4; /* Um cinza/bege bem claro */
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Seção Sobre a Editora */
+.publisher-section {
+  background-color: #f5f7f8; /* Azul/cinza muito claro */
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Seção Comprar Final */
+.final-purchase-section {
+  background-color: #fefbf6; /* Um bege claro, talvez igual ao light-bg mas com leve variação */
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Estilos para a Seção Bastidores */
+.behind-scenes {
+  background-color: var(--light-bg); /* Fundo claro */
+  padding: 60px 20px; /* Padding superior/inferior e lateral */
+  text-align: center; /* Centraliza o conteúdo */
+}
+
+.behind-content {
+  max-width: 800px; /* Limita a largura do conteúdo */
+  margin: 0 auto; /* Centraliza o container */
+}
+
+.behind-content h3 {
+  font-size: 1.8rem; /* Tamanho da fonte do título */
+  color: var(--secondary-color); /* Cor marrom */
+  margin-bottom: 15px; /* Espaço abaixo do título */
+}
+
+.behind-content p {
+  font-size: 1.1rem; /* Tamanho da fonte do texto */
+  margin-bottom: 25px; /* Espaço abaixo do texto */
+}
+
+.behind-content .btn-secondary {
+  /* Estilos do botão secundário já devem estar definidos */
+  font-size: 1.1rem; /* Ajusta o tamanho da fonte do botão se necessário */
+  padding: 12px 24px; /* Ajusta o padding do botão */
+
+/* Redução de tamanho das logos */
+.publisher-logo,
+.channel-logo {
+  max-width: 150px; /* Define um tamanho máximo menor */
+  height: auto; /* Mantém a proporção da imagem */
+  margin-bottom: 20px; /* Adiciona espaço abaixo da logo */
+  /* Se quiser centralizar dentro de seus containers */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Classes utilitárias para acessibilidade */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Estilos para a Seção Canal Mundo Ninus */
+.mundoninus-section {
+  background-color: #f0f8ff; /* Fundo azul claro */
+  padding: 60px 20px; /* Padding superior/inferior e lateral */
+  text-align: center; /* Centraliza o conteúdo */
+}
+
+.mundoninus-section .section-header {
+  /* Reutiliza estilos da section-header, mas pode ajustar */
+  margin-bottom: 30px; /* Menor margem inferior */
+}
+
+.channel-logo {
+  max-width: 150px; /* Reduz o tamanho máximo da logo */
+  height: auto; /* Mantém a proporção */
+  margin-bottom: 20px; /* Espaço abaixo da logo */
+}
+
+.mundoninus-section .section-title {
+  font-size: 2rem; /* Tamanho da fonte do título */
+  margin-bottom: 10px; /* Menor margem abaixo do título */
+}
+
+.mundoninus-section .section-subtitle {
+  font-size: 1.1rem; /* Tamanho da fonte do subtítulo */
+  margin-bottom: 25px; /* Espaço abaixo do subtítulo */
+}
+
+.mundoninus-section .btn-secondary.btn-small {
+  font-size: 1rem; /* Tamanho da fonte do botão */
+  padding: 10px 20px; /* Padding do botão */
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+  .hero-content {
+    flex-direction: column;
+  }
+  
+  .hero-text, .hero-image {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .floating-elements {
+    display: none;
+  }
+  
+  .character-card, .music-card {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    transition: left 0.3s ease;
+  }
+  
+  .nav-menu.active {
+    left: 0;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .mobile-menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--secondary-color);
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-menu-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  
+  .mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .mobile-menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+  
+  .sequence-item, .sequence-arrow {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .sequence-arrow {
+    transform: rotate(90deg);
+    margin: 10px 0;
+  }
+  
+  .character-card, .music-card {
+    width: 100%;
+  }
+  
+  .audio-player-fixed {
+    bottom: 70px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  .voices-section {
+    background: url('assets/images/fundo-parallax--sementes.jpg') no-repeat fixed center center / cover;
+    padding: 80px 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .voices-section::before {
+    content: "";
+    background: rgba(255, 255, 255, 0.85);
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1;
+  }
+
+  .voices-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+ }
+
+  .voice-card {
+    max-width: 100%;
+ }  
+
+  [data-animate] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease;
+  }
+      
+  [data-animate].in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* --- Botão Scroll-to-Top --- */
+
+/* Estilo base do botão */
+.scroll-top-btn {
+  position: fixed; /* Fica fixo na tela */
+  bottom: 20px; /* Distância da parte inferior */
+  right: 20px; /* Distância da lateral direita */
+  width: 50px; /* Largura do botão */
+  height: 50px; /* Altura do botão */
+  background-color: var(--secondary-color); /* Cor de fundo (marrom) */
+  color: white; /* Cor do ícone */
+  border: none; /* Sem borda */
+  border-radius: 50%; /* Formato circular */
+  cursor: pointer; /* Muda o cursor para indicar que é clicável */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
+  font-size: 1.5rem; /* Tamanho do ícone */
+  display: flex; /* Usa flexbox para centralizar o ícone */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  opacity: 0; /* Inicialmente invisível */
+  visibility: hidden; /* Inicialmente escondido */
+  transform: translateY(20px); /* Começa um pouco abaixo */
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.3s ease; /* Transições suaves */
+  z-index: 999; /* Fica acima de outros elementos */
+}
+
+/* Estilo do botão quando está visível */
+.scroll-top-btn.show {
+  opacity: 1; /* Torna visível */
+  visibility: visible; /* Torna visível */
+  transform: translateY(0); /* Volta à posição normal */
+}
+
+/* Efeito hover do botão */
+.scroll-top-btn:hover {
+  background-color: #3a2f1f; /* Cor de fundo mais escura no hover */
+  transform: translateY(-3px); /* Sobe levemente ao passar o mouse */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Sombra mais forte no hover */
+}
+
+/* Estilo do ícone dentro do botão */
+.scroll-top-icon {
+  display: block;
+  line-height: 1; /* Ajusta o alinhamento da linha */
+}
+<style>
+
+// script.js
+        
+// Função principal que é executada quando o DOM está carregado
+document.addEventListener('DOMContentLoaded', function() {
+  initMobileMenu();
+  initSmoothScroll();
+  initParallax();
+  initAudioPlayer();
+  initQuiz();
+  initNewsletter();
+  createFallingElements();
+  
+  // Observador para animações de entrada
+  initIntersectionObserver();
+
+ // Observador para animações de entrada
+  initIntersectionObserver();
+
+// --- ACRESCENTAR esta linha para inicializar o botão scroll-to-top ---
+  initScrollTopButton(); 
+});
+
+// Menu Mobile
+function initMobileMenu() {
+  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+  const navMenu = document.querySelector('.nav-menu');
+  
+  if (mobileMenuToggle && navMenu) {
+    mobileMenuToggle.addEventListener('click', function() {
+      this.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+  }
+}
+
+// Rolagem suave para links internos
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth'
+        });
+        
+        // Fechar menu mobile se estiver aberto
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        if (mobileMenuToggle && mobileMenuToggle.classList.contains('active')) {
+          mobileMenuToggle.classList.remove('active');
+          document.querySelector('.nav-menu').classList.remove('active');
+        }
+      }
+    });
+  });
+}
+
+// Efeito Parallax
+function initParallax() {
+  const heroSection = document.querySelector('.hero');
+  const layers = document.querySelectorAll('.parallax-layer');
+  const parallaxSections = document.querySelectorAll(".parallax-section");
+  
+  if (heroSection && layers.length) {
+    window.addEventListener('scroll', function() {
+      const scrollPosition = window.pageYOffset;
+      const heroHeight = heroSection.offsetHeight;
+      
+      if (scrollPosition <= heroHeight) {
+        layers.forEach(layer => {
+          const speed = layer.getAttribute('data-speed') || 0.3;
+          const yPos = -(scrollPosition * speed);
+          layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
+        });
+      }
+    });
+  }
+}
+
+// Parallax simples com data-speed para outras seções
+  window.addEventListener("scroll", function () {
+    const scrollY = window.scrollY;
+    parallaxSections.forEach(section => {
+      const speed = section.getAttribute("data-speed") || 0.5;
+      section.style.backgroundPositionY = `${-scrollY * speed}px`;
+    });
+  });
+}
+
+// Player de Áudio
+function initAudioPlayer() {
+  const audioPlayer = document.getElementById('backgroundAudioFixed');
+  const toggleBtn = document.getElementById('audioToggleFixed');
+  const volumeSlider = document.getElementById('volumeSlider');
+  
+  if (!audioPlayer || !toggleBtn || !volumeSlider) return;
+
+  let isPlaying = false;
+  
+  // Tentar reproduzir automaticamente (mudo inicialmente para contornar restrições)
+  audioPlayer.muted = true;
+  const playPromise = audioPlayer.play();
+  
+  if (playPromise !== undefined) {
+    playPromise
+      .then(_ => {
+        isPlaying = true;
+        toggleBtn.innerHTML = '<span class="audio-icon-btn" aria-hidden="true">⏸️</span>';
+        audioPlayer.muted = false;
+      })
+      .catch(error => {
+        console.log("Autoplay não permitido:", error);
+        isPlaying = false;
+        toggleBtn.innerHTML = '<span class="audio-icon-btn" aria-hidden="true">▶️</span>';
+      });
+  }
+  
+  // Botão de play/pause
+  toggleBtn.addEventListener('click', function() {
+    if (isPlaying) {
+      audioPlayer.pause();
+      toggleBtn.innerHTML = '<span class="audio-icon-btn" aria-hidden="true">▶️</span>';
+    } else {
+      audioPlayer.play()
+        .then(_ => {
+          toggleBtn.innerHTML = '<span class="audio-icon-btn" aria-hidden="true">⏸️</span>';
+        })
+        .catch(error => {
+          console.log("Reprodução não permitida:", error);
+          // Mostrar mensagem para o usuário interagir primeiro
+        });
+    }
+    isPlaying = !isPlaying;
+  });
+  
+  // Controle de volume
+  volumeSlider.addEventListener('input', function() {
+    audioPlayer.volume = this.value / 100;
+  });
+  
+  // Animação do ícone de música
+  const audioIcon = document.querySelector('.audio-icon-animated');
+  if (audioIcon) {
+    setInterval(() => {
+      if (isPlaying) {
+        audioIcon.textContent = audioIcon.textContent === '🎵' ? '🎶' : '🎵';
+      }
+    }, 500);
+  }
+}
+   
+// Quiz Interativo
+const quizData = {
+    mostardinha: {
+      image: "assets/images/Mostardinha(2).png",
+      name: "Mostardinha",
+      description: "Você é cheio de amor e sabedoria! Assim como o Mostardinha, você tem um coração grande e acredita no poder das pequenas coisas para fazer a diferença. Sua gentileza e empatia são suas maiores forças."
+    },
+    maionese: {
+      image: "assets/images/MAIONESE.png",
+      name: "Maionese",
+      description: "Você é romântico e dedicado! Como a Maionese, você acredita no poder do amor e está sempre disposto a aprender e crescer com os outros."
+    },
+    salsinha: {
+      image: "assets/images/salsinha(2).png",
+      name: "Salsinha",
+      description: "Você é divertido e animado! Como a Salsinha, você traz alegria para qualquer situação e sabe como fazer os outros rirem, mesmo nos momentos difíceis."
+    },
+    alho: {
+      image: "assets/images/alho(2).png",
+      name: "Velho Alho",
+      description: "Você é sábio e experiente! Como o Velho Alho, você tem conselhos valiosos para compartilhar e acredita no poder de fazer o bem."
+    }
+  };
+
+  function initQuiz() {
+  const quizOptions = document.querySelectorAll('.quiz-option');
+  if (quizOptions.length) {
+    quizOptions.forEach(option => {
+      option.addEventListener('click', function() {
+        const character = this.getAttribute('data-character');
+        showQuizResult(character);
+      });
+    });
+  }
+}
+
+function showQuizResult(character) {
+  const result = quizData[character];
+  if (!result) return;
+
+  const resultDiv = document.getElementById('quizResult');
+  const questionDiv = document.getElementById('quizQuestion');
+  
+  if (resultDiv && questionDiv) {
+    document.getElementById('resultImage').src = result.image;
+    document.getElementById('resultImage').alt = result.name;
+    document.getElementById('resultName').textContent = `Você é ${result.name}!`;
+    document.getElementById('resultDescription').textContent = result.description;
+    
+    questionDiv.style.display = 'none';
+    resultDiv.style.display = 'block';
+    resultDiv.style.animation = 'fadeInUp 0.8s ease-out';
+    
+    // Efeito de confete
+    if (typeof confetti === 'function') {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }
+    
+    // Rolagem suave para o resultado
+    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
+function restartQuiz() {
+  const resultDiv = document.getElementById('quizResult');
+  const questionDiv = document.getElementById('quizQuestion');
+  
+  if (resultDiv && questionDiv) {
+    resultDiv.style.display = 'none';
+    questionDiv.style.display = 'block';
+    questionDiv.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function sendCharacterMessage() {
+  const email = document.getElementById('quizEmail').value;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (email && emailRegex.test(email)) {
+    alert(`Obrigado! Uma mensagem especial será enviada para ${email}`);
+    document.getElementById('quizEmail').value = '';
+  } else {
+    alert('Por favor, insira seu e-mail');
+  }
+}
+
+// Newsletter
+function initNewsletter() {
+  const newsletterForm = document.getElementById('newsletterForm');
+  
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('userEmail').value.trim();
+      const name = document.getElementById('userName').value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+      if (email && name && emailRegex.test(email)) {
+        alert(`Obrigado, ${name}! Você foi inscrito com o e-mail ${email}`);
+        newsletterForm.reset();
+      // Exemplo de feedback visual (opcional)
+        // const feedback = document.createElement('p');
+        // feedback.textContent = `Obrigado, ${name}!`;
+        // feedback.style.color = 'green';
+        // newsletterForm.appendChild(feedback);
+        // setTimeout(() => feedback.remove(), 3000);
+      } else {
+        alert('Por favor, preencha todos os campos com dados válidos');
+      }
+    });
+  }
+}
+
+// Elementos Flutuantes que Caem
+function createFallingElements() {
+  const container = document.querySelector('.hero');
+  if (!container) return;
+  
+  const elements = ['🌱', '🎵', '✨', '🌿', '🎶', '⭐'];
+  
+  function createElement() {
+    // Limitar quantidade para performance
+    if (document.querySelectorAll('.falling-element').length > 15) return;
+    
+    const element = document.createElement('div');
+    element.textContent = elements[Math.floor(Math.random() * elements.length)];
+    element.classList.add('falling-element');
+    
+    const containerWidth = container.offsetWidth;
+    const leftPos = Math.random() * (containerWidth - 30);
+    
+    element.style.left = `${leftPos}px`;
+    element.style.top = '-30px';
+    element.style.opacity = Math.random() * 0.5 + 0.5;
+    element.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
+    element.style.animationDuration = `${Math.random() * 3 + 2}s`;
+    
+    container.appendChild(element);
+    
+    // Remover após animação
+    setTimeout(() => {
+      element.remove();
+    }, 5000);
+  }
+  
+  // Iniciar com intervalo aleatório
+  setInterval(createElement, Math.random() * 500 + 300);
+}
+
+// Observador de Interseção para Animações
+function initIntersectionObserver() {
+  const animatedEls = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .voice-card');
+  
+  if (animatedEls.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    
+    animatedEls.forEach(el => observer.observe(el));
+  }
+}
+
+// Aplicar Cupom (exemplo)
+function applyCoupon() {
+  const couponCode = document.getElementById('couponInput').value.trim();
+  if (couponCode) {
+    alert(`Cupom ${couponCode} aplicado com sucesso!`);
+    document.getElementById('couponInput').value = '';
+  } else {
+    alert('Por favor, insira um código de cupom');
+  }
+}
+
+// Aplicar Voucher (exemplo)
+function applyVoucher() {
+    const voucherCode = document.getElementById('voucherInput').value.trim();
+    if (voucherCode) {
+        alert(`Voucher ${voucherCode} aplicado com sucesso!`);
+        document.getElementById('voucherInput').value = '';
+    } else {
+        alert('Por favor, insira um código de voucher');
+    }
+}
+
+// --- Função para o Botão Scroll-to-Top ---
+
+/* Inicializa o botão de "Voltar ao Topo" */
+function initScrollTopButton() {
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+  // Verifica se o botão existe no HTML
+  if (!scrollTopBtn) {
+    console.warn("Botão de scroll-to-top não encontrado no HTML.");
+    return;
+  }
+
+  // Função para verificar a posição da página e mostrar/esconder o botão
+  function toggleScrollButton() {
+    // Se a página for rolada mais de 300px para baixo
+    if (window.scrollY > 300) {
+      scrollTopBtn.classList.add("show"); // Adiciona a classe 'show' -> botão aparece
+    } else {
+      scrollTopBtn.classList.remove("show"); // Remove a classe 'show' -> botão desaparece
+    }
+  }
+
+  // Adiciona um "ouvinte de evento" para quando a página for rolada
+  window.addEventListener("scroll", toggleScrollButton);
+
+  // Adiciona um "ouvinte de evento" para quando o botão for clicado
+  scrollTopBtn.addEventListener("click", function () {
+    // Rola suavemente até o topo da página (body ou html)
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth" // Comportamento suave
+    });
+  });
 </body>
 </html>
 
