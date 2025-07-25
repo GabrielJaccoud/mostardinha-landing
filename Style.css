@@ -1,0 +1,839 @@
+<!-- Style.css -->
+    <style>
+:root {
+  --primary-color: #fdfbf5;
+  --secondary-color: #f5f7f0;
+  --accent-color: #fffaf3;
+  --text-color: #333;
+  --light-bg: #fffaf3;
+  --dark-bg: #2c3e50;
+  --font-main: 'Fredoka', sans-serif;
+  --font-secondary: 'Comic Neue', cursive;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --img-ratio: 3/4;  
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Seção Hero */
+.hero {
+  position: relative;
+  height: auto;
+  min-height: 80vh;
+  padding: 100px 0 60px 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(74, 61, 42, 0.05);
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.secao-hero {
+  background-color: #fefaf4;
+  padding: 60px 20px;
+  transition: background-color 0.4s ease;
+}
+
+.secao-jornada {
+  background-color: #fff;
+  padding: 60px 20px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  transition: background-color 0.4s ease;
+}
+
+.story-section {
+  background-color: #fefcf8; /* Um bege bem claro */
+  padding-top: 60px;
+  padding-bottom: 60px;
+  transition: background-color 0.4s ease;
+  border-bottom: 1px solid rgba(74, 61, 42, 0.05);
+}
+
+.parallax-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+
+.parallax-sky {
+  background-color: #87CEEB;
+  z-index: 1;
+}
+
+.parallax-clouds2 {
+  background-image: url('assets/images/clouds2.png');
+  z-index: 2;
+  animation: cloudMove 80s linear infinite;
+  opacity: 0.8;
+  background-size:cover;
+  background-position: center top;
+  background-repeat: no-repeat;  
+  width: 80%;
+  max-width: 300px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+.parallax-mountains {
+  background-image: url('assets/images/mountains.png');
+  z-index: 3;
+  opacity: 0.9;
+  background-size: 110% auto;
+}
+
+@keyframes cloudMove {
+  from { background-position: 0 0; }
+  to { background-position: -1000px 0; }
+}
+
+/* Elementos Flutuantes */
+.floating-elements div {
+  position: absolute;
+  animation: float 6s ease-in-out infinite;
+  font-size: 1.5rem;
+  opacity: 0.8;
+  z-index: 10;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.star-1 { top: 10%; left: 5%; animation-delay: 0s; }
+.star-2 { top: 25%; right: 10%; animation-delay: 1s; }
+.star-3 { bottom: 15%; left: 15%; animation-delay: 2s; }
+.balloon-1 { top: 20%; right: 15%; animation-delay: 0.5s; }
+.balloon-2 { bottom: 20%; right: 20%; animation-delay: 1.5s; }
+.note-1 { top: 40%; left: 10%; animation-delay: 0.7s; }
+.note-2 { bottom: 30%; right: 10%; animation-delay: 1.2s; }
+.note-3 { top: 15%; left: 30%; animation-delay: 0.3s; }
+
+/* Animações de Entrada */
+.fade-in-up, .fade-in-left, .fade-in-right {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-up {
+  transform: translateY(30px);
+}
+
+.fade-in-left {
+  transform: translateX(-30px);
+}
+
+.fade-in-right {
+  transform: translateX(30px);
+}
+
+.fade-in-up.animate, 
+.fade-in-left.animate, 
+.fade-in-right.animate {
+  opacity: 1;
+  transform: translate(0);
+}
+
+/* Elementos que Caem */
+.falling-element {
+  position: absolute;
+  font-size: 1.2rem;
+  animation: fall linear forwards;
+  z-index: 5;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(calc(100vh + 30px)) rotate(360deg);
+  }
+}
+
+/* Menu Fixo */
+.fixed-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  min-height: 70px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.nav-logo-img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  padding: 8px 12px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
+
+.nav-cta {
+  margin-left: 15px; 
+}
+
+.nav-cta .btn-primary.btn-small {
+  padding: 8px 16px; 
+  font-size: 0.9rem; 
+}
+
+/* Player de Áudio Fixo */
+.audio-player-fixed {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50px;
+  padding: 10px 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.audio-player-content {
+  display: flex;
+  align-items: center;
+}
+
+.audio-info {
+  margin-right: 15px;
+}
+
+.audio-icon-animated {
+  margin-right: 5px;
+}
+
+.audio-controls {
+  display: flex;
+  align-items: center;
+}
+
+.volume-control {
+  margin-left: 10px;
+}
+
+.volume-slider {
+  width: 80px;
+}
+
+/* Botões */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #d29a1d;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #3a2f1f;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-large {
+  padding: 15px 30px;
+  font-size: 1.1rem;
+}
+
+.btn-small {
+  padding: 8px 15px;
+  font-size: 0.9rem;
+}
+
+.btn-icon {
+  margin-right: 8px;
+}
+
+/* Seções */
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-family: var(--font-secondary);
+  font-size: 2.5rem;
+  color: var(--secondary-color);
+  margin-bottom: 15px;
+  font-weight: var(--font-weight-bold);
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: #6c5b3d;
+  font-weight: var(--font-weight-regular);
+}
+
+/* Cards de Personagens */
+.characters-section {
+  background-color: var(--primary-color);
+  padding-top: 80px;
+  padding-bottom: 80px;
+  border-bottom: 1px solid rgba(74, 61, 42, 0.05);
+}
+    
+.characters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.character-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.character-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.character-image {
+  width: 100%;
+  padding-top: 100%;
+  position: relative;
+}
+
+.character-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: var(--img-ratio);
+  object-fit: contain;
+}
+
+.character-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.character-info h3 {
+  margin-bottom: 10px;
+  color: var(--secondary-color);
+  font-weight: var(--font-weight-semibold);
+}
+
+.character-quote {
+  font-style: italic;
+  color: #666;
+  p { 
+  font-weight: var(--font-weight-regular);
+}
+
+/* Seção Músicas */
+.music-section {
+  background-color: var(--secondary-color);
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.music-card h3 {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Seção Vozes */
+.voices-section {
+  background: url('assets/images/bg-parallax-vozes.webp') center/cover fixed;
+  padding: 80px 0;
+}
+
+.voices-section::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: rgba(255, 255, 255, 0.85); 
+  z-index: 1;
+}
+        
+.voices-section > .container {
+  position: relative;
+  z-index: 2;
+}
+
+.voices-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.voice-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.voice-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  background: rgba(255,255,255,1);
+}
+
+.voice-photo {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--accent-color);
+  padding: 4px;
+  background: #fffce7;
+  margin-bottom: 15px;
+}
+
+.voice-info h3 {
+  font-family: var(--font-secondary);
+  color: var(--secondary-color);
+  font-size: 1.3em;
+  margin-bottom: 10px 0 5px;
+  font-weight: var(--font-weight-semibold);
+}
+
+.voice-info p {
+  font-size: 1em;
+  color: #5b4931;
+  margin: 5px 0;
+  text-align: center;
+}
+
+.voice-quote {
+  font-style: italic;
+  font-size: 0.95em;
+  color: #86765b;
+  margin-top: 10px;
+}
+
+.voice-social {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 1em;
+  text-decoration: none;
+  color: #d99a23;
+  transition: color 0.3s;
+}
+
+.voice-social:hover {
+  color: #b87c00;
+}
+
+/* Seção Temática (A ILHA SÓ MOSTRA OS CAMINHOS) */
+.wisdom-section {
+  background-color: var(--accent-color); 
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Seção Quiz */
+.quiz-section {
+  background-color: #fbfdfa; /* Verde muito, muito claro */
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Seção Newsletter */
+.newsletter-section {
+  background-color: #fffaf7; /* Laranja muito, muito claro */
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Seção Sobre o Autor */
+.author-section {
+  background-color: #f8f7f4; /* Um cinza/bege bem claro */
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Seção Sobre a Editora */
+.publisher-section {
+  background-color: #f5f7f8; /* Azul/cinza muito claro */
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Seção Comprar Final */
+.final-purchase-section {
+  background-color: #fefbf6; /* Um bege claro, talvez igual ao light-bg mas com leve variação */
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Estilos para a Seção Bastidores */
+.behind-scenes {
+  background-color: var(--light-bg); /* Fundo claro */
+  padding: 60px 20px; /* Padding superior/inferior e lateral */
+  text-align: center; /* Centraliza o conteúdo */
+}
+
+.behind-content {
+  max-width: 800px; /* Limita a largura do conteúdo */
+  margin: 0 auto; /* Centraliza o container */
+}
+
+.behind-content h3 {
+  font-size: 1.8rem; /* Tamanho da fonte do título */
+  color: var(--secondary-color); /* Cor marrom */
+  margin-bottom: 15px; /* Espaço abaixo do título */
+}
+
+.behind-content p {
+  font-size: 1.1rem; /* Tamanho da fonte do texto */
+  margin-bottom: 25px; /* Espaço abaixo do texto */
+}
+
+.behind-content .btn-secondary {
+  /* Estilos do botão secundário já devem estar definidos */
+  font-size: 1.1rem; /* Ajusta o tamanho da fonte do botão se necessário */
+  padding: 12px 24px; /* Ajusta o padding do botão */
+
+/* Redução de tamanho das logos */
+.publisher-logo,
+.channel-logo {
+  max-width: 150px; /* Define um tamanho máximo menor */
+  height: auto; /* Mantém a proporção da imagem */
+  margin-bottom: 20px; /* Adiciona espaço abaixo da logo */
+  /* Se quiser centralizar dentro de seus containers */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Classes utilitárias para acessibilidade */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Estilos para a Seção Canal Mundo Ninus */
+.mundoninus-section {
+  background-color: #f0f8ff; /* Fundo azul claro */
+  padding: 60px 20px; /* Padding superior/inferior e lateral */
+  text-align: center; /* Centraliza o conteúdo */
+}
+
+.mundoninus-section .section-header {
+  /* Reutiliza estilos da section-header, mas pode ajustar */
+  margin-bottom: 30px; /* Menor margem inferior */
+}
+
+.channel-logo {
+  max-width: 150px; /* Reduz o tamanho máximo da logo */
+  height: auto; /* Mantém a proporção */
+  margin-bottom: 20px; /* Espaço abaixo da logo */
+}
+
+.mundoninus-section .section-title {
+  font-size: 2rem; /* Tamanho da fonte do título */
+  margin-bottom: 10px; /* Menor margem abaixo do título */
+}
+
+.mundoninus-section .section-subtitle {
+  font-size: 1.1rem; /* Tamanho da fonte do subtítulo */
+  margin-bottom: 25px; /* Espaço abaixo do subtítulo */
+}
+
+.mundoninus-section .btn-secondary.btn-small {
+  font-size: 1rem; /* Tamanho da fonte do botão */
+  padding: 10px 20px; /* Padding do botão */
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+  .hero-content {
+    flex-direction: column;
+  }
+  
+  .hero-text, .hero-image {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .floating-elements {
+    display: none;
+  }
+  
+  .character-card, .music-card {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    transition: left 0.3s ease;
+  }
+  
+  .nav-menu.active {
+    left: 0;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .mobile-menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--secondary-color);
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-menu-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  
+  .mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .mobile-menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+  
+  .sequence-item, .sequence-arrow {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .sequence-arrow {
+    transform: rotate(90deg);
+    margin: 10px 0;
+  }
+  
+  .character-card, .music-card {
+    width: 100%;
+  }
+  
+  .audio-player-fixed {
+    bottom: 70px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  .voices-section {
+    background: url('assets/images/fundo-parallax--sementes.jpg') no-repeat fixed center center / cover;
+    padding: 80px 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .voices-section::before {
+    content: "";
+    background: rgba(255, 255, 255, 0.85);
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1;
+  }
+
+  .voices-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+ }
+
+  .voice-card {
+    max-width: 100%;
+ }  
+
+  [data-animate] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease;
+  }
+      
+  [data-animate].in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* --- Botão Scroll-to-Top --- */
+
+/* Estilo base do botão */
+.scroll-top-btn {
+  position: fixed; /* Fica fixo na tela */
+  bottom: 20px; /* Distância da parte inferior */
+  right: 20px; /* Distância da lateral direita */
+  width: 50px; /* Largura do botão */
+  height: 50px; /* Altura do botão */
+  background-color: var(--secondary-color); /* Cor de fundo (marrom) */
+  color: white; /* Cor do ícone */
+  border: none; /* Sem borda */
+  border-radius: 50%; /* Formato circular */
+  cursor: pointer; /* Muda o cursor para indicar que é clicável */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
+  font-size: 1.5rem; /* Tamanho do ícone */
+  display: flex; /* Usa flexbox para centralizar o ícone */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  opacity: 0; /* Inicialmente invisível */
+  visibility: hidden; /* Inicialmente escondido */
+  transform: translateY(20px); /* Começa um pouco abaixo */
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.3s ease; /* Transições suaves */
+  z-index: 999; /* Fica acima de outros elementos */
+}
+
+/* Estilo do botão quando está visível */
+.scroll-top-btn.show {
+  opacity: 1; /* Torna visível */
+  visibility: visible; /* Torna visível */
+  transform: translateY(0); /* Volta à posição normal */
+}
+
+/* Efeito hover do botão */
+.scroll-top-btn:hover {
+  background-color: #3a2f1f; /* Cor de fundo mais escura no hover */
+  transform: translateY(-3px); /* Sobe levemente ao passar o mouse */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Sombra mais forte no hover */
+}
+
+/* Estilo do ícone dentro do botão */
+.scroll-top-icon {
+  display: block;
+  line-height: 1; /* Ajusta o alinhamento da linha */
+}
+<style>
