@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -77,7 +78,7 @@
                 </button>
                 <div class="volume-control">
                     <label for="volumeSlider" class="sr-only">Volume</label>
-                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50" aria-label="Controle de volume">
+                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50" aria-label="Controle de volume">>
                 </div>
             </div>
         </div>
@@ -483,7 +484,7 @@
     </section>
 
     <!-- Seção Vozes -->
-    <section id="vozes" class="voices-section parallax-section" data-speed="0.3">
+    <section id="vozes" class="voices-section" parallax-section" data-speed="0.3">
   <div class="container">
     <div class="section-header fade-in-up">
       <h2 class="section-title">🎤 Vozes que Encantam</h2>
@@ -921,28 +922,22 @@
     <script src="script.js"></script>
 
     <!-- Botão Scroll-to-Top (Voltar ao Topo) -->
-    <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Voltar ao topo da página">
-      <span class="scroll-top-icon" aria-hidden="true">↑</span>
-    </button>
+<button id="scrollTopBtn" class="scroll-top-btn" aria-label="Voltar ao topo da página">
+  <span class="scroll-top-icon" aria-hidden="true">↑</span>
+</button>
 }
-</head>
 
-<!-- Style.css -->
-<style>
+    <!-- Style.css -->
+    <style>
 :root {
-  --primary-color: #fdfbf5;
-  --secondary-color: #f5f7f0;
-  --accent-color: #fffaf3;
+  --primary-color: #e6b842;
+  --secondary-color: #4a3d2a;
+  --accent-color: #ffd700;
   --text-color: #333;
   --light-bg: #fffaf3;
   --dark-bg: #2c3e50;
   --font-main: 'Fredoka', sans-serif;
   --font-secondary: 'Comic Neue', cursive;
-  --font-weight-light: 300;
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
   --img-ratio: 3/4;  
 }
 
@@ -975,7 +970,6 @@ body {
   display: flex;
   align-items: center;
   overflow: hidden;
-  border-bottom: 1px solid rgba(74, 61, 42, 0.05);
 }
 
 .hero-background {
@@ -1005,7 +999,6 @@ body {
   padding-top: 60px;
   padding-bottom: 60px;
   transition: background-color 0.4s ease;
-  border-bottom: 1px solid rgba(74, 61, 42, 0.05);
 }
 
 .parallax-layer {
@@ -1287,21 +1280,18 @@ body {
   font-size: 2.5rem;
   color: var(--secondary-color);
   margin-bottom: 15px;
-  font-weight: var(--font-weight-bold);
 }
 
 .section-subtitle {
   font-size: 1.2rem;
   color: #6c5b3d;
-  font-weight: var(--font-weight-regular);
 }
 
 /* Cards de Personagens */
 .characters-section {
-  background-color: var(--primary-color);
-  padding-top: 80px;
-  padding-bottom: 80px;
-  border-bottom: 1px solid rgba(74, 61, 42, 0.05);
+  background-color: #fdfbf5;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
     
 .characters-grid {
@@ -1348,27 +1338,18 @@ body {
 .character-info h3 {
   margin-bottom: 10px;
   color: var(--secondary-color);
-  font-weight: var(--font-weight-semibold);
 }
 
 .character-quote {
   font-style: italic;
   color: #666;
-  .sequence-item p, /* Parágrafos da jornada */
-p:not(.hero-title):not(.hero-subtitle):not(.section-title):not(.section-subtitle) /* Um seletor mais genérico, mas cuidado com a especificidade */
-{ 
-  font-weight: var(--font-weight-regular);
 }
 
 /* Seção Músicas */
 .music-section {
-  background-color: var(--secondary-color);
+  background-color: #f9fcfd;
   padding-top: 60px;
   padding-bottom: 60px;
-}
-
-.music-card h3 {
-  font-weight: var(--font-weight-semibold);
 }
 
 /* Seção Vozes */
@@ -1434,7 +1415,6 @@ p:not(.hero-title):not(.hero-subtitle):not(.section-title):not(.section-subtitle
   color: var(--secondary-color);
   font-size: 1.3em;
   margin-bottom: 10px 0 5px;
-  font-weight: var(--font-weight-semibold);
 }
 
 .voice-info p {
@@ -1466,7 +1446,7 @@ p:not(.hero-title):not(.hero-subtitle):not(.section-title):not(.section-subtitle
 
 /* Seção Temática (A ILHA SÓ MOSTRA OS CAMINHOS) */
 .wisdom-section {
-  background-color: var(--accent-color); 
+  background-color: #faf8f0; 
   padding-top: 60px;
   padding-bottom: 60px;
 }
@@ -2149,7 +2129,7 @@ function initScrollTopButton() {
       behavior: "smooth" // Comportamento suave
     });
   });
+}
 </body>
 </html>
-
 
