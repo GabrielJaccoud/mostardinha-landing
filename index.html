@@ -724,28 +724,6 @@
         </div>
     </section>
 
-    <!-- Seção de Captura de Leads -->
-<section id="lead-capture" class="section lead-section">
-  <div class="container">
-    <div class="lead-content">
-      <h2 class="section-title">Receba Novidades do Mundo do Mostardinha</h2>
-      <p class="section-subtitle">Inscreva-se e receba histórias exclusivas, atividades e promoções!</p>
-      
-      <form id="leadForm" class="lead-form">
-        <div class="form-group">
-          <label for="leadName" class="sr-only">Seu Nome</label>
-          <input type="text" id="leadName" name="name" placeholder="Seu Nome" class="form-input" required>
-        </div>
-        <div class="form-group">
-          <label for="leadEmail" class="sr-only">Seu E-mail</label>
-          <input type="email" id="leadEmail" name="email" placeholder="Seu Melhor E-mail" class="form-input" required>
-        </div>
-        <button type="submit" class="btn btn-primary btn-large">Quero Receber Novidades</button>
-      </form>
-    </div>
-  </div>
-</section>
-
     <!-- Seção Sobre o Autor -->
     <section class="author-section">
         <div class="container">
@@ -1832,41 +1810,6 @@ body {
   transition: opacity 1s ease-out 1s, transform 1s ease-out 1s;
 }
 
-/* --- Estilos para a Seção de Leads --- */
-.lead-section {
-  background-color: var(--bg-accent); /* Usa a cor de fundo harmoniosa */
-  text-align: center;
-  padding: 80px 20px;
-}
-
-.lead-form {
-  max-width: 500px;
-  margin: 30px auto 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.form-group {
-  width: 100%;
-}
-
-.form-input {
-  width: 100%;
-  padding: 15px;
-  border: 2px solid #d4c8b0;
-  border-radius: 8px;
-  font-family: var(--font-primary);
-  font-size: 1rem;
-  background-color: #fffdf8;
-  transition: border-color 0.3s ease;
-}
-
-.form-input:focus {
-  outline: none;
-  border-color: var(--primary-color);
-}
-
 /* Estilo para o Toast de Sucesso */
 .lead-toast {
   position: fixed;
@@ -2291,68 +2234,6 @@ if (document.readyState === 'loading') {
 } else {
   animateHeroElements();
 }
-
-// --- Funcionalidade da Captura de Leads ---
-function initLeadCapture() {
-  const leadForm = document.getElementById('leadForm');
-  if (!leadForm) return; // Sai se o formulário não for encontrado
-
-  leadForm.addEventListener('submit', function(e) {
-    e.preventDefault(); // Impede o envio padrão do formulário
-
-    const name = document.getElementById('leadName').value.trim();
-    const email = document.getElementById('leadEmail').value.trim();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (name && email && emailRegex.test(email)) {
-      // --- Aqui você integraria com um serviço como Mailchimp, Brevo, etc. ---
-      // Por enquanto, vamos simular um sucesso.
-      console.log(`Lead capturado: Nome: ${name}, Email: ${email}`);
-      
-      // Mostra o Toast de sucesso
-      showToast(`Obrigado, ${name}! Em breve você receberá novidades.`);
-
-      // Reseta o formulário
-      leadForm.reset();
-
-    } else {
-      alert('Por favor, preencha todos os campos com dados válidos.');
-    }
-  });
-}
-
-// Função para mostrar o Toast
-function showToast(message) {
-  // Remove qualquer toast existente
-  const existingToast = document.querySelector('.lead-toast');
-  if (existingToast) existingToast.remove();
-
-  const toast = document.createElement('div');
-  toast.className = 'lead-toast';
-  toast.textContent = message;
-  document.body.appendChild(toast);
-
-  // Animação de entrada
-  setTimeout(() => toast.classList.add('show'), 10);
-
-  // Remove o toast após alguns segundos
-  setTimeout(() => {
-    toast.classList.remove('show');
-    setTimeout(() => {
-      if (toast.parentNode) {
-        toast.parentNode.removeChild(toast);
-      }
-    }, 300); // Tempo da animação de saída
-  }, 4000); // Tempo visível (4 segundos)
-}
-
-// Inicializa quando o DOM estiver pronto
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initLeadCapture);
-} else {
-  initLeadCapture();
-}
-// -----------------------------------------
 </body>
 </html>
 
