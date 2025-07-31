@@ -768,7 +768,7 @@
     <!-- Seção Sobre a Editora -->
     <section id="editora-humanizar" class="publisher-section parallax-section" data-speed="0.3" style="text-align: center; padding: 40px 20px;">
         <div class="container">
-            <img src="assets/images/humanizar-logo.png" alt="Logo da Editora Humanizar" class="publisher-logo" style="max-width: 200px; margin-bottom: 15px;">
+            <img src="assets/images/humanizar-logo.png" alt="Logo da Editora Humanizar" class="publisher-logo" loading="lazy" style="max-width: 200px; margin-bottom: 15px;">
             <p style="font-size: 1.1em; color: #444;">
             <div class="publisher-content fade-in-up">
                 <h2 class="publisher-title">📚 Sobre a Editora - HUMANIZAR</h2>
@@ -837,7 +837,7 @@
    <section id="mundoninus" class="mundoninus-section" style="text-align: center; padding: 40px 20px;">
   <div class="container">
     <div class="section-header fade-in-up">
-      <img src="assets/images/logo-mundoninus.png" alt="Logo Mundo Ninus" class="channel-logo" style="max-width: 200px; margin-bottom: 15px;">
+      <img src="assets/images/logo-mundoninus.png" alt="Logo Mundo Ninus" class="channel-logo" loading="lazy" style="max-width: 200px; margin-bottom: 15px;">
       <p style="font-size: 1.1em; color: #444;">  
       <h2 class="section-title">Conheça o Canal Mundo Ninus</h2>
       <p class="section-subtitle">Nosso canal no YouTube reúne músicas, histórias e conteúdos mágicos que expandem o universo do Mostardinha. Inscreva-se!</p>
@@ -1830,6 +1830,101 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* --- Ajustes para Mobile (Telas pequenas) --- */
+@media (max-width: 576px) {
+  /* Ajusta o padding das seções principais */
+  .secao-hero, .story-section, .characters-section, .music-section,
+  .wisdom-section, .quiz-section, .newsletter-section, .author-section,
+  .publisher-section, .final-purchase-section, .behind-scenes, .sequence-section,
+  .voices-section, .mundoninus-section, .lead-section {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  /* Ajusta o padding da Hero especificamente */
+  .secao-hero {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+
+  /* Ajusta o espaçamento entre elementos de formulário */
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  /* Ajusta o tamanho da fonte dos títulos principais */
+  .hero-title {
+    font-size: 2rem; /* Reduz um pouco o título principal */
+  }
+
+  .section-title {
+    font-size: 2rem; /* Reduz títulos de seção */
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem; /* Reduz subtítulos */
+  }
+
+    /* Botões em Mobile */
+  .btn {
+    padding: 12px 20px; /* Padding um pouco menor, mas ainda confortável */
+    font-size: 1rem; /* Garante tamanho de fonte confortável */
+    /* Garante que o botão tenha um tamanho mínimo para toque */
+    min-height: 44px; /* Recomendado para acessibilidade touch */
+    min-width: 44px;
+  }
+
+  .btn-large {
+    padding: 14px 24px; /* Ajuste sutil para o botão grande */
+    font-size: 1.05rem;
+  }
+
+  /* Ajusta a margem entre botões empilhados */
+  .hero-cta .btn {
+    margin-bottom: 12px;
+  }
+  .hero-cta .btn:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Reforça o comportamento responsivo para imagens principais */
+.hero-image img,
+.character-image img,
+.music-cover,
+.voice-photo,
+.publisher-logo {
+  width: 100%;
+  height: auto;
+  max-width: 100%; /* Garante que não ultrapassem o container */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+     /* Grids em Mobile - 1 coluna */
+  .characters-grid,
+  .music-grid,
+  .voices-grid {
+    grid-template-columns: 1fr; /* Força 1 coluna */
+    gap: 30px; /* Mantém um bom espaçamento entre os itens */
+  }
+
+  /* Ajusta o tamanho das fotos de vozes */
+  .voice-photo {
+    width: 120px; /* Um pouco menor em mobile */
+    height: 120px;
+  }
+
+  /* Ajuste para o botão do menu mobile */
+.mobile-menu-toggle {
+  /* ... estilos existentes ... */
+  /* Garante tamanho mínimo para toque */
+  min-height: 44px;
+  min-width: 44px;
+  padding: 10px; /* Ajuste se necessário */
+}
+}
+/* ------------------------------------------- */
 <style>
 
 // script.js
@@ -2110,7 +2205,7 @@ function createFallingElements() {
   
   function createElement() {
     // Limitar quantidade para performance
-    if (document.querySelectorAll('.falling-element').length > 15) return;
+    if (document.querySelectorAll('.falling-element').length > (window.innerWidth < 768 ? 12 : 15)) return;
     
     const element = document.createElement('div');
     element.textContent = elements[Math.floor(Math.random() * elements.length)];
