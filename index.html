@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O Antipoderoso Mostardinha - Livro Digital Infantil</title>
+    <title>Mostardinha - Livro Digital Infantil</title>
     <meta name="description" content="Conheça o Mostardinha, um grão pequeno mas gigante em amor! Uma aventura afetiva em Temperópolis que está emocionando crianças, pais e educadores.">
     <meta name="keywords" content="livro infantil, mostardinha, temperópolis, audiobook, educação, valores, crianças">
     <meta name="author" content="Gabriel Jaccoud">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="O Antipoderoso Mostardinha - Livro Digital Infantil">
+    <meta property="og:title" content="Mostardinha - Livro Digital Infantil">
     <meta property="og:description" content="Uma aventura afetiva com trilha sonora original, personagens cativantes e lições que tocam o coração.">
     <meta property="og:image" content="assets/images/CAPA.png">
     <meta property="og:url" content="https://gabrieljaccoud.github.io/mostardinha-landing/">
@@ -25,8 +25,13 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Pré-carregamento -->
+  <link rel="preload" href="assets/temamostardinha.wav" as="audio">
+  <link rel="preload" href="assets/images/CAPA.png" as="image">    
 </head>
 <body>
+    
     <!-- Menu Fixo -->
     <nav class="fixed-nav">
         <div class="container">
@@ -52,7 +57,7 @@
                     <a href="https://pay.hotmart.com/H100940670E" class="btn btn-primary btn-small">Comprar - R$ 34,99</a>
                 </div>
                 
-                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir menu">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -62,18 +67,19 @@
     </nav>
 
     <!-- Player de Áudio Fixo -->
-    <div class="audio-player-fixed">
+    <div class="audio-player-fixed" role="region" aria-label="Player de trilha sonora">
         <div class="audio-player-content">
             <div class="audio-info">
-                <span class="audio-icon-animated">🎵</span>
+                <span class="audio-icon-animated" aria-hidden="true">🎵</span>
                 <span class="audio-title">Trilha do Mostardinha</span>
             </div>
             <div class="audio-controls">
-                <button class="audio-btn-fixed" id="audioToggleFixed">
+                <button class="audio-btn-fixed" id="audioToggleFixed" aria-label="Tocar trilha sonora">
                     <span class="audio-icon-btn">▶️</span>
                 </button>
                 <div class="volume-control">
-                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50">
+                    <label for="volumeSlider" class="sr-only">Volume</label>
+                    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50" aria-label="Controle de volume">
                 </div>
             </div>
         </div>
@@ -84,7 +90,7 @@
     </div>
 
     <!-- Seção Hero - "O GRÃO QUE FLORESCE" -->
-    <section id="inicio" class="hero" data-speed="0.5">
+    <section id="inicio" class="hero">
         <div class="hero-background">
             <div class="parallax-layer parallax-sky"></div>
             <div class="parallax-layer parallax-clouds"></div>
@@ -123,20 +129,21 @@
                     </div>
                     
                     <div class="hero-cta">
-                        <a href="https://pay.hotmart.com/H100940670E" class="btn btn-primary btn-large">
-                            <span class="btn-icon">📖</span>
+                        <a href="https://pay.hotmart.com/H100940670E" class="btn btn-primary btn-large" aria-label="Comprar o livro Mostardinha por R$ 34,99">
+                            <span class="btn-icon" aria-hidden="true">📖</span>
                             Quero o livro por R$ 34,99
                         </a>
                         
                         <div class="voucher-section">
                             <label for="voucherInput">Você tem um vale-presente ou cupom? Insira aqui!</label>
-                            <input type="text" id="voucherInput" placeholder="Digite seu cupom..." class="voucher-input">
+                            <input type="text" id="voucherInput" placeholder="Digite seu cupom..." class="voucher-input" aria-label="Campo para inserir cupom">
+                            <button type="button" class="btn btn-outline btn-small" onclick="applyVoucher()">Aplicar Cupom</button>
                         </div>
                     </div>
                 </div>
                 
                 <div class="hero-image fade-in-right">
-                    <img src="assets/images/CAPA.png" alt="Capa do livro Mostardinha" class="mostardinha-hero">
+                    <img src="assets/images/CAPA.png" alt="Capa do livro Mostardinha" class="mostardinha-hero" loading="lazy">
                 </div>
             </div>
         </div>
@@ -173,29 +180,13 @@
                 
                 <div class="story-description fade-in-right">
                     <p>
-                        Em uma ilha onde alimentos falam, a natureza canta e o invisível se torna visível, 
-                        um menino perdido descobre muito mais do que um caminho de volta para casa — 
-                        ele encontra amigos, coragem e a força do amor.
+                        Em Temperópolis, Cadu embarca em uma jornada de <strong>amizade, autoconhecimento, 
+                        respeito e esperança</strong> — com música, humor e muito amor.
                     </p>
                     <p>
-                        Temperópolis é um lugar onde os sentimentos se manifestam em sabores, 
-                        os sons são portais mágicos e a imaginação é a bússola que guia as crianças 
-                        de volta a si mesmas.
-                    </p>
-                    <p>
-                        Acompanhado por uma banda divertida com instrumentos feitos de maionese, 
-                        repolho e salsinha — a Orquestra Delicinha — Mostardinha vive uma jornada 
-                        musical, sensível e cheia de valores que aquecem o coração.
-                    </p>
-                    <p>
-                        Mais que um livro, é uma experiência completa com QR Codes interativos, 
-                        audiobook com trilha original, canções encantadas e uma história que 
-                        inspira amor, empatia e conexão.
-                    </p>
-                    <p>
-                        Ideal para crianças, pais, educadores e todos que acreditam que 
-                        crescer é um movimento do coração.
-                    </p>
+                        Uma história que ensina que crescer é um movimento do coração, 
+                        onde cada personagem traz uma lição especial sobre a vida.
+                    </p>                    
                 </div>
             </div>
         </div>
@@ -212,7 +203,7 @@
             <div class="characters-grid">
                 <div class="character-card fade-in-up" data-character="mostardinha">
                     <div class="character-image">
-                        <img src="assets/images/Mostardinha(2).png" alt="Mostardinha">
+                        <img src="assets/images/Mostardinha(2).png" alt="Mostardinha" loading="lazy">
                     </div>
                     <div class="character-info">
                         <h3>Mostardinha</h3>
@@ -222,7 +213,7 @@
                 
                 <div class="character-card fade-in-up" data-character="maionese">
                     <div class="character-image">
-                        <img src="assets/images/MAIONESE.png" alt="Maionese">
+                        <img src="assets/images/MAIONESE.png" alt="Maionese" loading="lazy">
                     </div>
                     <div class="character-info">
                         <h3>Maionese</h3>
@@ -232,7 +223,7 @@
                 
                 <div class="character-card fade-in-up" data-character="salsinha">
                     <div class="character-image">
-                        <img src="assets/images/salsinha(2).png" alt="Salsinha">
+                        <img src="assets/images/salsinha(2).png" alt="Salsinha" loading="lazy">
                     </div>
                     <div class="character-info">
                         <h3>Salsinha</h3>
@@ -242,7 +233,7 @@
                 
                 <div class="character-card fade-in-up" data-character="repolho">
                     <div class="character-image">
-                        <img src="assets/images/repolho(2).png" alt="Repolho">
+                        <img src="assets/images/repolho(2).png" alt="Repolho" loading="lazy">
                     </div>
                     <div class="character-info">
                         <h3>Repolho</h3>
@@ -252,7 +243,7 @@
                 
                 <div class="character-card fade-in-up" data-character="catchup">
                     <div class="character-image">
-                        <img src="assets/images/Catchup(2).png" alt="Catchup">
+                        <img src="assets/images/Catchup(2).png" alt="Catchup" loading="lazy">
                     </div>
                     <div class="character-info">
                         <h3>Catchup</h3>
@@ -262,7 +253,7 @@
                 
                 <div class="character-card fade-in-up" data-character="tovar">
                     <div class="character-image">
-                        <img src="assets/images/TOVAR(2).png" alt="Tovar">
+                        <img src="assets/images/TOVAR(2).png" alt="Tovar" loading="lazy">
                     </div>
                     <div class="character-info">
                         <h3>Tovar (elefante)</h3>
@@ -272,7 +263,7 @@
                 
                 <div class="character-card fade-in-up" data-character="formiga">
                     <div class="character-image">
-                        <img src="assets/images/DonaFORMIGA(2).png" alt="Dona Formiga">
+                        <img src="assets/images/DonaFORMIGA(2).png" alt="Dona Formiga" loading="lazy">
                     </div>
                     <div class="character-info">
                         <h3>Dona Formiga</h3>
@@ -282,7 +273,7 @@
                 
                 <div class="character-card fade-in-up" data-character="cigarra">
                     <div class="character-image">
-                        <img src="assets/images/Cigarra(2).png" alt="Dona Cigarra">
+                        <img src="assets/images/Cigarra(2).png" alt="Dona Cigarra" loading="lazy">
                     </div>
                     <div class="character-info">
                         <h3>Dona Cigarra</h3>
@@ -292,7 +283,7 @@
                 
                 <div class="character-card fade-in-up" data-character="cuco">
                     <div class="character-image">
-                        <img src="assets/images/cuco1(2).png" alt="Cuco">
+                        <img src="assets/images/cuco1(2).png" alt="Cuco" loading="lazy">
                     </div>
                     <div class="character-info">
                         <h3>Cuco</h3>
@@ -302,7 +293,7 @@
                 
                 <div class="character-card fade-in-up" data-character="alho">
                     <div class="character-image">
-                        <img src="assets/images/alho(2).png" alt="Velho Alho">
+                        <img src="assets/images/alho(2).png" alt="Velho Alho" loading="lazy">
                     </div>
                     <div class="character-info">
                         <h3>Velho Alho</h3>
@@ -312,6 +303,62 @@
             </div>
         </div>
     </section>
+
+    <!-- Seção Mais do que uma História -->
+    <section id="mais-que-historia" class="more-than-story-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">Mais do que uma história. Um momento entre vocês.</h2>
+                <p class="section-subtitle">Transforme a tela em tempo de conexão.</p>
+            </div>
+            <div class="more-content">
+                <div class="more-text fade-in-right">
+                    <p>Vivemos num mundo onde a tela afasta. Mas o Mostardinha foi criado para aproximar. Ao ler com seu filho, você não está apenas passando uma história. Está compartilhando valores, emoções, riso e presença.</p>
+                    <p>Uma leitura acompanhada é um presente. Cada capítulo pode ser uma semente de diálogo e encantamento entre vocês.</p>
+                    
+                    <div class="more-actions">
+                        <button id="openTipsModal" class="btn btn-secondary btn-large">
+                            🟣 Como transformar essa leitura em um momento mágico?
+                        </button>
+                        <a href="https://www.youtube.com/playlist?list=PLZ66dSUCt5cjFYfTfN44LgQbVV1d4X2d6" target="_blank" class="btn btn-primary btn-large" aria-label="Ouvir o Audiobook no YouTube">
+                            🟢 Leia junto com o Mostardinha
+                        </a> <!-- Substitua pela URL real da playlist -->
+                    </div>
+                </div>
+                <div class="more-visual fade-in-up">
+                    <!-- Placeholder para a imagem/ilustração principal -->
+                    <!-- Você pode substituir este div por uma tag <img> ou um elemento mais complexo -->
+                    <div class="reading-scene-placeholder">
+                        <p style="text-align: center; font-style: italic; color: #6c5b3d;">
+                            [Ilustração: Um pai/mãe lendo com a criança no mundo do Mostardinha, com personagens ao redor]
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para Dicas de Leitura -->
+    <div id="readingTipsModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Dicas para um Momento Mágico</h3>
+                <button id="closeTipsModal" class="modal-close-btn" aria-label="Fechar">&times;</button>
+            </div>
+            <div class="modal-body">
+                <ul class="tips-list">
+                    <li>🗣️ <strong>Leitura com vozes diferentes:</strong> Dê uma voz única para cada personagem. Isso torna a história viva e divertida!</li>
+                    <li>🎧 <strong>Ouça o audiobook juntos:</strong> Aproveite a narração oficial e a trilha sonora para uma imersão completa.</li>
+                    <li>🎭 <strong>Reencenem a história:</strong> Peça para seu filho representar seu personagem favorito. É uma forma lúdica de rever o conteúdo.</li>
+                    <li>🎨 <strong>Crie arte com a imaginação:</strong> Desenhe cenas da ilha, crie cartazes dos personagens ou invente novas aventuras para eles.</li>
+                    <li>💬 <strong>Converse sobre os sentimentos:</strong> Pergunte como o seu filho se sentiu com as escolhas dos personagens. A empatia nasce do diálogo.</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <p><em>O Mostardinha é mais que um livro. É um convite para o afeto.</em></p>
+            </div>
+        </div>
+    </div>
 
     <!-- Seção Músicas - "MÚSICAS INTEGRADAS À HISTÓRIA" -->
     <section id="musicas" class="music-section">
@@ -326,8 +373,8 @@
                     <div class="music-icon">🎶💤</div>
                     <h3>Tesouros</h3>
                     <p>Canção de ninar da mãe do Cadu</p>
-                    <a href="https://www.youtube.com/watch?v=E-uAaX073J0" target="_blank" class="btn btn-outline btn-small">
-                        <span class="btn-icon">🎵</span> Ouvir
+                    <a href="https://www.youtube.com/watch?v=E-uAaX073J0" target="_blank" class="btn btn-outline btn-small" aria-label="Ouvir a música Tesouros">
+                        <span class="btn-icon" aria-hidden="true">🎵</span> Ouvir
                     </a>
                 </div>
                 
@@ -335,147 +382,229 @@
                     <div class="music-icon">🎺👃</div>
                     <h3>Salsinha e Repolho</h3>
                     <p>Entrada dos personagens engraçados</p>
-                    <a href="https://www.youtube.com/watch?v=X7xcPMjw00k" target="_blank" class="btn btn-outline btn-small">
-                        <span class="btn-icon">🎵</span> Ouvir
+                    <a href="https://www.youtube.com/watch?v=X7xcPMjw00k" target="_blank" class="btn btn-outline btn-small" aria-label="Ouvir a música Salsinha e Repolho">
+                        <span class="btn-icon" aria-hidden="true">🎵</span> Ouvir
                     </a>
                 </div>
                 
-                    <a href="https://www.youtube.com/watch?v=o0sJ-iMjzqg" target="_blank" class="btn btn-outline btn-small">
-                        <span class="btn-icon">🎵</span> Ouvir
+                <div class="music-card fade-in-up">
+                    <div class="music-icon">🐜🎤</div>
+                    <h3>A Cigarra e a Formiga</h3>
+                    <p>Discussão e reconciliação</p>
+                    <a href="https://www.youtube.com/watch?v=o0sJ-iMjzqg" target="_blank" class="btn btn-outline btn-small" aria-label="Ouvir a música A Cigarra e a Formiga">
+                        <span class="btn-icon" aria-hidden="true">🎵</span> Ouvir
                     </a>
+                </div>
+
+                <div class="music-card fade-in-up">
+                    <div class="music-icon">🐘🌿</div>
+                    <h3>O Elefante</h3>
+                    <p>Chegada de Tovar e família</p>
+                    <a href="https://www.youtube.com/watch?v=DHTz17QC00g" target="_blank" class="btn btn-outline btn-small" aria-label="Ouvir a música O Elefante">
+                        <span class="btn-icon" aria-hidden="true">🎵</span> Ouvir
+                    </a>
+                </div>
                 
-                    <a href="https://www.youtube.com/watch?v=DHTz17QC00g" target="_blank" class="btn btn-outline btn-small">
-                        <span class="btn-icon">🎵</span> Ouvir
+                <div class="music-card fade-in-up">
+                    <div class="music-icon">🚂💭</div>
+                    <h3>O Trem</h3>
+                    <p>Sonho de Cadu com sua mãe</p>
+                    <a href="https://www.youtube.com/watch?v=CZPrME-Ebyg" target="_blank" class="btn btn-outline btn-small" aria-label="Ouvir a música O Trem">
+                        <span class="btn-icon" aria-hidden="true">🎵</span> Ouvir
                     </a>
+                </div>
                 
-                    <a href="https://www.youtube.com/watch?v=CZPrME-Ebyg" target="_blank" class="btn btn-outline btn-small">
-                        <span class="btn-icon">🎵</span> Ouvir
+                <div class="music-card fade-in-up">
+                    <div class="music-icon">🤱🌼</div>
+                    <h3>Agradecendo</h3>
+                    <p>Encontro do Mostardinha com a mãe</p>
+                    <a href="https://www.youtube.com/watch?v=6u8edwJU_Rw" target="_blank" class="btn btn-outline btn-small" aria-label="Ouvir a música Agradecendo">
+                        <span class="btn-icon" aria-hidden="true">🎵</span> Ouvir
                     </a>
+                </div>
                 
-                    <a href="https://www.youtube.com/watch?v=6u8edwJU_Rw" target="_blank" class="btn btn-outline btn-small">
-                        <span class="btn-icon">🎵</span> Ouvir
+                <div class="music-card fade-in-up">
+                    <div class="music-icon">✨🗺️</div>
+                    <h3>Brilhe, Brilhe</h3>
+                    <p>Entrega do mapa mágico</p>
+                    <a href="https://www.youtube.com/watch?v=S9veWe3S6-4" target="_blank" class="btn btn-outline btn-small" aria-label="Ouvir a música Brilhe, Brilhe">
+                        <span class="btn-icon" aria-hidden="true">🎵</span> Ouvir
                     </a>
+                </div>
                 
-                    <a href="https://www.youtube.com/watch?v=S9veWe3S6-4" target="_blank" class="btn btn-outline btn-small">
-                        <span class="btn-icon">🎵</span> Ouvir
+                <div class="music-card fade-in-up">
+                    <div class="music-icon">⏰🕊️</div>
+                    <h3>O Cuco</h3>
+                    <p>Aviso de mudança, passagem de tempo emocional</p>
+                    <a href="https://www.youtube.com/watch?v=xMl24S2rsPI" target="_blank" class="btn btn-outline btn-small" aria-label="Ouvir a música O Cuco">
+                        <span class="btn-icon" aria-hidden="true">🎵</span> Ouvir
                     </a>
+                </div>
                 
-                    <a href="https://www.youtube.com/watch?v=xMl24S2rsPI" target="_blank" class="btn btn-outline btn-small">
-                        <span class="btn-icon">🎵</span> Ouvir
+                <div class="music-card fade-in-up">
+                    <div class="music-icon">🌱🎉</div>
+                    <h3>Mostardinha</h3>
+                    <p>Final e festival na ilha</p>
+                    <a href="https://www.youtube.com/watch?v=1BNxMnE2Crc" target="_blank" class="btn btn-outline btn-small" aria-label="Ouvir a música Mostardinha">
+                        <span class="btn-icon" aria-hidden="true">🎵</span> Ouvir
                     </a>
-                
-                    <a href="https://www.youtube.com/watch?v=1BNxMnE2Crc" target="_blank" class="btn btn-outline btn-small">
-                        <span class="btn-icon">🎵</span> Ouvir
-                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Seção Vozes que Encantam -->
-    <section id="vozes" class="voices-section" data-speed="0.3">
-        <div class="container">
-            <div class="section-header fade-in-up">
-                <h2 class="section-title">🎤 Vozes que Encantam</h2>
-                <p class="section-subtitle">Conheça os dubladores que dão vida aos personagens de Temperópolis</p>
-            </div>
-            
-            <div class="voices-grid">
-                <div class="voice-card fade-in-up" data-animate>
-                    <div class="voice-image">
-                        <img src="assets/images/Mostardinha(2).png" alt="Dublador do Mostardinha">
-                        <div class="voice-overlay">
-                            <div class="instagram-link">
-                                <a href="#" target="_blank">
-                                    <span class="instagram-icon">📷</span>
-                                    <span class="tooltiptext">@dublador_mostardinha</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="voice-info">
-                        <h3>Gabriel Jaccoud</h3>
-                        <p class="voice-character">Mostardinha</p>
-                        <p class="voice-quote">"Dar voz ao Mostardinha é plantar sementes de amor em cada palavra."</p>
-                    </div>
-                </div>
-                
-                <div class="voice-card fade-in-up" data-animate>
-                    <div class="voice-image">
-                        <img src="assets/images/MAIONESE.png" alt="Dubladora da Maionese">
-                        <div class="voice-overlay">
-                            <div class="instagram-link">
-                                <a href="#" target="_blank">
-                                    <span class="instagram-icon">📷</span>
-                                    <span class="tooltiptext">@dubladora_maionese</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="voice-info">
-                        <h3>Ana Clara</h3>
-                        <p class="voice-character">Maionese</p>
-                        <p class="voice-quote">"A Maionese me ensinou que o amor verdadeiro é feito de cuidado e ternura."</p>
-                    </div>
-                </div>
-                
-                <div class="voice-card fade-in-up" data-animate>
-                    <div class="voice-image">
-                        <img src="assets/images/salsinha(2).png" alt="Dublador da Salsinha">
-                        <div class="voice-overlay">
-                            <div class="instagram-link">
-                                <a href="#" target="_blank">
-                                    <span class="instagram-icon">📷</span>
-                                    <span class="tooltiptext">@dublador_salsinha</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="voice-info">
-                        <h3>Pedro Santos</h3>
-                        <p class="voice-character">Salsinha</p>
-                        <p class="voice-quote">"Salsinha me lembra que a alegria é o tempero da vida!"</p>
-                    </div>
-                </div>
-                
-                <div class="voice-card fade-in-up" data-animate>
-                    <div class="voice-image">
-                        <img src="assets/images/alho(2).png" alt="Dublador do Velho Alho">
-                        <div class="voice-overlay">
-                            <div class="instagram-link">
-                                <a href="#" target="_blank">
-                                    <span class="instagram-icon">📷</span>
-                                    <span class="tooltiptext">@dublador_alho</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="voice-info">
-                        <h3>João Wisdom</h3>
-                        <p class="voice-character">Velho Alho</p>
-                        <p class="voice-quote">"Interpretar o Alho é compartilhar a sabedoria dos anos vividos."</p>
-                    </div>
-                </div>
-            </div>
+    <!-- Seção Vozes -->
+    <section id="vozes" class="voices-section parallax-section" data-speed="0.3">
+  <div class="container">
+    <div class="section-header fade-in-up">
+      <h2 class="section-title">🎤 Vozes que Encantam</h2>
+      <p class="section-subtitle">Conheça os artistas que deram voz, emoção e alma aos personagens de Temperópolis.</p>
+    </div>
+
+    <div class="voices-grid">
+       <div class="voice-card fade-in-up" style="animation-delay:0ms;">
+        <img src="assets/images/gabriel-jaccoud.png" alt="Gabriel Jaccoud - Narrador, Grande Inhame, Velho Alho, Cuco" class="voice-photo" loading="lazy">
+        <div class="voice-info">
+          <h3>Gabriel Jaccoud</h3>
+          <p><strong>Personagens:</strong> Narrador, Grande Inhame, Velho Alho, Cuco</p>
+          <p class="voice-quote">"Narrar e dirigir esse projeto me lembrou do meu propósito: tocar corações."</p>
+          <a href="https://www.instagram.com/gabriel_jaccoud" target="_blank" class="voice-social" aria-label="Visitar o Instagram de Gabriel Jaccoud">📸 Instagram</a>
         </div>
-    </section>
+      </div>
+        
+      <div class="voice-card fade-in-up" style="animation-delay:200ms;">
+        <img src="assets/images/jaqueline.jpg" alt="Jaqueline - Dona Cigarra" class="voice-photo" loading="lazy">
+        <div class="voice-info">
+          <h3>Jaqueline</h3>
+          <p><strong>Personagem:</strong> Dona Cigarra</p>
+          <p class="voice-quote">"Cantar enquanto dublava foi um desfio bom de se viver."</p>
+          <a href="https://www.instagram.com/jaqueline" target="_blank" class="voice-social" aria-label="Visitar o Instagram de Jaqueline">📸 Instagram</a>
+        </div>
+      </div>
+        
+      <div class="voice-card fade-in-up" style="animation-delay:400ms;">
+        <img src="assets/images/carolina-lopes.jpg" alt="Carolina Lopes - Mostardinha, Maionese" class="voice-photo" loading="lazy">
+        <div class="voice-info">
+          <h3>Carolina Lopes</h3>
+          <p><strong>Personagens:</strong> Mostardinha, Maionese</p>
+          <a href="https://www.instagram.com/lopescarolnina" target="_blank" class="voice-social" aria-label="Visitar o Instagram de Carolina Lopes">📸 Instagram</a>
+        </div>
+      </div>
+        
+      <div class="voice-card fade-in-up" style="animation-delay:600ms;">
+        <img src="assets/images/klaudia-lopes.jpg" alt="Klaudia Lopes - Cadu" class="voice-photo" loading="lazy">
+        <div class="voice-info">
+          <h3>Klaudia Lopes</h3>
+          <p><strong>Personagem:</strong> Cadu</p>
+          <a href="https://www.instagram.com/klaudya.lopes" target="_blank" class="voice-social" aria-label="Visitar o Instagram de Klaudia Lopes">📸 Instagram</a>
+        </div>
+      </div>
+        
+      <div class="voice-card fade-in-up" style="animation-delay:800ms;">
+        <img src="assets/images/gabriel-morais.jpg" alt="Gabriel Morais - Theo" class="voice-photo" loading="lazy">
+        <div class="voice-info">
+          <h3>Gabriel Morais</h3>
+          <p><strong>Personagem:</strong> Theo</p>
+          <a href="https://www.instagram.com/gabriel.morais1801" target="_blank" class="voice-social" aria-label="Visitar o Instagram de Gabriel Morais">📸 Instagram</a>
+        </div>
+      </div>
+        
+      <div class="voice-card fade-in-up" style="animation-delay:1000ms;">
+        <img src="assets/images/daniele-souza.jg" alt="Daniele Souza - Déborah" class="voice-photo" loading="lazy">
+        <div class="voice-info">
+          <h3>Daniele Souza</h3>
+          <p><strong>Personagem:</strong> Débora</p>
+          <a href="https://www.instagram.com/vozdanielesouza" target="_blank" class="voice-social" aria-label="Visitar o Instagram de Daniele Souza">📸 Instagram</a>
+        </div>
+      </div>
+        
+      <div class="voice-card fade-in-up" style="animation-delay:1200ms;">
+        <img src="assets/images/andre-carneiro.jpg" alt="André Carneiro - Catchup" class="voice-photo" loading="lazy">
+        <div class="voice-info">
+          <h3>André Carneiro</h3>
+          <p><strong>Personagem:</strong> Catchup</p>
+          <a href="https://www.instagram.com/prof_andre_carneiro" target="_blank" class="voice-social" aria-label="Visitar o Instagram de André Carneiro">📸 Instagram</a>
+        </div>
+      </div>
+        
+      <div class="voice-card fade-in-up" style="animation-delay:1400ms;">
+        <img src="assets/images/victor-moreno.jpg" alt="Victor Moreno - Repolho" class="voice-photo" loading="lazy">
+        <div class="voice-info">
+          <h3>Victor Moreno</h3>
+          <p><strong>Personagem:</strong> Repolho</p>
+          <a href="https://www.instagram.com/housnel" target="_blank" class="voice-social" aria-label="Visitar o Instagram de Victor Moreno">📸 Instagram</a>
+        </div>
+      </div>
+        
+      <div class="voice-card fade-in-up" style="animation-delay:1600ms;">
+        <img src="assets/images/piter-de-paula.jpg" alt="Piter de Paula - Salsinha" class="voice-photo" loading="lazy">
+        <div class="voice-info">
+          <h3>Piter de Paula</h3>
+          <p><strong>Personagem:</strong> Salsinha</p>
+          <a href="https://www.instagram.com/piterdepaulamusico" target="_blank" class="voice-social" aria-label="Visitar o Instagram de Piter de Paula">📸 Instagram</a>
+        </div>
+      </div>
+        
+      <div class="voice-card fade-in-up" style="animation-delay:1800ms;">
+        <img src="assets/images/graziela-ferreira.webp" alt="Graziela Ferreira - Senhora Mostarda" class="voice-photo" loading="lazy">
+        <div class="voice-info">
+          <h3>Graziela Ferreira</h3>
+          <p><strong>Personagem:</strong> Senhora Mostarda</p>
+          <a href="https://www.instagram.com/zifsilva_" target="_blank" class="voice-social" aria-label="Visitar o Instagram de Graziela Ferreira">📸 Instagram</a>
+        </div>
+      </div>
+        
+      <div class="voice-card fade-in-up" style="animation-delay:2000ms;">
+        <img src="assets/images/helder-canto.jpg" alt="Helder Canto - Tovar" class="voice-photo" loading="lazy">
+        <div class="voice-info">
+          <h3>Helder Canto</h3>
+          <p><strong>Personagem:</strong> Tovar</p>
+          <a href="https://www.instagram.com/heldercanto" target="_blank" class="voice-social" aria-label="Visitar o Instagram de Helder Canto">📸 Instagram</a>
+        </div>
+      </div>
+        
+      <div class="voice-card fade-in-up" style="animation-delay:2200ms;">
+        <img src="assets/images/nathalia-jaccoud.jpg" alt="Nathália Jaccoud - Macaquinho" class="voice-photo" loading="lazy">
+        <div class="voice-info">
+          <h3>Nathália Jaccoud</h3>
+          <p><strong>Personagem:</strong> Macaquinho</p>
+          <a href="https://www.instagram.com/jaccoudnathalia" target="_blank" class="voice-social" aria-label="Visitar o Instagram de Nathália Jaccoud">📸 Instagram</a>
+        </div>
+      </div>
+        
+      <div class="voice-card fade-in-up" style="animation-delay:2400ms;">
+        <img src="assets/images/andre-nobrega.jpg" alt="André Nóbrega - Macaco" class="voice-photo" loading="lazy">
+        <div class="voice-info">
+          <h3>André Nóbrega</h3>
+          <p><strong>Personagem:</strong> Macaco</p>
+          <a href="https://www.instagram.com/talesoftoficial" target="_blank" class="voice-social" aria-label="Visitar o Instagram de André Nóbrega">📸 Instagram</a>
+        </div>
+      </div>
+        
+      <div class="voice-card fade-in-up" style="animation-delay:2600ms;">
+        <img src="assets/images/antonio-jaccoud.jpg" alt="Antônio Jaccoud - Comandante" class="voice-photo" loading="lazy">
+        <div class="voice-info">
+          <h3>Antônio Jaccoud</h3>
+          <p><strong>Personagem:</strong> Comandante</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- Seção Bastidores -->
-    <section id="bastidores" class="behind-scenes-section" data-speed="0.3">
-        <div class="container">
+    <section id="bastidores" class="behind-scenes-section">
+        <div class="behind-content container">
             <div class="section-header fade-in-up">
                 <h2 class="section-title">🎬 Bastidores</h2>
-                <p class="section-subtitle">Veja como nasceu a magia de Temperópolis</p>
+                <p class="section-subtitle">Veja um pedacinho dos bastidores da dublagem!</p>                
             </div>
             
             <div class="behind-scenes-content fade-in-up" data-animate>
                 <div class="behind-scenes-text">
-                    <p>
-                        Descubra os segredos por trás da criação do universo do Mostardinha. 
-                        Desde os primeiros esboços até a gravação das músicas, cada momento 
-                        foi pensado com carinho para tocar o coração das famílias.
-                    </p>
-                    <a href="https://www.instagram.com/p/exemplo" target="_blank" class="btn btn-secondary btn-large">
-                        <span class="btn-icon">🎥</span>
+                    <p>Assista à Jaque dublando a Dona Cigarra com direção de Gabriel Jaccoud.</p>
+                    <a href="https://www.instagram.com/reel/CtkRU_DAi_o/?igsh=MW1tejR1ejdqaThldw==" target="_blank" class="btn btn-secondary btn-large" aria-label="Ver bastidores da gravação no Instagram">🎥 Ver bastidores da gravação</a>
+                        <span class="btn-icon" aria-hidden="true">🎥</span>
                         Ver Vídeo dos Bastidores
                     </a>
                 </div>
@@ -495,7 +624,7 @@
         <div class="container">
             <div class="wisdom-content fade-in-up">
                 <div class="wisdom-image">
-                    <img src="assets/images/SenhoraMostarda(2).png" alt="Senhora Mostarda" class="senhora-mostarda">
+                    <img src="assets/images/SenhoraMostarda(2).png" alt="Senhora Mostarda" class="senhora-mostarda" loading="lazy">
                 </div>
                 <div class="wisdom-text">
                     <blockquote>
@@ -503,8 +632,8 @@
                         Ela só mostra os caminhos que estamos prontos a percorrer."
                     </blockquote>
                     <cite>— Senhora Mostarda</cite>
-                    <a href="https://www.youtube.com/watch?v=6u8edwJU_Rw" target="_blank" class="btn btn-secondary">
-                        <span class="btn-icon">🎵</span> Ouça "Agradecendo"
+                    <a href="https://www.youtube.com/watch?v=6u8edwJU_Rw" target="_blank" class="btn btn-secondary" aria-label="Ouvir a música Agradecendo no canal Mundo Ninus">
+                        <span class="btn-icon" aria-hidden="true">🎵</span> Ouça "Agradecendo"
                     </a>
                 </div>
             </div>
@@ -548,12 +677,12 @@
                     </p>
                     
                     <div class="audiobook-cta">
-                        <a href="https://www.youtube.com/watch?v=BSzPFZICl5c&t=663s" target="_blank" class="btn btn-secondary btn-large">
-                            <span class="btn-icon">🎧</span>
+                        <a href="https://www.youtube.com/watch?v=BSzPFZICl5c&t=663s" target="_blank" class="btn btn-secondary btn-large" aria-label="Ouvir o audiobook gratuito do Mostardinha no YouTube">
+                            <span class="btn-icon" aria-hidden="true">🎧</span>
                             Ouvir Audiobook Gratuito
                         </a>
-                        <a href="https://www.youtube.com/@mundoninoss" target="_blank" class="btn btn-outline">
-                            <span class="btn-icon">📺</span>
+                        <a href="https://www.youtube.com/@mundoninoss" target="_blank" class="btn btn-outline" aria-label="Visitar o canal Mundo Ninus no YouTube">
+                            <span class="btn-icon" aria-hidden="true">📺</span>
                             Visitar Canal
                         </a>
                     </div>
@@ -572,10 +701,12 @@
     </section>
 
     <!-- Seção Mundo Ninus -->
-    <section id="mundo-ninus" class="mundo-ninus-section" data-speed="0.2">
+    <section id="mundo-ninus" class="mundo-ninus-section" data-speed="0.2" style="text-align: center; padding: 40px 20px;">
         <div class="container">
             <div class="section-header fade-in-up">
-                <h2 class="section-title">🌍 Mundo Ninus</h2>
+                <img src="assets/images/logo-mundoninus.png" alt="Logo Mundo Ninus" class="channel-logo" style="max-width: 200px; margin-bottom: 15px;">
+      <p style="font-size: 1.1em; color: #444;">
+                <h2 class="section-title">🌍 Conheça o Canal Mundo Ninus</h2>
                 <p class="section-subtitle">Explore mais conteúdos do universo encantado</p>
             </div>
             
@@ -587,14 +718,14 @@
                         Descubra mais conteúdos que vão encantar toda a família.
                     </p>
                     <a href="https://www.youtube.com/@mundoninoss" target="_blank" class="btn btn-primary btn-large">
-                        <span class="btn-icon">🌟</span>
+                        <span class="btn-icon" aria-hidden="true">🌟</span>
                         Explorar Mundo Ninus
                     </a>
                 </div>
                 
                 <div class="mundo-ninus-visual">
                     <div class="mundo-ninus-logo">
-                        <span class="mundo-icon">🌍</span>
+                        <span class="mundo-icon" aria-hidden="true">🌍</span>
                         <h3>Mundo Ninus</h3>
                     </div>
                 </div>
@@ -614,16 +745,16 @@
                 <div class="quiz-question" id="quizQuestion">
                     <h3>Como você reage quando encontra um amigo triste?</h3>
                     <div class="quiz-options">
-                        <button class="quiz-option" data-character="mostardinha">
+                        <button class="quiz-option" data-character="mostardinha" aria-label="Escolher opção: Ofereço um abraço e escuto com carinho">
                             🤗 Ofereço um abraço e escuto com carinho
                         </button>
-                        <button class="quiz-option" data-character="maionese">
+                        <button class="quiz-option" data-character="maionese" aria-label="Escolher opção: Tento fazer algo especial para alegrar">
                             💝 Tento fazer algo especial para alegrar
                         </button>
-                        <button class="quiz-option" data-character="salsinha">
+                        <button class="quiz-option" data-character="salsinha" aria-label="Escolher opção: Conto uma piada para fazer rir">
                             🎉 Conto uma piada para fazer rir
                         </button>
-                        <button class="quiz-option" data-character="alho">
+                        <button class="quiz-option" data-character="alho" aria-label="Escolher opção: Dou um conselho sábio e carinhoso">
                             🧠 Dou um conselho sábio e carinhoso
                         </button>
                     </div>
@@ -636,15 +767,16 @@
                         <p id="resultDescription"></p>
                     </div>
                     <div class="result-actions">
-                        <button class="btn btn-primary" onclick="restartQuiz()">
-                            <span class="btn-icon">🔄</span> Fazer Novamente
+                        <button class="btn btn-primary" onclick="restartQuiz()" aria-label="Refazer o quiz">
+                            <span class="btn-icon" aria-hidden="true">🔄</span> Fazer Novamente
                         </button>
                         <div class="email-capture">
                             <p>Receba uma mensagem especial do seu personagem por e-mail!</p>
                             <div class="email-form">
-                                <input type="email" placeholder="Seu e-mail" id="quizEmail">
-                                <button class="btn btn-secondary" onclick="sendCharacterMessage()">
-                                    <span class="btn-icon">✨</span> Receber
+                                <label for="quizEmail" class="sr-only">Seu e-mail</label>
+                                <input type="email" placeholder="Seu e-mail" id="quizEmail" aria-label="Campo para digitar seu e-mail">
+                                <button class="btn btn-secondary" onclick="sendCharacterMessage()" aria-label="Receber mensagem por e-mail">
+                                    <span class="btn-icon" aria-hidden="true">✨</span> Receber
                                 </button>
                             </div>
                         </div>
@@ -674,19 +806,62 @@
                     
                     <form class="newsletter-form" id="newsletterForm">
                         <div class="form-group">
-                            <input type="text" class="form-input" id="userName" placeholder="Seu nome" required>
+                            <label for="userName" class="sr-only">Seu nome</label>
+                            <input type="text" class="form-input" id="userName" placeholder="Seu nome" required aria-label="Digite seu nome">
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-input" id="userEmail" placeholder="Seu e-mail" required>
+                            <label for="userEmail" class="sr-only">Seu e-mail</label>
+                            <input type="email" class="form-input" id="userEmail" placeholder="Seu e-mail" required aria-label="Digite seu e-mail">
                         </div>
-                        <button type="submit" class="btn btn-primary newsletter-btn">
-                            <span class="btn-icon">✨</span> Quero receber!
+                        <button type="submit" class="btn btn-primary newsletter-btn" aria-label="Cadastrar-se na newsletter">
+                            <span class="btn-icon" aria-hidden="true">✨</span> Quero receber!
                         </button>
                     </form>
                     
                     <p class="newsletter-note">
                         📬 Fique pertinho do nosso mundo encantado e receba surpresas especiais!
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Sobre o Autor -->
+    <section class="author-section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">🧑‍🎨 Sobre o Autor - Gabriel Jaccoud</h2>
+            </div>
+            
+            <div class="author-content">
+                <div class="author-image fade-in-left">
+                    <img src="assets/images/mago2.png" alt="Gabriel Jaccoud" class="author-photo" loading="lazy">
+                </div>
+                
+                <div class="author-info fade-in-right">
+                    <p class="author-description">
+                        Gabriel Jaccoud é <strong>ator, cantor, escritor e educador afetivo</strong>. 
+                        Com uma trajetória artística e espiritual profundamente conectada ao universo da infância, 
+                        ele dedica sua vida à criação de obras que encantam, ensinam e tocam o coração.
+                    </p>
+                    
+                    <p class="author-description">
+                        Idealizador do <strong>Instituto CÉU</strong> e criador de projetos sociais e educacionais 
+                        que promovem o desenvolvimento humano, Gabriel acredita que o verdadeiro crescimento 
+                        começa pela alma — e que a infância é o solo mais fértil para plantar amor, consciência e valores.
+                    </p>
+                    
+                    <p class="author-description">
+                        Com sensibilidade, humor e linguagem simbólica, Gabriel transforma histórias em 
+                        pontes de empatia entre gerações.
+                    </p>
+                    
+                    <div class="author-mission">
+                        <blockquote>
+                            "Escrevo para lembrar que somos todos sementes. E que o amor é a terra onde podemos florescer."
+                        </blockquote>
+                        <cite>— Gabriel Jaccoud</cite>
+                    </div>
                 </div>
             </div>
         </div>
@@ -720,16 +895,16 @@
                     </div>
                     
                     <div class="purchase-actions">
-                        <a href="https://pay.hotmart.com/H100940670E" target="_blank" class="btn btn-primary btn-large purchase-btn">
-                            <span class="btn-icon">🛒</span>
+                        <a href="https://pay.hotmart.com/H100940670E" target="_blank" class="btn btn-primary btn-large purchase-btn" aria-label="Comprar o livro Mostardinha por R$ 34,99">
+                            <span class="btn-icon" aria-hidden="true">🛒</span>
                             Quero o meu agora!
                         </a>
                         
                         <div class="coupon-section">
                             <label for="couponInput">Insira seu cupom de desconto, se tiver:</label>
                             <div class="coupon-input-group">
-                                <input type="text" id="couponInput" placeholder="Código do cupom" class="coupon-input">
-                                <button class="btn btn-outline btn-small" onclick="applyCoupon()">Aplicar</button>
+                                <input type="text" id="couponInput" placeholder="Código do cupom" class="coupon-input" aria-label="Campo para inserir cupom de desconto">
+                                <button class="btn btn-outline btn-small" onclick="applyCoupon()" aria-label="Aplicar cupom de desconto">Aplicar</button>
                             </div>
                         </div>
                         
@@ -738,56 +913,18 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Seção Sobre o Autor -->
-    <section class="author-section">
-        <div class="container">
-            <div class="section-header fade-in-up">
-                <h2 class="section-title">🧑‍🎨 Sobre o Autor - Gabriel Jaccoud</h2>
-            </div>
-            
-            <div class="author-content">
-                <div class="author-image fade-in-left">
-                    <img src="assets/images/mago2.png" alt="Gabriel Jaccoud" class="author-photo">
-                </div>
-                
-                <div class="author-info fade-in-right">
-                    <p class="author-description">
-                        Gabriel Jaccoud é <strong>ator, cantor, escritor e educador afetivo</strong>. 
-                        Com uma trajetória artística e espiritual profundamente conectada ao universo da infância, 
-                        ele dedica sua vida à criação de obras que encantam, ensinam e tocam o coração.
-                    </p>
-                    
-                    <p class="author-description">
-                        Idealizador do <strong>Instituto CÉU</strong> e criador de projetos sociais e educacionais 
-                        que promovem o desenvolvimento humano, Gabriel acredita que o verdadeiro crescimento 
-                        começa pela alma — e que a infância é o solo mais fértil para plantar amor, consciência e valores.
-                    </p>
-                    
-                    <p class="author-description">
-                        Com sensibilidade, humor e linguagem simbólica, Gabriel transforma histórias em 
-                        pontes de empatia entre gerações.
-                    </p>
-                    
-                    <div class="author-mission">
-                        <blockquote>
-                            "Escrevo para lembrar que somos todos sementes. E que o amor é a terra onde podemos florescer."
-                        </blockquote>
-                        <cite>— Gabriel Jaccoud</cite>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </section>    
 
     <!-- Seção Sobre a Editora -->
-    <section class="publisher-section">
+    <section id="editora-humanizar" class="publisher-section parallax-section" data-speed="0.3" style="text-align: center; padding: 40px 20px;">
         <div class="container">
             <div class="publisher-content fade-in-up">
                 <div class="publisher-logo">
-                    <img src="assets/images/2.png" alt="Logo Editora Humanizar" class="publisher-logo-img">
+                    <img src="assets/images/2.png" alt="Logo Editora Humanizar" class="publisher-logo-img" style="max-width: 200px; margin-bottom: 15px;">
+                    <p style="font-size: 1.1em; color: #444;">
                 </div>
+
+                <div class="publisher-content fade-in-up">
                 <h2 class="publisher-title">📚 Sobre a Editora - HUMANIZAR</h2>
                 <p class="publisher-description">
                     A <strong>Editora Humanizar</strong> tem como missão publicar obras que elevam a consciência humana, 
@@ -809,12 +946,12 @@
                 <p class="cta-subtitle">Compre, leia, ouça e compartilhe o Mostardinha com quem você ama</p>
                 
                 <div class="cta-buttons">
-                    <a href="https://pay.hotmart.com/H100940670E" target="_blank" class="btn btn-primary btn-large">
-                        <span class="btn-icon">🛒</span>
+                    <a href="https://pay.hotmart.com/H100940670E" target="_blank" class="btn btn-primary btn-large" aria-label="Comprar o livro Mostardinha por R$ 34,99">
+                        <span class="btn-icon" aria-hidden="true">🛒</span>
                         Comprar o livro - R$ 34,99
                     </a>
-                    <a href="https://www.youtube.com/watch?v=BSzPFZICl5c&t=663s" target="_blank" class="btn btn-secondary btn-large">
-                        <span class="btn-icon">🎧</span>
+                    <a href="https://www.youtube.com/watch?v=BSzPFZICl5c&t=663s" target="_blank" class="btn btn-secondary btn-large" aria-label="Ouvir o audiobook gratuito do Mostardinha no YouTube">
+                        <span class="btn-icon" aria-hidden="true">🎧</span>
                         Ouvir o audiobook
                     </a>
                 </div>
@@ -871,6 +1008,11 @@
 
     <!-- JavaScript -->
     <script src="script.js"></script>
+
+    <!-- Botão Scroll-to-Top (Voltar ao Topo) -->
+<button id="scrollTopBtn" class="scroll-top-btn" aria-label="Voltar ao topo da página">
+  <span class="scroll-top-icon" aria-hidden="true">↑</span>
+</button>
 </body>
 </html>
 
