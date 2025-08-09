@@ -1,8 +1,8 @@
-# Landing Page - O Antipoderoso Mostardinha
+# Landing Page - Mostardinha
 
 ## Descrição
 
-Esta é uma landing page encantadora, interativa e responsiva criada para promover e vender o livro digital infantil "O Antipoderoso Mostardinha" de Gabriel Jaccoud. A página foi desenvolvida com foco na conversão e no encantamento de famílias, educadores e amantes de histórias transformadoras.
+Esta é uma landing page encantadora, interativa e responsiva criada para promover e vender o livro digital infantil "Mostardinha" de Gabriel Jaccoud. A página foi desenvolvida com foco na conversão e no encantamento de famílias, educadores e amantes de histórias transformadoras.
 
 ## Características
 
