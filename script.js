@@ -38,7 +38,7 @@ function initAudioPlayer() {
                 isPlaying = false;
             } else {
                 audioElement.play().catch(function(error) {
-                    console.log('Erro ao reproduzir áudio:', error);
+                    console.debug('Erro ao reproduzir áudio:', error);
                 });
                 audioIcon.textContent = '⏸️';
                 isPlaying = true;
@@ -61,7 +61,7 @@ function initAudioPlayer() {
         });
         
         audioElement.addEventListener('error', function() {
-            console.log('Erro no carregamento do áudio');
+            console.debug('Erro no carregamento do áudio');
         });
     }
 }
@@ -705,7 +705,7 @@ document.addEventListener('keydown', function(e) {
 // Tracking de cliques em botões importantes
 function trackButtonClick(buttonText, section) {
     // Aqui você integraria com Google Analytics ou similar
-    console.log(`Botão clicado: ${buttonText} na seção: ${section}`);
+    console.debug(`Botão clicado: ${buttonText} na seção: ${section}`);
     
     // Exemplo de integração com Google Analytics
     if (typeof gtag !== 'undefined') {
