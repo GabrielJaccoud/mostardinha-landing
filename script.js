@@ -801,6 +801,102 @@ function createConfetti() {
     }
 }
 
+// --- Função para o Botão Scroll-to-Top ---
+
+/* Inicializa o botão de "Voltar ao Topo" */
+function initScrollTopButton() {
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+  // Verifica se o botão existe no HTML
+  if (!scrollTopBtn) {
+    console.warn("Botão de scroll-to-top não encontrado no HTML.");
+    return;
+  }
+
+  // Função para verificar a posição da página e mostrar/esconder o botão
+  function toggleScrollButton() {
+    // Se a página for rolada mais de 300px para baixo
+    if (window.scrollY > 300) {
+      scrollTopBtn.classList.add("show"); // Adiciona a classe 'show' -> botão aparece
+    } else {
+      scrollTopBtn.classList.remove("show"); // Remove a classe 'show' -> botão desaparece
+    }
+  }
+
+  // Adiciona um "ouvinte de evento" para quando a página for rolada
+  window.addEventListener("scroll", toggleScrollButton);
+
+  // Adiciona um "ouvinte de evento" para quando o botão for clicado
+  scrollTopBtn.addEventListener("click", function () {
+    // Rola suavemente até o topo da página (body ou html)
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth" // Comportamento suave
+    });
+  });
+}
+
+// --- Seção "Mais do que uma História" --- 
+        // --- Modal para Dicas de Leitura ---
+        function initMoreThanStorySection() {
+            const modal = document.getElementById('readingTipsModal');
+            const btn = document.getElementById('openTipsModal');
+            const span = document.getElementById('closeTipsModal');
+
+            if (!modal || !btn || !span) {
+                 console.warn("Elementos do modal não encontrados. A funcionalidade do modal não será ativada.");
+                 return;
+            }
+
+            // Quando o usuário clica no botão, abre o modal
+            btn.onclick = function() {
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden'; // Impede scroll da página
+            }
+
+            // Quando o usuário clica no X, fecha o modal
+            span.onclick = function() {
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = ''; // Restaura scroll da página
+            }
+
+            // Quando o usuário clica em qualquer lugar fora do modal, fecha-o
+            window.onclick = function(event) {
+                if (event.target === modal) {
+                    modal.setAttribute('aria-hidden', 'true');
+                    document.body.style.overflow = ''; // Restaura scroll da página
+                }
+            }
+        }
+        // ----------------------------------
+
+        // --- Elementos Parallax dentro da Seção "Mais do que uma História" ---
+        function createMoreSectionParallaxElements() {
+            const sceneContainer = document.querySelector('.reading-scene-placeholder');
+            if (!sceneContainer) return;
+
+            // Criar alguns elementos parallax simples
+            const elements = [
+                { char: '⭐', classes: 'parallax-star' },
+                { char: '🍃', classes: 'parallax-leaf' },
+                { char: '🌼', classes: 'parallax-character', style: 'color: #FF9800;' }, // Flor laranja
+                { char: '🐞', classes: 'parallax-character', style: 'color: #F44336; font-size: 1.8rem;' }, // Joaninha vermelha
+            ];
+
+            elements.forEach(elData => {
+                const el = document.createElement('div');
+                el.classList.add(elData.classes);
+                el.textContent = elData.char;
+                if (elData.style) {
+                    el.style.cssText = elData.style; // Aplica estilo inline se fornecido
+                }
+                // Posicionamento aleatório dentro do container
+                el.style.left = `${Math.random() * 80 + 10}%`;
+                el.style.top = `${Math.random() * 80 + 10}%`;
+                sceneContainer.appendChild(el);
+            });
+        }
+
 // ===== INICIALIZAÇÃO ADICIONAL =====
 
 // Inicializa funcionalidades quando a página carrega
