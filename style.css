@@ -531,7 +531,7 @@ body {
 
 .characters-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     margin-top: 40px;
 }
@@ -1818,7 +1818,7 @@ html {
 
 .voices-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     margin-top: 40px;
 }
@@ -2392,6 +2392,245 @@ html {
 
 .mundo-ninus-section {
     text-align: center;
+}
+
+
+
+
+.nav-cta .btn-primary.btn-small {
+    background-color: var(--amarelo-mostarda);
+    color: var(--cinza-escuro);
+    border: 2px solid var(--amarelo-mostarda);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.nav-cta .btn-primary.btn-small:hover {
+    background-color: var(--cinza-escuro);
+    color: var(--amarelo-mostarda);
+    border-color: var(--amarelo-mostarda);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+.character-card::before,
+.music-card::before {
+    content: '✨'; /* Pequeno elemento decorativo */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.character-card:hover::before,
+.music-card:hover::before {
+    opacity: 1;
+}
+
+.character-card,
+.music-card {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Sombra mais suave */
+    border-radius: 20px; /* Bordas mais arredondadas */
+}
+
+.character-card:hover,
+.music-card:hover {
+    transform: translateY(-8px) scale(1.03); /* Efeito de lift aprimorado */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25); /* Sombra no hover mais pronunciada */
+}
+
+
+
+
+/* Seção Mais do que uma História */
+.more-than-story-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--cinza-claro) 0%, var(--branco) 100%);
+    text-align: center;
+}
+
+.more-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.more-text {
+    text-align: left;
+}
+
+.reading-scene-placeholder {
+    background: var(--cinza-medio);
+    border-radius: var(--border-radius);
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--branco);
+    font-size: 1.5rem;
+    font-weight: 600;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.reading-scene-placeholder::before {
+    content: '🎥';
+    font-size: 4rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.7;
+}
+
+.more-actions .btn-secondary.btn-large {
+    background-color: var(--rosa-pessego);
+    color: var(--cinza-escuro);
+    border: 2px solid var(--rosa-pessego);
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.more-actions .btn-secondary.btn-large:hover {
+    background-color: var(--cinza-escuro);
+    color: var(--rosa-pessego);
+    border-color: var(--rosa-pessego);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.more-actions .btn-primary.btn-large {
+    background-color: var(--amarelo-mostarda);
+    color: var(--cinza-escuro);
+    border: 2px solid var(--amarelo-mostarda);
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.more-actions .btn-primary.btn-large:hover {
+    background-color: var(--cinza-escuro);
+    color: var(--amarelo-mostarda);
+    border-color: var(--amarelo-mostarda);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+.more-than-story-section .section-title {
+    color: var(--cinza-escuro);
+}
+
+.more-than-story-section .section-subtitle {
+    color: var(--cinza-medio);
+}
+
+.more-than-story-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--cinza-escuro);
+    margin-bottom: 20px;
+}
+
+
+
+
+/* Seção Vozes que Encantam */
+.voices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.voice-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.voice-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.voice-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--amarelo-mostarda);
+    margin-bottom: 15px;
+}
+
+.voice-info h3 {
+    margin-bottom: 10px;
+    color: var(--cinza-escuro);
+    font-size: 1.2rem;
+}
+
+.voice-info p {
+    font-size: 0.95rem;
+    color: var(--cinza-medio);
+    margin-bottom: 10px;
+}
+
+.voice-quote {
+    font-style: italic;
+    color: var(--cinza-escuro);
+    font-size: 0.9rem;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.voice-social {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--azul-claro);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.voice-social:hover {
+    color: var(--amarelo-mostarda);
+}
+
+
+
+
+.behind-scenes-section .container {
+    text-align: center;
+}
+
+
+.behind-scenes-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 
