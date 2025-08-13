@@ -163,9 +163,9 @@ body {
     background: rgba(244, 208, 63, 0.95);
     backdrop-filter: blur(10px);
     border-radius: var(--border-radius);
-    padding: 15px;
+    padding: 10px 15px;
     box-shadow: var(--shadow);
-    z-index: 999;
+    z-index: 1000;
     min-width: 280px;
     transition: var(--transition);
 }
@@ -261,7 +261,8 @@ body {
     position: relative;
     overflow: hidden;
     background: linear-gradient(135deg, var(--azul-claro) 0%, var(--lavanda) 100%);
-    padding-top: 80px;
+    padding-top: 100px 0 60px 0;
+    border-bottom: 1px solid rgba(74, 61, 42, 0.05);
 }
 
 .hero-background {
@@ -280,11 +281,13 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    will-change: transform;
 }
 
 .parallax-sky {
     background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%);
     transform: translateZ(0);
+    z-index: 1;
 }
 
 .parallax-clouds {
@@ -500,9 +503,29 @@ body {
     line-height: 1.8;
 }
 
+/* Seções */
+
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-family: var(--font-secondary);
+  font-size: 2.5rem;
+  color: var(--secondary-color);
+  margin-bottom: 15px;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: #6c5b3d;
+}
+
 /* Seção Personagens - "A TURMA DE TEMPERÓPOLIS" */
 .characters-section {
     padding: 80px 0;
+    padding-bottom: 80px;
     background: linear-gradient(135deg, var(--rosa-pessego) 0%, var(--lavanda) 100%);
 }
 
@@ -516,9 +539,10 @@ body {
 .character-card {
     background: rgba(255, 255, 255, 0.95);
     border-radius: var(--border-radius);
+    overflow: hidden;
     padding: 30px 20px;
     text-align: center;
-    box-shadow: var(--shadow);
+    box-shadow: 0 5px 15px var(--shadow);
     transition: var(--transition);
     cursor: pointer;
 }
@@ -529,14 +553,20 @@ body {
 }
 
 .character-image {
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
     margin-bottom: 20px;
 }
 
 .character-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    object-fit: cover;
+    object-fit: contain;
     border: 4px solid var(--amarelo-mostarda);
     transition: var(--transition);
 }
@@ -581,6 +611,7 @@ body {
 /* Seção Músicas */
 .music-section {
     padding: 80px 0;
+    padding-bottom: 60px;
     background: linear-gradient(135deg, var(--verde-folha) 0%, var(--azul-claro) 100%);
 }
 
@@ -1458,7 +1489,7 @@ section {
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     .nav-menu {
         display: none;
     }
@@ -1706,14 +1737,82 @@ html {
     opacity: 1;
 }
 
+/* --- Seção "Mais do que uma História" --- */
+        .more-than-story-section {
+            background-color: var(--bg-accent); /* Usa a cor de fundo harmoniosa */
+            padding-top: var(--section-padding-vertical);
+            padding-bottom: var(--section-padding-vertical);
+            position: relative;
+            overflow: hidden; /* Para conter elementos parallax */
+        }
 
+        .more-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            position: relative; /* Para posicionamento dos elementos parallax */
+        }
 
+        .more-text {
+            flex: 1;
+            min-width: 300px;
+        }
 
+        .more-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            font-weight: var(--font-weight-regular); /* 400 */
+        }
+
+        .more-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .more-visual {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* Para elementos parallax dentro */
+        }
+
+        .reading-scene-placeholder {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            background-color: #f0f8e6; /* Um verde bege suave */
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden; /* Para conter os elementos parallax */
+        }
 
 /* Seção Vozes que Encantam */
 .voices-section {
     padding: 80px 0;
     background: linear-gradient(135deg, var(--rosa-pessego) 0%, var(--lavanda) 100%);
+    padding: 80px 0;
+}
+
+.voices-section::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: rgba(255, 255, 255, 0.85); 
+  z-index: 1;
+}
+        
+.voices-section > .container {
+  position: relative;
+  z-index: 2;
 }
 
 .voices-grid {
@@ -1729,13 +1828,21 @@ html {
     padding: 30px 20px;
     text-align: center;
     box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     transition: var(--transition);
+    animation: fadeInUp 0.6s ease-out forwards;
     position: relative;
+    opacity: 0;
+    transform: translateY(20px);
 }
 
 .voice-card:hover {
     transform: translateY(-10px) scale(1.02);
-    box-shadow: var(--shadow-hover);
+    box-shadow: 0 6px 20px var(--shadow-hover);
+    background: rgba(255,255,255,1);
 }
 
 .voice-image-wrapper {
@@ -1797,7 +1904,7 @@ html {
 .voice-social {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 15px;    
 }
 
 .social-icon {
@@ -1875,17 +1982,44 @@ html {
     color: var(--cinza-medio);
 }
 
+/* --- Ajustes para Mobile (Telas pequenas) --- */
+        @media (max-width: 576px) {
+            /* ... */
+        }
+
+  .hero-content {
+    flex-direction: column;
+  }
+  
+  .hero-text, .hero-image {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .floating-elements {
+    display: none;
+  }
+  
+  .character-card, .music-card {
+    width: calc(50% - 20px);
+  }
+}
+
 /* Otimizações de Responsividade */
-@media (max-width: 992px) {
+@media (max-width: 992px) {    
     .nav-menu {
         display: none;
         flex-direction: column;
         position: absolute;
         top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(255, 255, 255, 0.98);
-        padding: 20px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 30px;
+        transition: left 0.3s ease;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
 
@@ -1895,7 +2029,95 @@ html {
 
     .mobile-menu-toggle {
         display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
     }
+
+    .mobile-menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--secondary-color);
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-menu-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  
+  .mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .mobile-menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+  
+  .sequence-item, .sequence-arrow {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .sequence-arrow {
+    transform: rotate(90deg);
+    margin: 10px 0;
+  }
+  
+  .character-card, .music-card {
+    width: 100%;
+  }
+  
+  .audio-player-fixed {
+    bottom: 70px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  .voices-section {
+    background: url('assets/images/fundo-parallax--sementes.jpg') no-repeat fixed center center / cover;
+    padding: 80px 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .voices-section::before {
+    content: "";
+    background: rgba(255, 255, 255, 0.85);
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1;
+  }
+
+  .voices-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+ }
+
+  .voice-card {
+    max-width: 100%;
+ }  
+
+  [data-animate] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease;
+  }
+      
+  [data-animate].in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
     .hero-content {
         grid-template-columns: 1fr;
@@ -1936,5 +2158,225 @@ html {
         font-size: 1.8rem;
     }
 }
+
+/* --- Elementos Parallax dentro da Seção --- */
+
+        /* Estes são exemplos. Você pode adicionar mais elementos conforme sua arte. */
+        .parallax-star, .parallax-leaf, .parallax-character {
+            position: absolute;
+            pointer-events: none; /* Para não interferir com cliques */
+            opacity: 0.7;
+            z-index: 0; /* Atrás do conteúdo principal */
+        }
+
+        .parallax-star {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            top: 10%;
+            left: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .parallax-leaf {
+            font-size: 2rem;
+            color: #4CAF50;
+            bottom: 15%;
+            right: 15%;
+            animation: float 8s ease-in-out infinite 1s;
+        }
+
+        .parallax-character {
+            font-size: 2.5rem;
+            /* Cor será definida inline ou por classe específica */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: float 10s ease-in-out infinite 2s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(10px, -10px); }
+            100% { transform: translate(0, 0); }
+        }
+        /* ------------------------------------------ */
+
+
+        /* --- Modal para Dicas de Leitura --- */
+        .modal {
+            display: none; /* Escondido por padrão */
+            position: fixed;
+            z-index: 2000; /* Acima de tudo */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Scroll se necessário */
+            background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
+            backdrop-filter: blur(5px); /* Efeito de desfoque no fundo */
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            background-color: #fffdf8;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: slideIn 0.4s ease-out;
+            position: relative;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            padding: 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-family: var(--font-secondary);
+            font-weight: var(--font-weight-bold); /* 700 */
+        }
+
+        .modal-close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .modal-close-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .modal-body {
+            padding: 25px;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+            font-weight: var(--font-weight-regular); /* 400 */
+        }
+
+        .tips-list li:before {
+            content: "✨"; /* Emoji como marcador */
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .modal-footer {
+            padding: 15px 25px;
+            background-color: #f9f9f9;
+            border-radius: 0 0 15px 15px;
+            text-align: center;
+            font-style: italic;
+            color: #6c5b3d;
+            font-weight: var(--font-weight-medium); /* 500 */
+        }
+
+        .modal[aria-hidden="false"] {
+            display: block;
+        }
+        /* ------------------------------- */
+
+        /* Ajustes para Mobile */
+        @media (max-width: 576px) {
+            .more-content {
+                flex-direction: column;
+            }
+            .more-text, .more-visual {
+                width: 100%;
+            }
+            .reading-scene-placeholder {
+                height: 250px; /* Altura um pouco menor em mobile */
+            }
+            .more-actions {
+                align-items: center; /* Centraliza botões em mobile */
+            }
+            .more-actions .btn {
+                width: 100%; /* Botões ocupam 100% da largura em mobile */
+                justify-content: center;
+            }
+        }
+
+/* --- Botão Scroll-to-Top --- */
+
+/* Estilo base do botão */
+.scroll-top-btn {
+  position: fixed; /* Fica fixo na tela */
+  bottom: 20px; /* Distância da parte inferior */
+  right: 20px; /* Distância da lateral direita */
+  width: 50px; /* Largura do botão */
+  height: 50px; /* Altura do botão */
+  background-color: var(--secondary-color); /* Cor de fundo (marrom) */
+  color: white; /* Cor do ícone */
+  border: none; /* Sem borda */
+  border-radius: 50%; /* Formato circular */
+  cursor: pointer; /* Muda o cursor para indicar que é clicável */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
+  font-size: 1.5rem; /* Tamanho do ícone */
+  display: flex; /* Usa flexbox para centralizar o ícone */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  opacity: 0; /* Inicialmente invisível */
+  visibility: hidden; /* Inicialmente escondido */
+  transform: translateY(20px); /* Começa um pouco abaixo */
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.3s ease; /* Transições suaves */
+  z-index: 999; /* Fica acima de outros elementos */
+}
+
+/* Estilo do botão quando está visível */
+.scroll-top-btn.show {
+  opacity: 1; /* Torna visível */
+  visibility: visible; /* Torna visível */
+  transform: translateY(0); /* Volta à posição normal */
+}
+
+/* Efeito hover do botão */
+.scroll-top-btn:hover {
+  background-color: #3a2f1f; /* Cor de fundo mais escura no hover */
+  transform: translateY(-3px); /* Sobe levemente ao passar o mouse */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Sombra mais forte no hover */
+}
+
+/* Estilo do ícone dentro do botão */
+.scroll-top-icon {
+  display: block;
+  line-height: 1; /* Ajusta o alinhamento da linha */
+}
+
 
 
