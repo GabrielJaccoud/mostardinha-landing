@@ -54,7 +54,7 @@
                 </ul>
                 
                 <div class="nav-cta">
-                    <a href="#comprar" class="btn btn-primary btn-small">Comprar - R$ 34,99</a>
+                    <a href="https://pay.hotmart.com/H100940670E" class="btn btn-primary btn-small" aria-label="Comprar o livro Mostardinha por R$ 34,99">Comprar - R$ 34,99</a>
                 </div>
                 
                 <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir menu">
@@ -114,6 +114,12 @@
             <div class="note note-2">🎶</div>
             <div class="note note-3">🎵</div>
         </div>
+
+        <div class="secao-hero" id="herois">
+        </div>
+
+        <div class="secao-jornada" id="jornada">
+        </div>
         
         <div class="container">
             <div class="hero-content fade-in-up">
@@ -136,10 +142,12 @@
                     </div>
                     
                     <div class="hero-cta">
-                        <a href="#comprar" class="btn btn-primary btn-large" aria-label="Comprar o livro Mostardinha por R$ 34,99">
+                        <a href="https://pay.hotmart.com/H100940670E" class="btn btn-primary btn-large" aria-label="Comprar o livro Mostardinha por R$ 34,99">
                             <span class="btn-icon" aria-hidden="true">📖</span>
                             Quero o livro por R$ 34,99
                         </a>
+
+                        <div class="voucher-section">
                             <label for="voucherInput">Você tem um vale-presente ou cupom? Insira aqui!</label>
                             <input type="text" id="voucherInput" placeholder="Digite seu cupom..." class="voucher-input" aria-label="Campo para inserir cupom">
                             <button type="button" class="btn btn-outline btn-small" onclick="applyVoucher()">Aplicar Cupom</button>
@@ -705,10 +713,11 @@
     </section>
 
     <!-- Seção Mundo Ninus -->
-    <section id="mundo-ninus" class="mundo-ninus-section" data-speed="0.2" style="text-align: center; padding: 40px 20px;">
+    <section id="mundo-ninus" class="mundo-ninus-section" data-speed="0.3" style="text-align: center; padding: 40px 20px;">
         <div class="container">
             <div class="section-header fade-in-up">
-                <img src="assets/images/logo-mundoninus.png" alt="Logo Mundo Ninus" class="channel-logo" style="max-width: 200px; margin-bottom: 15px;">
+                <img src="assets/images/logo-mundoninus.png" alt="Logo Mundo Ninus" class="channel-logo" loading="lazy" style="max-width: 200px; margin-bottom: 15px;">
+                <p style="font-size: 1.1em; color: #444;">
                 <h2 class="section-title">🌍 Conheça o Canal Mundo Ninus</h2>
                 <p class="section-subtitle">Explore mais conteúdos do universo encantado</p>
             </div>
@@ -898,7 +907,7 @@
                     </div>
                     
                     <div class="purchase-actions">
-                        <a href="#comprar" target="_blank" class="btn btn-primary btn-large purchase-btn" aria-label="Comprar o livro Mostardinha por R$ 34,99">
+                        <a href="https://pay.hotmart.com/H100940670E" target="_blank" class="btn btn-primary btn-large purchase-btn" aria-label="Comprar o livro Mostardinha por R$ 34,99">
                             <span class="btn-icon" aria-hidden="true">🛒</span>
                             Quero o meu agora!
                         </a>
@@ -906,6 +915,7 @@
                         <div class="coupon-section">
                             <label for="couponInput">Insira seu cupom de desconto, se tiver:</label>
                             <div class="coupon-input-group">
+                                <label for="couponInput" class="sr-only">Código do cupom</label>
                                 <input type="text" id="couponInput" placeholder="Código do cupom" class="coupon-input" aria-label="Campo para inserir cupom de desconto">
                                 <button class="btn btn-outline btn-small" onclick="applyCoupon()" aria-label="Aplicar cupom de desconto">Aplicar</button>
                             </div>
@@ -949,7 +959,7 @@
                 <p class="cta-subtitle">Compre, leia, ouça e compartilhe o Mostardinha com quem você ama</p>
                 
                 <div class="cta-buttons">
-                                <a href="#comprar" class="btn btn-primary btn-large" aria-label="Comprar o livro Mostardinha por R$ 34,99"> 34,99">
+                        <a href="https://pay.hotmart.com/H100940670E" target="_blank" class="btn btn-primary btn-large" aria-label="Comprar o livro Mostardinha por R$ 34,99"> 34,99">
                         <span class="btn-icon" aria-hidden="true">🛒</span>
                         Comprar o livro - R$ 34,99
                     </a>
@@ -995,8 +1005,8 @@
                 <div class="footer-section">
                     <h4>Contato</h4>
                     <ul>
-                        <li><a href="https://www.youtube.com/@mundoninoss" target="_blank">YouTube</a></li>
-                        <li><a href="mailto:contato@mostardinha.com">E-mail</a></li>
+                        <li><a href="https://www.youtube.com/@mundoninoss" target="_blank" aria-label="Visitar o canal Mundo Ninus no YouTube">YouTube</a></li>
+                        <li><a href="mailto:contato@mostardinha.com" aria-label="Enviar e-mail para contato@mostardinha.com">E-mail</a></li>
                         <li><a href="#newsletter">Newsletter</a></li>
                     </ul>
                 </div>
@@ -1008,6 +1018,9 @@
             </div>
         </div>
     </footer>
+
+    <!-- Confetti.js -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 
     <!-- JavaScript -->
     <script src="script.js"></script>
