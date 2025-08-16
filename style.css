@@ -2408,6 +2408,8 @@ html {
 
 .behind-scenes-section {
     text-align: center;
+    padding: 80px 0;
+    background-color: var(--alguma-cor);
 }
 
 
