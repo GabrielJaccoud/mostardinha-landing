@@ -426,7 +426,18 @@ body {
 }
 
 .hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+}
+
+.main-book-cover {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* Opcional */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Opcional */
 }
 
 .mostardinha-hero {
@@ -1578,6 +1589,13 @@ section {
     
     .coupon-input {
         max-width: 100%;
+    }
+}
+
+/* Ajuste específico para telas médias */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .characters-grid, .music-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Intermediário */
     }
 }
 
