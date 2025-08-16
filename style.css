@@ -1818,6 +1818,12 @@ html {
             overflow: hidden; /* Para conter os elementos parallax */
         }
 
+        .reading-scene-video, .reading-scene-iframe {
+            border-radius: 10px; /* Opcional */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Opcional */
+            max-width: 100%;
+        }
+
 /* Seção Vozes que Encantam */
 .voices-section {
     padding: 80px 0;
