@@ -121,7 +121,7 @@ function initParallaxEffect() {
 
 // ===== SCROLL SUAVE =====
 function initSmoothScrolling() {
-    const navLinks = document.querySelectorAll(".nav-link, a.btn.btn-primary.btn-small");
+    const navLinks = document.querySelectorAll(".nav-link, a.btn.btn-primary.btn-small, .nav-cta");
     
     navLinks.forEach(function(link) {
         link.addEventListener('click', function(e) {
