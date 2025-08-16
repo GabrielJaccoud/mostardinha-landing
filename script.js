@@ -708,8 +708,7 @@ document.addEventListener('keydown', function(e) {
 // Tracking de cliques em botões importantes
 function trackButtonClick(buttonText, section) {
     // Aqui você integraria com Google Analytics ou similar
-    if (window.DEBUG_MODE) { // Só loga se window.DEBUG_MODE for true
-        console.debug(`Botão clicado: ${buttonText} na seção: ${section}`);
+    console.debug(`Botão clicado: ${buttonText} na seção: ${section}`);
     
     // Exemplo de integração com Google Analytics
     if (typeof gtag !== 'undefined') {
