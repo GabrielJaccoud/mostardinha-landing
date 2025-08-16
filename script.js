@@ -865,7 +865,7 @@ function initScrollTopButton() {
             }
 
             // Quando o usuário clica em qualquer lugar fora do modal, fecha-o
-            window.onclick = function(event) {
+            window.addEventListener('click', function(event) {
                 if (event.target === modal) {
                     modal.setAttribute('aria-hidden', 'true');
                     document.body.style.overflow = ''; // Restaura scroll da página
