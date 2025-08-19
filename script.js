@@ -290,7 +290,7 @@ function initQuiz() {
     const characters = {
         mostardinha: {
             name: 'Mostardinha',
-            image: 'assets/images/Mostardinha(2).png',
+            image: 'assets/images/mostardinha.png',
             description: 'Você é como o Mostardinha! Pequeno em tamanho, mas gigante em amor e sabedoria. Você tem o dom de ouvir com o coração e transformar o mundo ao seu redor com gentileza.'
         },
         maionese: {
@@ -300,12 +300,12 @@ function initQuiz() {
         },
         salsinha: {
             name: 'Salsinha',
-            image: 'assets/images/salsinha(2).png',
+            image: 'assets/images/salsinha.png',
             description: 'Você é como a Salsinha! Cheia de energia e otimismo. Você tem o dom de trazer alegria para qualquer situação e acredita que a vida sempre traz aquilo que precisamos.'
         },
         alho: {
             name: 'Velho Alho',
-            image: 'assets/images/alho(2).png',
+            image: 'assets/images/alho.png',
             description: 'Você é como o Velho Alho! Sábio e experiente, você tem sempre um conselho carinhoso para dar. Você acredita que fazer o bem é o segredo da felicidade.'
         }
     };
