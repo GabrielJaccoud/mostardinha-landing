@@ -1,27 +1,834 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/assets/mostardinha-b1f90ban.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mostardinha 3D - Uma Jornada Interativa</title>
-    <meta name="description" content="Embarque numa jornada mágica pela Ilha de Temperópolis com o Mostardinha! Uma experiência 3D imersiva que combina narrativa, música e valores para toda a família." />
-    <meta name="keywords" content="mostardinha, livro infantil, 3d, interativo, temperópolis, audiobook, educação, valores, crianças" />
+    <meta name="description" content="Embarque numa jornada mágica com o Mostardinha! Uma aventura afetiva que está emocionando crianças, pais, professores e terapeutas.">
+    <meta name="keywords" content="mostardinha, livro infantil, educação afetiva, gabriel jaccoud, temperópolis">
+    <meta name="author" content="Gabriel Jaccoud">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Mostardinha 3D - Uma Jornada Interativa" />
-    <meta property="og:description" content="Uma aventura afetiva em 3D pela Ilha de Temperópolis com trilha sonora original e personagens cativantes." />
-    <meta property="og:image" content="/assets/CAPA-FtJAdp2A.png" />
-    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mostardinha 3D - Uma Jornada Interativa">
+    <meta property="og:description" content="Embarque numa jornada mágica com o Mostardinha! Uma aventura afetiva que está emocionando crianças, pais, professores e terapeutas.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gabrieljaccoud.github.io/mostardinha-landing/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-Cy-q3f8I.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-D6Kbe2RS.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <style>
+        :root {
+            --amarelo-mostarda: #F4D03F;
+            --azul-celeste: #85C1E9;
+            --vermelho-coral: #F1948A;
+            --verde-natureza: #82E0AA;
+            --roxo-sonho: #D7BDE2;
+            --laranja-alegria: #F8C471;
+            --rosa-ternura: #F7DC6F;
+            --branco-puro: #FFFFFF;
+            --cinza-suave: #F8F9FA;
+            --texto-escuro: #2C3E50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fredoka', cursive;
+            line-height: 1.6;
+            color: var(--texto-escuro);
+            overflow-x: hidden;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--amarelo-mostarda), var(--laranja-alegria));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .loading-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: url('./assets/mostardinha-b1f90ban.png') center/cover;
+            margin-bottom: 2rem;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .loading-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .loading-progress {
+            width: 200px;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .loading-bar {
+            height: 100%;
+            background: white;
+            border-radius: 2px;
+            width: 0%;
+            animation: loadProgress 3s ease-out forwards;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes loadProgress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--texto-escuro);
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .nav-item {
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-item.inicio { background: var(--amarelo-mostarda); color: white; }
+        .nav-item.historia { background: var(--azul-celeste); color: white; }
+        .nav-item.personagens { background: var(--verde-natureza); color: white; }
+        .nav-item.musicas { background: var(--vermelho-coral); color: white; }
+        .nav-item.sabedoria { background: var(--roxo-sonho); color: white; }
+        .nav-item.vozes { background: var(--rosa-ternura); color: var(--texto-escuro); }
+        .nav-item.bastidores { background: var(--laranja-alegria); color: white; }
+        .nav-item.quiz { background: var(--vermelho-coral); color: white; }
+        .nav-item.comprar { background: var(--verde-natureza); color: white; font-weight: 700; }
+
+        .nav-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Sections */
+        .section {
+            min-height: 100vh;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--azul-celeste), var(--amarelo-mostarda));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1000px;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--amarelo-mostarda);
+            color: var(--texto-escuro);
+            box-shadow: 0 4px 15px rgba(244, 208, 63, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Characters Section */
+        .characters {
+            background: linear-gradient(135deg, var(--verde-natureza), var(--azul-celeste));
+            color: white;
+        }
+
+        .characters h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .character-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            color: var(--texto-escuro);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .character-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .character-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background-size: cover;
+            background-position: center;
+            border: 4px solid var(--amarelo-mostarda);
+        }
+
+        .character-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--texto-escuro);
+        }
+
+        .character-quote {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        /* Particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 50%;
+            animation: particleFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes particleFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+
+        /* Audio Player */
+        .audio-player {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            z-index: 1000;
+        }
+
+        .play-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--amarelo-mostarda);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .audio-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            color: var(--texto-escuro);
+        }
+
+        /* Floating Quotes */
+        .floating-quote {
+            position: fixed;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1rem 1.5rem;
+            max-width: 300px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            z-index: 500;
+            animation: floatIn 0.5s ease-out;
+            cursor: pointer;
+        }
+
+        .floating-quote::before {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 2rem;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 8px solid rgba(255,255,255,0.95);
+        }
+
+        @keyframes floatIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .characters-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .audio-player {
+                bottom: 1rem;
+                right: 1rem;
+                padding: 0.8rem 1rem;
+            }
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            text-align: center;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Hidden class for loading */
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-logo"></div>
+        <div class="loading-text">Afinando os instrumentos...</div>
+        <div class="loading-progress">
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#inicio" class="nav-logo">
+                <img src="./assets/mostardinha-b1f90ban.png" alt="Mostardinha">
+                <span>Mostardinha 3D</span>
+            </a>
+            <div class="nav-menu">
+                <a href="#inicio" class="nav-item inicio">Início</a>
+                <a href="#historia" class="nav-item historia">História</a>
+                <a href="#personagens" class="nav-item personagens">Personagens</a>
+                <a href="#musicas" class="nav-item musicas">Músicas</a>
+                <a href="#sabedoria" class="nav-item sabedoria">Sabedoria</a>
+                <a href="#vozes" class="nav-item vozes">Vozes</a>
+                <a href="#bastidores" class="nav-item bastidores">Bastidores</a>
+                <a href="#quiz" class="nav-item quiz">Quiz</a>
+                <a href="#comprar" class="nav-item comprar">📖 Comprar Livro</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="section hero">
+        <div class="particles" id="heroParticles"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Bem-vindo à<br><span style="color: var(--amarelo-mostarda);">Ilha de Temperópolis</span></h1>
+                    <p>Embarque numa jornada mágica com o <strong>Mostardinha</strong>, um grão pequeno mas gigante em amor! Uma aventura afetiva que está emocionando crianças, pais, professores e terapeutas.</p>
+                    <div class="hero-cta">
+                        <a href="#comprar" class="btn btn-primary">📖 Quero o Livro - R$ 34,99</a>
+                        <a href="https://www.youtube.com/watch?v=BSzPFZICl5c&t=663s" target="_blank" class="btn btn-secondary">🎧 Ouvir Audiobook</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="./assets/CAPA-FtJAdp2A.png" alt="Capa do Livro Mostardinha">
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div>Role para explorar</div>
+            <div style="font-size: 1.5rem; margin-top: 0.5rem;">↓</div>
+        </div>
+    </section>
+
+    <!-- Characters Section -->
+    <section id="personagens" class="section characters">
+        <div class="particles" id="charactersParticles"></div>
+        <div class="container">
+            <h2>🌳 Floresta dos Espelhos</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">Conheça os habitantes mágicos de Temperópolis! Cada personagem tem sua própria personalidade e lições valiosas para compartilhar.</p>
+            
+            <div class="characters-grid">
+                <div class="character-card" data-character="mostardinha">
+                    <div class="character-image" style="background-image: url('./assets/mostardinha-b1f90ban.png');"></div>
+                    <h3>Mostardinha</h3>
+                    <p class="character-quote">"Se você quiser ter mais sorrisos na vida, sorria mais."</p>
+                    <button class="btn btn-primary">Conhecer Melhor</button>
+                </div>
+
+                <div class="character-card" data-character="maionese">
+                    <div class="character-image" style="background-image: url('./assets/MAIONESE-DcNCNBk9.png');"></div>
+                    <h3>Maionese</h3>
+                    <p class="character-quote">"Às vezes, ser diferente é o que nos torna especiais."</p>
+                    <button class="btn btn-primary">Conhecer Melhor</button>
+                </div>
+
+                <div class="character-card" data-character="salsinha">
+                    <div class="character-image" style="background-image: url('./assets/salsinha-Bw8zhN1k.png');"></div>
+                    <h3>Salsinha</h3>
+                    <p class="character-quote">"A amizade é o tempero mais importante da vida."</p>
+                    <button class="btn btn-primary">Conhecer Melhor</button>
+                </div>
+
+                <div class="character-card" data-character="velho-alho">
+                    <div class="character-image" style="background-image: url('./assets/alho-B9U6Pj2r.png');"></div>
+                    <h3>Velho Alho</h3>
+                    <p class="character-quote">"Faça o bem, que o bem volta."</p>
+                    <button class="btn btn-primary">Conhecer Melhor</button>
+                </div>
+
+                <div class="character-card" data-character="dona-formiga">
+                    <div class="character-image" style="background-image: url('./assets/dona_formiga-RAvcVdwl.png');"></div>
+                    <h3>Dona Formiga</h3>
+                    <p class="character-quote">"Cantar me faz trabalhar melhor. E perdoar é o segredo."</p>
+                    <button class="btn btn-primary">Conhecer Melhor</button>
+                </div>
+
+                <div class="character-card" data-character="comandante">
+                    <div class="character-image" style="background-image: url('./assets/comandante-C7wYEdU9.png');"></div>
+                    <h3>Comandante Catchup</h3>
+                    <p class="character-quote">"A música conecta todos os corações."</p>
+                    <button class="btn btn-primary">Conhecer Melhor</button>
+                </div>
+
+                <div class="character-card" data-character="senhora-mostarda">
+                    <div class="character-image" style="background-image: url('./assets/senhora_mostarda-BfG7Wo_7.png');"></div>
+                    <h3>Senhora Mostarda</h3>
+                    <p class="character-quote">"Cada pequeno gesto pode fazer uma grande diferença."</p>
+                    <button class="btn btn-primary">Conhecer Melhor</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Placeholder sections for future development -->
+    <section id="historia" class="section" style="background: linear-gradient(135deg, var(--azul-celeste), var(--roxo-sonho)); color: white; display: flex; align-items: center; justify-content: center;">
+        <div class="container" style="text-align: center;">
+            <h2 style="font-size: 3rem; margin-bottom: 1rem;">🏝️ Aventura pela Ilha</h2>
+            <p style="font-size: 1.3rem;">Em desenvolvimento...</p>
+        </div>
+    </section>
+
+    <section id="musicas" class="section" style="background: linear-gradient(135deg, var(--vermelho-coral), var(--rosa-ternura)); color: white; display: flex; align-items: center; justify-content: center;">
+        <div class="container" style="text-align: center;">
+            <h2 style="font-size: 3rem; margin-bottom: 1rem;">🎵 Rio Musical</h2>
+            <p style="font-size: 1.3rem;">Em desenvolvimento...</p>
+        </div>
+    </section>
+
+    <section id="sabedoria" class="section" style="background: linear-gradient(135deg, var(--roxo-sonho), var(--laranja-alegria)); color: white; display: flex; align-items: center; justify-content: center;">
+        <div class="container" style="text-align: center;">
+            <h2 style="font-size: 3rem; margin-bottom: 1rem;">🧙‍♂️ Vale da Sabedoria</h2>
+            <p style="font-size: 1.3rem;">Em desenvolvimento...</p>
+        </div>
+    </section>
+
+    <section id="vozes" class="section" style="background: linear-gradient(135deg, var(--rosa-ternura), var(--verde-natureza)); color: white; display: flex; align-items: center; justify-content: center;">
+        <div class="container" style="text-align: center;">
+            <h2 style="font-size: 3rem; margin-bottom: 1rem;">🎤 Auditório do Mostardinha</h2>
+            <p style="font-size: 1.3rem;">Em desenvolvimento...</p>
+        </div>
+    </section>
+
+    <section id="bastidores" class="section" style="background: linear-gradient(135deg, var(--laranja-alegria), var(--amarelo-mostarda)); color: white; display: flex; align-items: center; justify-content: center;">
+        <div class="container" style="text-align: center;">
+            <h2 style="font-size: 3rem; margin-bottom: 1rem;">🎬 Caverna dos Segredos</h2>
+            <p style="font-size: 1.3rem;">Em desenvolvimento...</p>
+        </div>
+    </section>
+
+    <section id="quiz" class="section" style="background: linear-gradient(135deg, var(--verde-natureza), var(--azul-celeste)); color: white; display: flex; align-items: center; justify-content: center;">
+        <div class="container" style="text-align: center;">
+            <h2 style="font-size: 3rem; margin-bottom: 1rem;">🎯 Escolha seu Caminho</h2>
+            <p style="font-size: 1.3rem;">Em desenvolvimento...</p>
+        </div>
+    </section>
+
+    <section id="comprar" class="section" style="background: linear-gradient(135deg, var(--amarelo-mostarda), var(--laranja-alegria)); color: white; display: flex; align-items: center; justify-content: center;">
+        <div class="container" style="text-align: center;">
+            <h2 style="font-size: 3rem; margin-bottom: 1rem;">📚 Portal da Comunidade</h2>
+            <p style="font-size: 1.3rem;">Em desenvolvimento...</p>
+        </div>
+    </section>
+
+    <!-- Audio Player -->
+    <div class="audio-player">
+        <button class="play-btn" id="playBtn">▶️</button>
+        <div class="audio-info">
+            <span>🎵 Trilha do Mostardinha</span>
+        </div>
+        <audio id="audioPlayer" loop>
+            <source src="./assets/temamostardinha-BlWVxM-G.wav" type="audio/wav">
+        </audio>
+    </div>
+
+    <script>
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 3000);
+        });
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero animations
+        gsap.from('.hero-text h1', {
+            y: 100,
+            opacity: 0,
+            duration: 1,
+            ease: 'power3.out',
+            delay: 3.5
+        });
+
+        gsap.from('.hero-text p', {
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            delay: 3.8
+        });
+
+        gsap.from('.hero-cta', {
+            scale: 0,
+            opacity: 0,
+            duration: 0.6,
+            ease: 'back.out(1.7)',
+            delay: 4
+        });
+
+        gsap.from('.hero-image', {
+            x: 100,
+            opacity: 0,
+            duration: 1,
+            ease: 'power3.out',
+            delay: 4.2
+        });
+
+        // Characters section animations
+        gsap.from('.characters h2', {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '.characters',
+                start: 'top 80%'
+            }
+        });
+
+        gsap.from('.character-card', {
+            y: 100,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '.characters-grid',
+                start: 'top 80%'
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Audio Player
+        const playBtn = document.getElementById('playBtn');
+        const audioPlayer = document.getElementById('audioPlayer');
+        let isPlaying = false;
+
+        playBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                audioPlayer.pause();
+                playBtn.textContent = '▶️';
+            } else {
+                audioPlayer.play();
+                playBtn.textContent = '⏸️';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Particles
+        function createParticles(containerId, count = 20) {
+            const container = document.getElementById(containerId);
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        createParticles('heroParticles', 15);
+        createParticles('charactersParticles', 25);
+
+        // Floating Quotes
+        const quotes = [
+            { text: "Se você quiser ter mais sorrisos na vida, sorria mais.", author: "Mostardinha" },
+            { text: "Às vezes, ser diferente é o que nos torna especiais.", author: "Maionese" },
+            { text: "A amizade é o tempero mais importante da vida.", author: "Salsinha" },
+            { text: "Faça o bem, que o bem volta.", author: "Velho Alho" },
+            { text: "Cantar me faz trabalhar melhor. E perdoar é o segredo.", author: "Dona Formiga" },
+            { text: "A música conecta todos os corações.", author: "Comandante Catchup" }
+        ];
+
+        function showFloatingQuote() {
+            const quote = quotes[Math.floor(Math.random() * quotes.length)];
+            const floatingQuote = document.createElement('div');
+            floatingQuote.className = 'floating-quote';
+            floatingQuote.innerHTML = `
+                <p style="margin-bottom: 0.5rem; font-style: italic;">"${quote.text}"</p>
+                <p style="margin: 0; font-weight: 600; color: var(--amarelo-mostarda);">- ${quote.author}</p>
+            `;
+            
+            floatingQuote.style.top = Math.random() * (window.innerHeight - 200) + 'px';
+            floatingQuote.style.left = Math.random() * (window.innerWidth - 300) + 'px';
+            
+            document.body.appendChild(floatingQuote);
+            
+            floatingQuote.addEventListener('click', () => {
+                floatingQuote.remove();
+            });
+            
+            setTimeout(() => {
+                if (floatingQuote.parentNode) {
+                    floatingQuote.remove();
+                }
+            }, 5000);
+        }
+
+        // Show floating quotes periodically
+        setInterval(showFloatingQuote, 8000);
+        setTimeout(showFloatingQuote, 5000);
+
+        // Character card interactions
+        document.querySelectorAll('.character-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const character = card.dataset.character;
+                alert(`Conhecendo ${card.querySelector('h3').textContent}!\n\nEm breve você poderá explorar mais sobre cada personagem em detalhes.`);
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255,255,255,0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.background = 'rgba(255,255,255,0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
 </html>
+
