@@ -6,6 +6,13 @@ import LoadingScreen from './components/LoadingScreen';
 import Navigation from './components/Navigation';
 import HeroSection from './components/HeroSection';
 import CharactersSection from './components/CharactersSection';
+import HistorySection from './components/HistorySection';
+import MusicSection from './components/MusicSection';
+import WisdomSection from './components/WisdomSection';
+import VoiceSection from './components/VoiceSection';
+import BehindTheScenesSection from './components/BehindTheScenesSection';
+import QuizSection from './components/QuizSection';
+import CommunitySection from './components/CommunitySection';
 import AudioPlayer from './components/AudioPlayer';
 import FloatingQuotes from './components/FloatingQuotes';
 
@@ -42,54 +49,19 @@ function App() {
           <CharactersSection />
           
           {/* Seções placeholder */}
-          <PlaceholderSection 
-            id="historia" 
-            title="Aventura pela Ilha" 
-            gradient="bg-gradient-to-br from-blue-300 to-purple-300"
-            emoji="🏝️"
-          />
+          <HistorySection />
           
-          <PlaceholderSection 
-            id="musicas" 
-            title="Rio Musical" 
-            gradient="bg-gradient-to-br from-red-300 to-pink-200"
-            emoji="🎵"
-          />
+          <MusicSection />
           
-          <PlaceholderSection 
-            id="sabedoria" 
-            title="Vale da Sabedoria" 
-            gradient="bg-gradient-to-br from-purple-300 to-orange-300"
-            emoji="🧙‍♂️"
-          />
+          <WisdomSection />
           
-          <PlaceholderSection 
-            id="vozes" 
-            title="Auditório do Mostardinha" 
-            gradient="bg-gradient-to-br from-pink-200 to-green-300"
-            emoji="🎤"
-          />
+          <VoiceSection />
           
-          <PlaceholderSection 
-            id="bastidores" 
-            title="Caverna dos Segredos" 
-            gradient="bg-gradient-to-br from-orange-300 to-yellow-400"
-            emoji="🎬"
-          />
+          <BehindTheScenesSection />
           
-          <PlaceholderSection 
-            id="quiz" 
-            title="Escolha seu Caminho" 
-            gradient="bg-gradient-to-br from-green-300 to-blue-300"
-            emoji="🎯"
-          />
+          <QuizSection />
           
-          <PlaceholderSection 
-            id="comprar" 
-            title="Portal da Comunidade" 
-            gradient="bg-gradient-to-br from-yellow-400 to-orange-300"
-            emoji="📚"
-          />
+          <CommunitySection />
           
           <AudioPlayer />
           <FloatingQuotes />
