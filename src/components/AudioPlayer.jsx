@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { Play, Pause, Volume2 } from 'lucide-react';
-import temaMostardinha from '../assets/temamostardinha.wav';
+const temaMostardinha = '/temamostardinha.wav';
 
 const AudioPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);

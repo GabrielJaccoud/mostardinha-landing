@@ -3,14 +3,14 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { X } from 'lucide-react';
 
-// Importando imagens dos personagens
-import mostardinha from '../assets/images/mostardinha.png';
-import maionese from '../assets/images/MAIONESE.png';
-import salsinha from '../assets/images/salsinha.png';
-import alho from '../assets/images/alho.png';
-import donaFormiga from '../assets/images/dona_formiga.png';
-import comandante from '../assets/images/comandante.png';
-import senhoraMostarda from '../assets/images/senhora_mostarda.png';
+// Caminhos das imagens dos personagens
+const mostardinha = '/images/mostardinha.png';
+const maionese = '/images/MAIONESE.png';
+const salsinha = '/images/salsinha.png';
+const alho = '/images/alho.png';
+const donaFormiga = '/images/dona_formiga.png';
+const comandante = '/images/comandante.png';
+const senhoraMostarda = '/images/senhora_mostarda.png';
 
 gsap.registerPlugin(ScrollTrigger);
 

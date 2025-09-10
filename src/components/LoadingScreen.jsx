@@ -1,9 +1,5 @@
 import { useEffect, useState } from 'react';
-const mostardinha = 
-  new URL(
-    '../assets/images/mostardinha.png',
-    import.meta.url
-  ).href;
+const mostardinha = '/images/mostardinha.png';
 
 const LoadingScreen = ({ onLoadingComplete }) => {
   const [progress, setProgress] = useState(0);

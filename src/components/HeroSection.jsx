@@ -2,11 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ChevronDown } from 'lucide-react';
-const capaLivro = 
-  new URL(
-    '../assets/images/CAPA.png',
-    import.meta.url
-  ).href;
+const capaLivro = '/images/CAPA.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
