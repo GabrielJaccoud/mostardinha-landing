@@ -17,7 +17,7 @@ import AudioPlayer from './components/AudioPlayer';
 import FloatingQuotes from './components/FloatingQuotes';
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false); // Desabilitando loading temporariamente
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
