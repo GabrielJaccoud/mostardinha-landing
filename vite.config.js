@@ -3,9 +3,9 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 
-// https://vite.dev/config/
+// https://vitejs.dev/config/
 export default defineConfig({
-  base: '/',
+  base: '/', // Vercel geralmente serve a partir da raiz
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
@@ -15,9 +15,12 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
+    // Adicionar um hash para os nomes dos arquivos de assets para evitar problemas de cache
     rollupOptions: {
       output: {
-        manualChunks: undefined,
+        entryFileNames: `assets/[name]-[hash].js`,
+        chunkFileNames: `assets/[name]-[hash].js`,
+        assetFileNames: `assets/[name]-[hash].[ext]`,
       },
     },
   },
@@ -26,3 +29,4 @@ export default defineConfig({
     port: 3000,
   },
 })
+
