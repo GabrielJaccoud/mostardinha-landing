@@ -1,23 +1,25 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import './App.css';
 
-// Componentes
+// Componentes essenciais (carregamento imediato)
 import LoadingScreen from './components/LoadingScreen';
 import Navigation from './components/Navigation';
 import HeroSection from './components/HeroSection';
 import CharactersSection from './components/CharactersSection';
-import HistorySection from './components/HistorySection';
-import MusicSection from './components/MusicSection';
-import WisdomSection from './components/WisdomSection';
-import VoiceSection from './components/VoiceSection';
-import BehindTheScenesSection from './components/BehindTheScenesSection';
-import QuizSection from './components/QuizSection';
-import CommunitySection from './components/CommunitySection';
-import AudioPlayer from './components/AudioPlayer';
-import FloatingQuotes from './components/FloatingQuotes';
+
+// Componentes com lazy loading
+const HistorySection = lazy(() => import('./components/HistorySection'));
+const MusicSection = lazy(() => import('./components/MusicSection'));
+const WisdomSection = lazy(() => import('./components/WisdomSection'));
+const VoiceSection = lazy(() => import('./components/VoiceSection'));
+const BehindTheScenesSection = lazy(() => import('./components/BehindTheScenesSection'));
+const QuizSection = lazy(() => import('./components/QuizSection'));
+const CommunitySection = lazy(() => import('./components/CommunitySection'));
+const AudioPlayer = lazy(() => import('./components/AudioPlayer'));
+const FloatingQuotes = lazy(() => import('./components/FloatingQuotes'));
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false); // Desabilitando loading temporariamente
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
@@ -48,23 +50,56 @@ function App() {
           <HeroSection />
           <CharactersSection />
           
-          {/* Seções placeholder */}
-          <HistorySection />
+          {/* Seções com lazy loading */}
+          <Suspense fallback={<div className="min-h-screen bg-gray-100 flex items-center justify-center">
+            <div className="text-xl">Carregando seção...</div>
+          </div>}>
+            <HistorySection />
+          </Suspense>
           
-          <MusicSection />
+          <Suspense fallback={<div className="min-h-screen bg-gray-100 flex items-center justify-center">
+            <div className="text-xl">Carregando seção...</div>
+          </div>}>
+            <MusicSection />
+          </Suspense>
           
-          <WisdomSection />
+          <Suspense fallback={<div className="min-h-screen bg-gray-100 flex items-center justify-center">
+            <div className="text-xl">Carregando seção...</div>
+          </div>}>
+            <WisdomSection />
+          </Suspense>
           
-          <VoiceSection />
+          <Suspense fallback={<div className="min-h-screen bg-gray-100 flex items-center justify-center">
+            <div className="text-xl">Carregando seção...</div>
+          </div>}>
+            <VoiceSection />
+          </Suspense>
           
-          <BehindTheScenesSection />
+          <Suspense fallback={<div className="min-h-screen bg-gray-100 flex items-center justify-center">
+            <div className="text-xl">Carregando seção...</div>
+          </div>}>
+            <BehindTheScenesSection />
+          </Suspense>
           
-          <QuizSection />
+          <Suspense fallback={<div className="min-h-screen bg-gray-100 flex items-center justify-center">
+            <div className="text-xl">Carregando seção...</div>
+          </div>}>
+            <QuizSection />
+          </Suspense>
           
-          <CommunitySection />
+          <Suspense fallback={<div className="min-h-screen bg-gray-100 flex items-center justify-center">
+            <div className="text-xl">Carregando seção...</div>
+          </div>}>
+            <CommunitySection />
+          </Suspense>
           
-          <AudioPlayer />
-          <FloatingQuotes />
+          <Suspense fallback={<div>Carregando player...</div>}>
+            <AudioPlayer />
+          </Suspense>
+          
+          <Suspense fallback={<div>Carregando quotes...</div>}>
+            <FloatingQuotes />
+          </Suspense>
         </>
       )}
     </div>
